@@ -634,6 +634,8 @@ footer { background:var(--b1); border-top:1px solid rgba(184,149,106,.08); paddi
 </section>
 
 <div style="height:1px;background:linear-gradient(to right,transparent,rgba(184,149,106,.2),transparent);"></div>
+
+<section class="ct" id="contact">
   <div class="ct-i">
     <div>
       <span class="ct-lbl rv">Nous Écrire</span>
@@ -715,4 +717,17 @@ async function handleSubmit(e) {
       headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
-      btn.textContent = 'M
+      btn.textContent = 'Message envoyé ✓';
+      form.reset();
+    } else {
+      btn.textContent = 'Erreur — réessayer';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Erreur — réessayer';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
