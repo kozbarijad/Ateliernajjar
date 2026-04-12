@@ -1,132 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Najjar — Gastronomie Libanaise · Paris</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --b1: #4A0B17;
+  --b2: #6B1022;
+  --cream: #F4EDE4;
+  --cream2: #EDE5D6;
+  --gold: #B8956A;
+  --goldl: #D4B080;
+  --text: #7A6858;
+}
 
-Maison
-Créations
-Prestations
-Contact
-ATELIER NAJJAR
-	•	MAISON
-	•	CRÉATIONS
-	•	PRESTATIONS
-	•	CONTACT
-PARIS · ÎLE-DE-FRANCE
-ATELIER NAJJAR
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+img { display:block; max-width:100%; }
+
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.02; pointer-events:none; z-index:900;
+}
+
+.cur {
+  position:fixed; width:7px; height:7px;
+  background:var(--b2); border-radius:50%;
+  pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .3s,height .3s,opacity .3s;
+}
+.cur.big { width:32px; height:32px; opacity:.15; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; width:100%;
+  z-index:500; padding:28px 52px;
+  display:flex; justify-content:space-between; align-items:center;
+  transition:all .6s cubic-bezier(.4,0,.2,1);
+}
+nav.s {
+  background:rgba(244,237,228,.97);
+  backdrop-filter:blur(20px);
+  padding:16px 52px;
+  box-shadow:0 1px 0 rgba(74,11,23,.07);
+}
+.nl {
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px; font-weight:300;
+  letter-spacing:.45em; text-transform:uppercase;
+  color:var(--cream); text-decoration:none; transition:color .4s;
+}
+nav.s .nl { color:var(--b2); }
+.nm { display:flex; gap:40px; list-style:none; }
+.nm a {
+  font-size:9px; font-weight:300;
+  letter-spacing:.32em; text-transform:uppercase;
+  color:rgba(244,237,228,.55);
+  text-decoration:none; transition:color .4s; position:relative;
+}
+nav.s .nm a { color:var(--text); }
+.nm a:hover { color:var(--gold) !important; }
+.nm a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:.5px; background:var(--gold);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.nm a:hover::after { width:100%; }
+
+/* burger */
+.burger {
+  display:none; flex-direction:column; gap:5px;
+  cursor:none; padding:6px; z-index:600;
+}
+.burger span {
+  width:20px; height:1px; background:var(--cream);
+  display:block; transition:all .4s;
+}
+nav.s .burger span { background:var(--b2); }
+.burger.open span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+.burger.open span:nth-child(2) { transform:rotate(-45deg) translate(4px,-4px); }
+
+.mob-overlay {
+  position:fixed; inset:0; background:var(--b1); z-index:400;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:32px; opacity:0; visibility:hidden;
+  transition:opacity .4s, visibility .4s;
+}
+.mob-overlay.open { opacity:1; visibility:visible; }
+.mob-overlay a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px; font-weight:300; font-style:italic;
+  letter-spacing:.08em; color:var(--cream);
+  text-decoration:none; transition:color .3s;
+}
+.mob-overlay a:hover { color:var(--gold); }
+
+/* HERO */
+.hero {
+  height:100vh; min-height:600px;
+  background:var(--b1);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at center, rgba(107,16,34,.3) 0%, transparent 70%);
+}
+.hero-c { position:relative; z-index:1; text-align:center; padding:0 32px; }
+.hero-eyebrow {
+  font-size:9px; font-weight:300;
+  letter-spacing:.55em; text-transform:uppercase;
+  color:rgba(244,237,228,.6); opacity:0; animation:fu .7s 1.6s forwards; margin-bottom:30px;
+}
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,3.5vw,44px); font-weight:300;
+  color:var(--cream); letter-spacing:.5em; text-transform:uppercase;
+  line-height:1; opacity:0; animation:fu 1s .8s forwards;
+}
+.hero-orn {
+  display:flex; align-items:center; justify-content:center;
+  gap:16px; margin:24px auto;
+  opacity:0; animation:fu .6s 2s forwards;
+}
+.ho-l { width:48px; height:.5px; background:var(--gold); }
+.ho-d { width:4px; height:4px; background:var(--gold); transform:rotate(45deg); }
+.hero-sub {
+  font-size:10px; font-weight:300; letter-spacing:.45em; text-transform:uppercase;
+  color:var(--gold); opacity:0; animation:fu .6s 2.2s forwards;
+}
+.hero-scroll {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  z-index:1; opacity:0; animation:fu .5s 3s forwards;
+}
+.hs-t { font-size:7px; letter-spacing:.4em; text-transform:uppercase; color:rgba(184,149,106,.4); }
+.hs-l {
+  width:1px; height:38px;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+  animation:sp 2.2s infinite;
+}
+
+@keyframes fu { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+@keyframes sp { 0%,100%{opacity:.2;transform:scaleY(.4);} 50%{opacity:.9;transform:scaleY(1);} }
+
+.rv { opacity:0; transform:translateY(22px); transition:opacity 1s cubic-bezier(.4,0,.2,1),transform 1s cubic-bezier(.4,0,.2,1); }
+.rv.vis { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s;} .d2{transition-delay:.24s;} .d3{transition-delay:.36s;}
+
+/* INTRO */
+.intro { padding:70px 60px 32px; background:var(--cream); text-align:center; }
+.lbl { font-size:8px; font-weight:300; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:18px; }
+.intro-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,2.8vw,36px); font-weight:200; font-style:italic;
+  color:var(--b2); line-height:1.5; max-width:540px; margin:0 auto 28px;
+}
+.intro-rule { width:28px; height:.5px; background:var(--gold); margin:0 auto; }
+
+/* CREATIONS */
+.creations { padding:0; background:var(--cream2); }
+.creations-header { padding:20px 60px 44px; text-align:center; background:var(--cream2); }
+.creations-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.2vw,28px); font-weight:300; color:var(--b2); letter-spacing:.04em;
+}
+
+.photo-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; padding:0;
+}
+.photo-item { position:relative; overflow:hidden; }
+.photo-item-img {
+  width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
+  display:block; filter:brightness(.93) saturate(1.05);
+  transition:transform 2s cubic-bezier(.25,0,.1,1);
+}
+.photo-item:hover .photo-item-img { transform:scale(1.04); }
+.photo-item-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:32px 20px 22px;
+  background:linear-gradient(to top, rgba(74,11,23,.78) 0%, transparent 100%);
+}
+.photo-cat { font-size:7px; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; display:block; }
+.photo-name { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; color:var(--cream); letter-spacing:.04em; line-height:1.2; }
+
+.dish-lists {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0; padding:40px 80px; margin:0;
+  background:var(--cream2);
+}
+.dish-col { background:var(--cream2); padding:0 40px; text-align:center; }
+.dish-col-title {
+  font-size:8px; font-weight:400; letter-spacing:.4em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:16px; display:block;
+  padding-bottom:12px; border-bottom:.5px solid rgba(184,149,106,.2);
+}
+.dish-list { list-style:none; display:flex; flex-direction:column; gap:0; }
+.dish-list li {
+  font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300;
+  color:var(--b2); letter-spacing:.04em; line-height:1;
+  padding:11px 0; text-align:center;
+  border-bottom:.5px solid rgba(184,149,106,.08);
+}
+.dish-list li:last-child { border-bottom:none; }
+
+/* OFFRE */
+.offre { padding:100px 60px; background:var(--b1); position:relative; overflow:hidden; }
+.offre::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 100%, rgba(107,16,34,.4), transparent 65%);
+}
+.offre-h { text-align:center; margin-bottom:64px; position:relative; z-index:1; }
+.offre-lbl { font-size:10px; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:block; }
+.offre-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,60px); font-weight:200; font-style:italic; color:var(--cream); letter-spacing:.04em; }
+.offre-grid { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1px 1fr 1px 1fr; position:relative; z-index:1; }
+.offre-sep { background:rgba(244,237,228,.07); }
+.offre-item { padding:0 44px; text-align:center; }
+.offre-item:first-child { padding-left:0; }
+.offre-item:last-child { padding-right:0; }
+.offre-n { font-family:'Cormorant Garamond',serif; font-size:12px; font-weight:300; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+.offre-rule { width:20px; height:.5px; background:rgba(184,149,106,.35); margin:0 auto 20px; }
+.offre-name { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; color:var(--cream); margin-bottom:16px; letter-spacing:.02em; line-height:1.2; }
+.offre-desc { font-size:15px; font-weight:300; line-height:1.9; color:rgba(244,237,228,.75); }
+
+
+/* CONTACT */
+.ct { padding:80px 60px; background:var(--b1); }
+.ct-i { max-width:940px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:start; }
+.ct-lbl { font-size:8px; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:block; }
+.ct-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4.5vw,60px); font-weight:200; font-style:italic; color:#FFFFFF; line-height:1.1; margin-bottom:22px; letter-spacing:.02em; }
+.ct-body { font-size:15px; font-weight:300; line-height:2; color:rgba(255,255,255,.75); margin-bottom:40px; max-width:340px; }
+.ct-info { display:flex; flex-direction:column; gap:20px; }
+.ci-l { font-size:9px; letter-spacing:.38em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.ci-v { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; color:#FFFFFF; }
+.ci-v a { color:inherit; text-decoration:none; transition:color .3s; }
+.ci-v a:hover { color:var(--gold); }
+
+.cf { padding-top:4px; }
+.fg { margin-bottom:20px; }
+.fg label { font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.7); display:block; margin-bottom:9px; }
+.fg input,.fg textarea,.fg select {
+  width:100%; background:transparent;
+  border:none; border-bottom:1px solid rgba(244,237,228,.15);
+  padding:10px 0; font-family:'Jost',sans-serif; font-size:13px; font-weight:200;
+  color:rgba(244,237,228,.85); outline:none; transition:border-color .4s; border-radius:0;
+}
+.fg input::placeholder,.fg textarea::placeholder { color:rgba(255,255,255,.25); }
+.fg input:focus,.fg textarea:focus,.fg select:focus { border-bottom-color:rgba(184,149,106,.6); }
+.fg textarea { resize:none; height:70px; }
+.fg select { cursor:pointer; }
+.fg select option { background:var(--b1); color:var(--cream); }
+.fr { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.btn { font-size:8.5px; font-weight:300; letter-spacing:.42em; text-transform:uppercase; color:var(--b1); background:var(--gold); border:none; padding:14px 40px; cursor:none; transition:background .4s; margin-top:8px; }
+.btn:hover { background:var(--goldl); }
+
+/* FOOTER */
+footer { background:var(--b1); border-top:1px solid rgba(184,149,106,.08); padding:32px 52px; display:flex; justify-content:space-between; align-items:center; }
+.fl { font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:300; letter-spacing:.45em; text-transform:uppercase; color:rgba(244,237,228,.25); }
+.fli { display:flex; gap:24px; list-style:none; }
+.fli a { font-size:8px; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,237,228,.18); text-decoration:none; transition:color .3s; }
+.fli a:hover { color:var(--gold); }
+.fc { font-size:8px; color:rgba(244,237,228,.1); }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav { padding:18px 24px; } nav.s { padding:14px 24px; }
+  .nm { display:none; } .burger { display:flex; }
+
+  .hero-title { font-size:15px; letter-spacing:.38em; }
+  .hero-eyebrow { font-size:7px; margin-bottom:20px; }
+  .ho-l { width:30px; }
+
+  .intro { padding:70px 24px 30px; }
+  .creations-header { padding:14px 24px 32px; }
+
+  .photo-grid { grid-template-columns:1fr; padding:0; gap:2px; }
+  .photo-item-img { aspect-ratio:4/3; }
+  .mezzes-mobile-fix {
+    object-position:center 42%;
+  }
+
+  .dish-lists { grid-template-columns:1fr; padding:0; gap:2px; }
+  .dish-col { padding:22px 24px 26px; }
+
+  .offre { padding:80px 24px; }
+  .offre-grid { grid-template-columns:1fr; }
+  .offre-sep { display:none; }
+  .offre-item { padding:28px 0; border-bottom:1px solid rgba(244,237,228,.06); }
+  .offre-item:last-child { border-bottom:none; }
+
+  .qt { padding:90px 24px; }
+  .ct { padding:80px 24px; }
+  .ct-i { grid-template-columns:1fr; gap:44px; }
+  .fr { grid-template-columns:1fr; }
+  .btn { width:100%; text-align:center; }
+
+  footer { flex-direction:column; gap:14px; text-align:center; padding:26px 24px; }
+}
 
 
 
-GASTRONOMIE LIBANAISE
-DÉCOUVRIR
+/* MAISON */
+.maison {
+  padding:100px 60px;
+  background:var(--cream);
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:0;
+  max-width:1100px;
+  margin:0 auto;
+}
+.maison-sep { background:linear-gradient(to bottom, transparent, rgba(184,149,106,.25), transparent); }
+.maison-left { padding-right:80px; }
+.maison-right { padding-left:80px; }
+.maison-eyebrow {
+  font-size:8px; font-weight:300; letter-spacing:.5em; text-transform:uppercase;
+  color:var(--gold); display:block; margin-bottom:22px;
+}
+.maison-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,2.8vw,38px); font-weight:200; font-style:italic;
+  color:var(--b2); line-height:1.45; margin-bottom:32px;
+}
+.maison-body {
+  font-size:14.5px; font-weight:300; line-height:2.1;
+  color:var(--text); max-width:420px;
+}
+.maison-body p { margin-bottom:18px; }
+.maison-body p:last-child { margin-bottom:0; }
+.maison-chiffres { display:flex; flex-direction:column; justify-content:center; gap:40px; }
+.maison-chiffre { text-align:center; }
+.mc-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,5vw,68px); font-weight:200; font-style:italic;
+  color:var(--b2); line-height:1; display:block; margin-bottom:10px;
+}
+.mc-l {
+  font-size:8.5px; font-weight:300; letter-spacing:.38em; text-transform:uppercase;
+  color:var(--gold);
+}
+.mc-sep { width:28px; height:.5px; background:rgba(184,149,106,.3); margin:16px auto 0; }
+.maison-rule { width:28px; height:.5px; background:var(--gold); margin-top:32px; }
+
+/* TÉMOIGNAGES */
+.temoignages {
+  background:var(--b2);
+  padding:90px 60px;
+  position:relative; overflow:hidden;
+}
+.temoignages::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 20% 50%, rgba(74,11,23,.5), transparent 60%);
+  pointer-events:none;
+}
+.temoignages-h { text-align:center; margin-bottom:70px; position:relative; z-index:1; }
+.temoignages-lbl { font-size:8px; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:0; }
+.temoignages-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; max-width:1080px; margin:0 auto;
+  position:relative; z-index:1;
+}
+.temoignage {
+  padding:44px 36px;
+  background:rgba(244,237,228,.035);
+  border:1px solid rgba(184,149,106,.1);
+  display:flex; flex-direction:column; gap:0;
+  transition:background .4s;
+}
+.temoignage:hover { background:rgba(244,237,228,.065); }
+.temoignage-orn {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px; font-weight:200;
+  color:var(--gold); opacity:.35; line-height:.8;
+  margin-bottom:20px; display:block;
+}
+.temoignage-texte {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px; font-weight:300; font-style:italic;
+  color:rgba(244,237,228,.9); line-height:1.65;
+  flex:1;
+}
+.temoignage-sep { width:20px; height:.5px; background:rgba(184,149,106,.4); margin:24px 0; }
+.temoignage-auteur {
+  font-size:8px; font-weight:300; letter-spacing:.32em; text-transform:uppercase;
+  color:rgba(184,149,106,.7);
+}
+
+@media(max-width:768px){
+  .maison { grid-template-columns:1fr; padding:70px 24px; gap:50px; }
+  .maison-sep { display:none; }
+  .maison-left { padding-right:0; }
+  .maison-right { padding-left:0; }
+  .maison-chiffres { flex-direction:row; gap:0; justify-content:space-around; }
+  .temoignages { padding:70px 24px; }
+  .temoignages-grid { grid-template-columns:1fr; gap:2px; }
+}
+
+/* SECTION PHOTO TABLE */
+.photo-table-section {
+  width:100%; overflow:hidden; line-height:0;
+}
+.photo-table-section img {
+  width:100%; height:auto; display:block;
+  max-height:80vh; object-fit:cover; object-position:center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+
+<div class="mob-overlay" id="mobOverlay">
+  <a href="#maison" onclick="closeMenu()">Maison</a>
+  <a href="#creations" onclick="closeMenu()">Créations</a>
+  <a href="#offre" onclick="closeMenu()">Prestations</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<nav id="nav">
+  <a href="#" class="nl">Atelier Najjar</a>
+  <ul class="nm">
+    <li><a href="#maison">Maison</a></li>
+    <li><a href="#creations">Créations</a></li>
+    <li><a href="#offre">Prestations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-c">
+    <div class="hero-eyebrow">Paris · Île-de-France</div>
+    <h1 class="hero-title">Atelier Najjar</h1>
+    <div class="hero-orn"><div class="ho-l"></div><div class="ho-d"></div><div class="ho-l"></div></div>
+    <p class="hero-sub">Gastronomie Libanaise</p>
+  </div>
+  <div class="hero-scroll"><div class="hs-t">Découvrir</div><div class="hs-l"></div></div>
+</section>
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(184,149,106,.4),transparent);"></div>
 
 
-￼
-LA MAISON
-Dix ans au service de la gastronomie du Levant
-L'Atelier est né d'une conviction simple : la cuisine libanaise mérite d'être présentée avec l'exigence qu'on réserve aux grandes tables. Pas de compromis sur les ingrédients, pas de raccourci dans les préparations — chaque recette est le fruit d'une décennie de maîtrise et d'une transmission rigoureuse des gestes fondateurs.
-Dix ans à perfectionner chaque dip, chaque bouchée, chaque mise en scène — dans des cuisines professionnelles, pour des tables d'exception. Ce parcours forge une lecture précise des attentes des maisons les plus exigeantes et une capacité à s'y adapter sans jamais trahir l'âme du plat.
-L'Atelier ne propose pas un menu. Il propose une expérience — construite sur mesure, livrée avec le soin d'une maison qui engage sa réputation à chaque prestation.
+<section class="photo-table-section rv">
+  <img src="hero-atelier-najjar.png" alt="Atelier Najjar — Table dressée">
+</section>
+
+<section id="maison">
+  <div class="maison">
+    <div class="maison-left rv">
+      <span class="maison-eyebrow">La Maison</span>
+      <h2 class="maison-title">Dix ans au service<br>de la gastronomie<br>du Levant</h2>
+      <div class="maison-body">
+        <p>L'Atelier est né d'une conviction simple : la cuisine libanaise mérite d'être présentée avec l'exigence qu'on réserve aux grandes tables. Pas de compromis sur les ingrédients, pas de raccourci dans les préparations — chaque recette est le fruit d'une décennie de maîtrise et d'une transmission rigoureuse des gestes fondateurs.</p>
+        <p>Dix ans à perfectionner chaque dip, chaque bouchée, chaque mise en scène — dans des cuisines professionnelles, pour des tables d'exception. Ce parcours forge une lecture précise des attentes des maisons les plus exigeantes et une capacité à s'y adapter sans jamais trahir l'âme du plat.</p>
+        <p>L'Atelier ne propose pas un menu. Il propose une expérience — construite sur mesure, livrée avec le soin d'une maison qui engage sa réputation à chaque prestation.</p>
+      </div>
+      <div class="maison-rule"></div>
+    </div>
+    <div class="maison-sep"></div>
+    <div class="maison-right rv d1">
+      <div class="maison-chiffres">
+        <div class="maison-chiffre">
+          <span class="mc-n">10</span>
+          <span class="mc-l">Ans d'expérience</span>
+          <div class="mc-sep"></div>
+        </div>
+        <div class="maison-chiffre">
+          <span class="mc-n">+150</span>
+          <span class="mc-l">Événements réalisés</span>
+          <div class="mc-sep"></div>
+        </div>
+        <div class="maison-chiffre">
+          <span class="mc-n">100%</span>
+          <span class="mc-l">Fait maison · Chaque fois</span>
+          <div class="mc-sep"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(184,149,106,.2),transparent);"></div>
+<section class="creations" id="creations">
+  <div class="creations-header">
+    <span class="lbl rv">Nos Créations</span>
+    <h2 class="creations-title rv d1">Une sélection d'exception</h2>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-item rv">
+      <img class="photo-item-img mezzes-mobile-fix" src="hommos-atelier-najjar.png" alt="Hommos Grenade">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Mezzés</span>
+        <div class="photo-name">Hoummous<br>Grenade</div>
+      </div>
+    </div>
+    <div class="photo-item rv d1">
+      <img class="photo-item-img mezzes-mobile-fix" src="labne-atelier-najjar.png" alt="Labné Zestes d'Agrumes">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Mezzés</span>
+        <div class="photo-name">Labné<br>Zestes d'Agrumes</div>
+      </div>
+    </div>
+    <div class="photo-item rv d2">
+      <img class="photo-item-img mezzes-mobile-fix" src="mtabal-atelier-najjar.png" alt="Caviar d'Aubergines">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Mezzés</span>
+        <div class="photo-name">Caviar d'Aubergines<br>Fumée</div>
+      </div>
+    </div>
+
+    <div class="photo-item rv d1">
+      <img class="photo-item-img" src="falafel-atelier-najjar.png" alt="Falafels">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Bouchées</span>
+        <div class="photo-name">Falafels<br>Signature</div>
+      </div>
+    </div>
+    <div class="photo-item rv d2">
+      <img class="photo-item-img" src="salade-levantine-atelier-najjar.png" alt="Salade Levantine">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Salades</span>
+        <div class="photo-name">Salade<br>Levantine</div>
+      </div>
+    </div>
+    <div class="photo-item rv d3">
+      <img class="photo-item-img" src="feuilles-de-vigne-atelier-najjar.png" alt="Feuilles de Vignes">
+      <div class="photo-item-overlay">
+        <span class="photo-cat">Bouchées</span>
+        <div class="photo-name">Feuilles de Vignes<br>Dressées</div>
+      </div>
+    </div>
+
+  </div>
+
+<div class="dish-lists">
+    <div class="dish-col rv" style="border-right:.5px solid rgba(184,149,106,.2);">
+      <span class="dish-col-title">Mezzés</span>
+      <ul class="dish-list">
+        <li>Hommos Grenade</li>
+        <li>Labné Zestes d'Agrumes</li>
+        <li>Caviar d'Aubergines Fumée</li>
+        <li>Taboulé Citronné</li>
+        <li>Crème de Fêta Acidulée</li>
+        <li>Salade Levantine</li>
+        <li style="color:var(--gold);opacity:.9;font-style:italic;font-size:15px;letter-spacing:.03em;">& d'autres créations…</li>
+      </ul>
+    </div>
+    <div class="dish-col rv d1">
+      <span class="dish-col-title">Bouchées</span>
+      <ul class="dish-list">
+        <li>Falafels</li>
+        <li>Fatayer Épinards</li>
+        <li>Samboussek Fromage</li>
+        <li>Samboussek Viande</li>
+        <li>Feuilles de Vignes</li>
+        <li>Toasts Signature</li>
+        <li style="color:var(--gold);opacity:.9;font-style:italic;font-size:15px;letter-spacing:.03em;">& d'autres pièces…</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="offre" id="offre">
+  <div class="offre-h">
+    <span class="offre-lbl rv">Nos Prestations</span>
+  </div>
+  <div class="offre-grid">
+    <div class="offre-item rv">
+      <div class="offre-n">I</div>
+      <div class="offre-rule"></div>
+      <div class="offre-name">Plateaux<br>Livrés Dressés</div>
+      <p class="offre-desc">Chaque plateau arrive entièrement dressé. Posez-le où vous voulez, quand vous voulez.</p>
+    </div>
+    <div class="offre-sep"></div>
+    <div class="offre-item rv d1">
+      <div class="offre-n">II</div>
+      <div class="offre-rule"></div>
+      <div class="offre-name">Mezzés &amp;<br>Bouchées</div>
+      <p class="offre-desc">Une sélection complète de créations libanaises pour 10 à 60 convives.</p>
+    </div>
+    <div class="offre-sep"></div>
+    <div class="offre-item rv d2">
+      <div class="offre-n">III</div>
+      <div class="offre-rule"></div>
+      <div class="offre-name">Installation<br>Sur Demande</div>
+      <p class="offre-desc">Mise en scène complète des plateaux sur votre lieu de réception, sur devis.</p>
+    </div>
+  </div>
+</section>
 
 
-10
-ANS D'EXPÉRIENCE
-
-+150
-ÉVÉNEMENTS RÉALISÉS
-
-100%
-FAIT MAISON · CHAQUE FOIS
 
 
-NOS CRÉATIONS
-Une sélection d'exception
-￼
-MEZZÉS
-Hoummous
-Grenade
-￼
-MEZZÉS
-Labné
-Zestes d'Agrumes
-￼
-MEZZÉS
-Caviar d'Aubergines
-Fumée
-￼
-BOUCHÉES
-Falafels
-Signature
-￼
-SALADES
-Salade
-Levantine
-￼
-BOUCHÉES
-Feuilles de Vignes
-Dressées
-MEZZÉS
-	•	Hommos Grenade
-	•	Labné Zestes d'Agrumes
-	•	Caviar d'Aubergines Fumée
-	•	Taboulé Citronné
-	•	Crème de Fêta Acidulée
-	•	Salade Levantine
-	•	& d'autres créations…
-BOUCHÉES
-	•	Falafels
-	•	Fatayer Épinards
-	•	Samboussek Fromage
-	•	Samboussek Viande
-	•	Feuilles de Vignes
-	•	Toasts Signature
-	•	& d'autres pièces…
-NOS PRESTATIONS
-I
+<section class="temoignages" id="temoignages">
+  <div class="temoignages-h">
+    <span class="temoignages-lbl rv">Ce qu'ils en disent</span>
+  </div>
+  <div class="temoignages-grid">
+    <div class="temoignage rv">
+      <span class="temoignage-orn">"</span>
+      <p class="temoignage-texte">Une table libanaise d'un niveau que je n'avais jamais rencontré à Paris. Nos convives en parlent encore, plusieurs semaines après l'événement.</p>
+      <div class="temoignage-sep"></div>
+      <span class="temoignage-auteur">Coordinatrice événements · Maison de mode, Paris</span>
+    </div>
+    <div class="temoignage rv d1">
+      <span class="temoignage-orn">"</span>
+      <p class="temoignage-texte">Professionnel, ponctuel, d'une précision remarquable dans la présentation. L'Atelier a su répondre à nos contraintes avec une facilité déconcertante.</p>
+      <div class="temoignage-sep"></div>
+      <span class="temoignage-auteur">Responsable affaires générales · Groupe luxe parisien</span>
+    </div>
+    <div class="temoignage rv d2">
+      <span class="temoignage-orn">"</span>
+      <p class="temoignage-texte">Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L'Atelier Najjar offre exactement cela — une signature, une identité, une excellence.</p>
+      <div class="temoignage-sep"></div>
+      <span class="temoignage-auteur">Directrice de cabinet · Paris 8<sup>e</sup></span>
+    </div>
+  </div>
+</section>
 
-Plateaux
-Livrés Dressés
-Chaque plateau arrive entièrement dressé. Posez-le où vous voulez, quand vous voulez.
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(184,149,106,.2),transparent);"></div>
+  <div class="ct-i">
+    <div>
+      <span class="ct-lbl rv">Nous Écrire</span>
+      <h2 class="ct-title rv d1">Contactez<br>l'Atelier</h2>
+      <p class="ct-body rv d2">Pour toute demande de devis, réservation ou renseignement, nous vous répondrons sous 24 heures.</p>
+      <div class="ct-info rv d3">
+        <div><div class="ci-l">Email</div><div class="ci-v"><a href="/cdn-cgi/l/email-protection#086b67667c696b7c48697c6d64616d7a66696262697a266e7a"><span class="__cf_email__" data-cfemail="8cefe3e2f8edeff8ccedf8e9e0e5e9fee2ede6e6edfea2eafe">[email&#160;protected]</span></a></div></div>
+        <div><div class="ci-l">Zone de livraison</div><div class="ci-v">Paris &amp; Île-de-France</div></div>
+        <div><div class="ci-l">Instagram</div><div class="ci-v"><a href="#">@ateliernajjar</a></div></div>
+      </div>
+    </div>
+    <form class="cf rv d1" action="https://formspree.io/f/xgopnnyq" method="POST" onsubmit="handleSubmit(event)">
+      <div class="fr">
+        <div class="fg"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required></div>
+        <div class="fg"><label>Prénom</label><input type="text" name="prenom" placeholder="Votre prénom"></div>
+      </div>
+      <div class="fg"><label>Email</label><input type="email" name="email" placeholder="votre@email.com" required></div>
+      <div class="fg"><label>Type d'événement</label>
+        <select name="evenement"><option value="">Sélectionnez...</option><option>Réception · Mariage</option><option>Dîner Privé</option><option>Événement Corporate</option><option>Autre</option></select>
+      </div>
+      <div class="fg"><label>Message</label><textarea name="message" placeholder="Décrivez votre projet..."></textarea></div>
+      <button type="submit" class="btn">Envoyer</button>
+    </form>
+  </div>
+</section>
 
-II
+<footer>
+  <div class="fl">Atelier Najjar</div>
+  <ul class="fli">
+    <li><a href="#creations">Créations</a></li>
+    <li><a href="#offre">Prestations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="fc">© 2026 Atelier Najjar · Paris</div>
+</footer>
 
-Mezzés &
-Bouchées
-Une sélection complète de créations libanaises pour 10 à 60 convives.
-
-III
-
-Installation
-Sur Demande
-Mise en scène complète des plateaux sur votre lieu de réception, sur devis.
-CE QU'ILS EN DISENT
-"
-Une table libanaise d'un niveau que je n'avais jamais rencontré à Paris. Nos convives en parlent encore, plusieurs semaines après l'événement.
-
-COORDINATRICE ÉVÉNEMENTS · MAISON DE MODE, PARIS
-"
-Professionnel, ponctuel, d'une précision remarquable dans la présentation. L'Atelier a su répondre à nos contraintes avec une facilité déconcertante.
-
-RESPONSABLE AFFAIRES GÉNÉRALES · GROUPE LUXE PARISIEN
-"
-Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L'Atelier Najjar offre exactement cela — une signature, une identité, une excellence.
-
-DIRECTRICE DE CABINET · PARIS 8E
-
-NOUS ÉCRIRE
-Contactez l'Atelier
-Pour toute demande de devis, réservation ou renseignement, nous vous répondrons sous 24 heures.
-EMAIL
-[email protected]
-ZONE DE LIVRAISON
-Paris & Île-de-France
-INSTAGRAM
-@ateliernajjar
-NOM
-PRÉNOM
-EMAIL
-TYPE D'ÉVÉNEMENT
-Sélectionnez...Réception · MariageDîner PrivéÉvénement CorporateAutre
-MESSAGE
-ENVOYER
-ATELIER NAJJAR
-	•	CRÉATIONS
-	•	PRESTATIONS
-	•	CONTACT
-© 2026 Atelier Najjar · Paris
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
+});
+document.querySelectorAll('a,button,.photo-item,.offre-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('s', scrollY > 60), {passive:true});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:.08, rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+function toggleMenu() {
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobOverlay').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobOverlay').classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.textContent = 'M
