@@ -1,4 +1,5 @@
 # Harmonise les photos d'origine : même cadrage d'assiette, même teinte de fond, veines atténuées.
+# Usage : python3 outils/harmoniser-photos.py <dossier des originaux 1200 px> <sortie> outils/assiettes.txt ECE3D6
 import sys, os, numpy as np
 from PIL import Image, ImageFilter, ImageDraw
 src, out = sys.argv[1], sys.argv[2]
@@ -31,6 +32,12 @@ M = bg_mask()[..., None]
 # teinte cible : moyenne des fonds unis, mesurée loin de l'assiette
 corner = np.zeros((N, N), bool); corner[:150, :] = True; corner[-120:, :] = True
 target = np.mean([np.asarray(load(k), dtype=float)[corner].mean(0) for k in PLAIN], 0)
+if len(sys.argv) > 4:  # teinte imposée, ex. ECE3D6 : la même que le fond des sections du site
+    h = sys.argv[4]; target = np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], dtype=float)
+# fondu vers la teinte pure sur les bords, pour que la photo se fonde dans la section
+yy, xx = np.mgrid[0:N, 0:N]
+edge = np.minimum.reduce([xx, yy, N - 1 - xx, N - 1 - yy]).astype(float)
+t = np.clip(edge / 260, 0, 1); EDGE = t * t * (3 - 2 * t)  # fondu progressif
 print('cible', target.round(1))
 
 for f in sorted(os.listdir(src)):
@@ -43,8 +50,10 @@ for f in sorted(os.listdir(src)):
     low = num / np.maximum(den, 1e-3)
     lum = lambda x: x @ np.array([.299, .587, .114])
     detail = lum(a) - lum(low)                         # veines et grain
-    shade = lum(low) / max(lum(low)[corner].mean(), 1)  # ombres douces (basse fréquence)
+    ref = np.percentile(lum(low)[hard > .5], 75)          # luminosité typique du fond, hors assiette
+    shade = np.minimum(lum(low) / max(ref, 1), 1.0)         # ne garde que les ombres, jamais d'éclaircissement
     new_bg = target[None, None, :] * shade[..., None] + (detail * .25)[..., None]
+    new_bg = target[None, None, :] * (1 - EDGE[..., None]) + new_bg * EDGE[..., None]
     res = a * (1 - M) + new_bg * M
     Image.fromarray(np.clip(res, 0, 255).astype('uint8')).save(os.path.join(out, slug + '.png'))
     print(slug)

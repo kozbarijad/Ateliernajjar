@@ -51,6 +51,7 @@
   --bordeaux: #5A1424;
   --bordeaux-2: #46101C;
   --or: #A88A5C;
+  --sable: #ECE3D6; /* même teinte que le fond des photos */
   --filet: rgba(168, 138, 92, .38);
   --serif: 'Libre Caslon Display', 'Big Caslon', Georgia, serif;
   --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -167,8 +168,9 @@ footer a:hover { color: var(--bordeaux); }
 
 
 /* Rythme de couleur */
-.sable { background: #F1E9DD; border-top: 0; }
-.sable-suite { padding-top: 0; }
+.sable { background: var(--sable); border-top: 0; }
+.sable + .section { border-top: 0; }
+.bandeau { background: var(--sable); }
 .bordeaux { background: var(--bordeaux); color: var(--ivoire); border-top: 0; }
 .bordeaux .label { color: var(--ivoire); }
 .bordeaux .avis { border-top-color: rgba(217, 194, 156, .35); }
@@ -177,7 +179,7 @@ footer a:hover { color: var(--bordeaux); }
 .bordeaux :focus-visible { outline-color: var(--ivoire); }
 .sable + .bordeaux, .bordeaux + .section { border-top: 0; }
 
-footer { background: #3A0D17; color: rgba(251, 248, 243, .7); border-top: 0; padding: clamp(48px, 6vw, 80px) 0 32px; }
+footer { background: var(--bordeaux); color: rgba(251, 248, 243, .7); border-top: 0; padding: clamp(48px, 6vw, 80px) 0 32px; }
 .foot-mark { display: block; font: 400 clamp(44px, 7vw, 104px)/1 var(--serif); color: var(--ivoire); text-decoration: none; letter-spacing: -.01em; margin-bottom: clamp(32px, 4vw, 56px); }
 footer .foot-bottom { position: relative; padding-top: 24px; }
 footer .foot-bottom::before { content: ''; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); border-top: 1px solid rgba(217, 194, 156, .25); }
@@ -259,7 +261,7 @@ footer a:hover { color: var(--ivoire); }
     </div>
   </section>
 
-  <section class="section" id="carte" aria-label="La carte">
+  <section class="section sable" id="carte" aria-label="La carte">
     <div class="wrap grid">
       <h2 class="label">La carte</h2>
       <div class="content">
@@ -281,7 +283,7 @@ footer a:hover { color: var(--ivoire); }
     </div>
   </section>
 
-  <section class="section sable" id="formules" aria-label="Formules">
+  <section class="section" id="formules" aria-label="Formules">
     <div class="wrap grid">
       <h2 class="label">Formules</h2>
       <div class="content">
@@ -307,7 +309,7 @@ footer a:hover { color: var(--ivoire); }
     </div>
   </section>
 
-  <section class="section sable sable-suite" id="commander" aria-label="Commander">
+  <section class="section" id="commander" aria-label="Commander">
     <div class="wrap grid">
       <h2 class="label">Commander</h2>
       <div class="content">
