@@ -138,18 +138,11 @@ nav a:hover { color: var(--bordeaux); }
 .contact h2 { font-size: clamp(36px, 3.8vw, 56px); margin-bottom: 20px; }
 .contact .accroche { font: 400 clamp(19px, 1.6vw, 22px)/1.4 var(--serif); color: var(--encre); margin: 0 0 28px; max-width: 20em; }
 .carte-devis { background: var(--ivoire); border: 1px solid var(--filet); border-radius: 18px; padding: clamp(28px, 3.4vw, 48px); box-shadow: 0 30px 60px -30px rgba(42, 30, 26, .18); }
-.contact-centre { text-align: center; }
-.contact-tete .kicker { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); margin: 0 0 16px; }
-.contact-tete h2 { font-size: clamp(42px, 5vw, 72px); margin: 0 0 18px; }
-.contact .accroche { margin: 0 auto 22px; max-width: 26em; }
-.etapes3 { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 920px; margin: clamp(40px, 5vw, 56px) auto; border-top: 1px solid var(--filet); border-bottom: 1px solid var(--filet); }
-.etapes3 li { padding: 22px 18px; font-size: 13px; color: var(--gris); }
-.etapes3 li + li { border-left: 1px solid var(--filet); }
-.etapes3 strong { display: block; font: 400 21px/1.2 var(--serif); color: var(--encre); margin-bottom: 4px; }
-.contact-centre .carte-devis { max-width: 780px; margin: 0 auto; text-align: left; }
-.contact-centre .carte-devis button { display: block; margin: 12px auto 0; padding: 19px 56px; }
-.contact-centre .status, .contact-centre .rgpd { text-align: center; margin-left: auto; margin-right: auto; }
 .contact .mail { font: 400 clamp(22px, 2vw, 28px)/1.3 var(--serif); text-decoration: none; color: var(--bordeaux); border-bottom: 1px solid var(--bordeaux); }
+.mini-etapes { margin-top: 36px; border-top: 1px solid var(--filet); max-width: 30em; }
+.mini-etapes li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--filet); font-size: 14px; color: var(--gris); }
+.mini-etapes span { font: 400 24px/1 var(--serif); color: var(--encre); }
+.mini-etapes strong { display: block; font: 400 20px/1.2 var(--serif); color: var(--encre); margin-bottom: 4px; }
 .contact .intro { color: var(--gris); margin: 28px 0 0; max-width: 26em; font-size: 16px; }
 form .f { margin-bottom: 28px; }
 form label { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin-bottom: 6px; }
@@ -207,8 +200,7 @@ footer a:hover { color: var(--bordeaux); }
   .formule, .formule:first-child { border-left: 0; padding: 28px 0; border-bottom: 1px solid var(--filet); }
   .avis { grid-template-columns: 1fr; }
   .avis li, .avis li:first-child { border-left: 0; padding: 28px 0; border-bottom: 1px solid var(--filet); }
-  .etapes3 { grid-template-columns: 1fr; }
-  .etapes3 li + li { border-left: 0; border-top: 1px solid var(--filet); }
+  .contact .content { grid-template-columns: 1fr; gap: 48px; }
   form .duo { grid-template-columns: 1fr; gap: 0; }
 }
 </style>
@@ -332,18 +324,18 @@ footer a:hover { color: var(--bordeaux); }
   </section>
 
   <section class="section sable contact" id="contact" aria-labelledby="contact-titre">
-    <div class="wrap contact-centre">
-        <div class="contact-tete">
-          <p class="kicker">Devis sous 24 heures</p>
+    <div class="wrap grid">
+      <div class="content">
+        <div>
           <h2 id="contact-titre">Écrire à l’Atelier</h2>
           <p class="accroche">Une date, un nombre de convives, une occasion : nous composons le reste.</p>
           <a class="mail" href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a>
+          <ol class="mini-etapes" aria-label="Comment commander">
+            <li><span aria-hidden="true">1</span><div><strong>Votre demande</strong>La date, le nombre de personnes et l’occasion.</div></li>
+            <li><span aria-hidden="true">2</span><div><strong>Notre proposition</strong>Un menu et un devis sous 24 heures, ajustés avec vous.</div></li>
+            <li><span aria-hidden="true">3</span><div><strong>La livraison</strong>À l’heure convenue, les plats arrivent dressés, prêts à servir.</div></li>
+          </ol>
         </div>
-        <ol class="etapes3" aria-label="Comment commander">
-          <li><strong>1. Votre demande</strong>Date, convives, occasion.</li>
-          <li><strong>2. Notre proposition</strong>Menu et devis sous 24 heures.</li>
-          <li><strong>3. La livraison</strong>À l’heure, prêt à servir.</li>
-        </ol>
         <form id="devis" class="carte-devis" action="https://formspree.io/f/xgopnnyq" method="POST">
           <input type="hidden" name="_subject" value="Demande de devis · ateliernajjar.fr">
           <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
@@ -364,6 +356,7 @@ footer a:hover { color: var(--bordeaux); }
           <p class="status" id="status" role="status" aria-live="polite"></p>
           <p class="rgpd">Vos informations servent uniquement à traiter votre demande de devis et ne sont jamais cédées. <a href="mentions-legales.html#donnees">En savoir plus</a></p>
         </form>
+      </div>
     </div>
   </section>
 </main>
