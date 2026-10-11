@@ -1,101 +1,108 @@
-# Génère les fichiers du logo Atelier Najjar (SVG vectorisés + PNG) dans marque/.
-# Usage : python3 outils/marque.py
-import os, uharfbuzz as hb
+# Génère les fichiers du logo Atelier Najjar dans marque/svg (SVG vectorisés : le texte
+# est converti en tracés, aucun besoin d'installer les polices pour les ouvrir).
+# Logo : نجّار en Amiri Bold, « ATELIER NAJJAR » en Tenor Sans, capitales légèrement espacées.
+# Usage : python3 outils/marque.py [dossier de sortie]
+import os, sys
+import uharfbuzz as hb
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.boundsPen import BoundsPen
 
 ICI = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ICI, '..', 'marque')
-CASLON = os.path.join(ICI, 'polices', 'LibreCaslonDisplay-Regular.ttf')
-AMIRI = os.path.join(ICI, 'polices', 'Amiri-Bold.ttf')
-SANS = os.path.join(ICI, 'polices', 'LiberationSans-Regular.ttf')
+POLICES = os.path.join(ICI, 'polices')
 
-BORDEAUX, IVOIRE, BRUN, OR = '#5A1424', '#FBF8F3', '#2A1E1A', '#D9C29C'
+BORDEAUX, IVOIRE, BRUN, OR, GRIS = '#5A1424', '#FBF8F3', '#2A1E1A', '#D9C29C', '#6F625A'
+NOM, BASELINE, ARABE = 'ATELIER NAJJAR', 'CUISINE LIBANAISE  ·  PARIS', 'نجّار'
+ESPACEMENT = .1  # espacement des lettres du nom, en fraction de la taille
+
 
 class Police:
-    def __init__(self, chemin):
-        self.tt = TTFont(chemin); self.gs = self.tt.getGlyphSet()
+    def __init__(self, fichier):
+        chemin = os.path.join(POLICES, fichier)
+        self.tt = TTFont(chemin)
+        self.glyphes = self.tt.getGlyphSet()
+        self.noms = self.tt.getGlyphOrder()
         self.upm = self.tt['head'].unitsPerEm
-        data = open(chemin, 'rb').read()
-        self.hbfont = hb.Font(hb.Face(data))
+        self.hb = hb.Font(hb.Face(open(chemin, 'rb').read()))
 
-    def texte(self, s, taille, x=0, y=0, espacement=0):
-        """Renvoie (path_d, largeur, (xmin, ymin, xmax, ymax)) pour s posé à la ligne de base y."""
+    def texte(self, s, taille, x=0, y=0, esp=0):
+        """Tracé SVG de s posé sur la ligne de base y. Renvoie (d, largeur, bornes)."""
         buf = hb.Buffer(); buf.add_str(s); buf.guess_segment_properties()
-        hb.shape(self.hbfont, buf, {})
-        k = taille / self.upm; names = self.tt.getGlyphOrder()
-        pen = SVGPathPen(self.gs); bp = BoundsPen(self.gs)
-        cx = 0
+        hb.shape(self.hb, buf, {})
+        k = taille / self.upm
+        pen, bornes, cx = SVGPathPen(self.glyphes), BoundsPen(self.glyphes), 0
         for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
-            g = names[info.codepoint]
+            g = self.glyphes[self.noms[info.codepoint]]
             t = (k, 0, 0, -k, x + (cx + pos.x_offset) * k, y - pos.y_offset * k)
-            self.gs[g].draw(TransformPen(pen, t)); self.gs[g].draw(TransformPen(bp, t))
-            cx += pos.x_advance + espacement / k
-        return pen.getCommands(), cx * k - espacement, bp.bounds
+            g.draw(TransformPen(pen, t)); g.draw(TransformPen(bornes, t))
+            cx += pos.x_advance + esp / k
+        return pen.getCommands(), cx * k - esp, bornes.bounds
 
-caslon, amiri, sans = Police(CASLON), Police(AMIRI), Police(SANS)
-LAT = caslon  # police du nom latin
-NOM, ESP, T_LAT = 'Atelier Najjar', 0, 200   # remplacé par la version capitales plus bas
+    def centre(self, s, taille, cx, y, esp=0):
+        _, w, _ = self.texte(s, taille, 0, 0, esp)
+        return self.texte(s, taille, cx - w / 2, y, esp)
 
-def svg(w, h, corps, fond=None):
-    f = f'<rect width="{w:.0f}" height="{h:.0f}" fill="{fond}"/>' if fond else ''
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} {h:.0f}" width="{w:.0f}" height="{h:.0f}">{f}{corps}</svg>\n'
 
-def centre(police, s, taille, cx, base, esp=0):
-    _, w, _ = police.texte(s, taille, 0, base, esp)
-    return police.texte(s, taille, cx - w / 2, base, esp)
+tenor, amiri = Police('TenorSans-Regular.ttf'), Police('Amiri-Bold.ttf')
 
-def vertical(c_ar, c_lat, c_tag=None, fond=None):
-    M = 80
-    _, wl, _ = LAT.texte(NOM, T_LAT, 0, 0, ESP)
-    W = max(wl, 900) + 2 * M
-    d1, _, b1 = centre(amiri, 'نجّار', 170, W / 2, 0)
-    d2, _, b2 = centre(LAT, NOM, T_LAT, W / 2, 0, ESP)
-    h1 = b1[3] - b1[1]; h2 = b2[3] - b2[1]
-    y1 = M - b1[1]; y2 = y1 + b1[3] + 40 - b2[1]
-    d1, _, _ = centre(amiri, 'نجّار', 170, W / 2, y1)
-    d2, _, b2b = centre(LAT, NOM, T_LAT, W / 2, y2, ESP)
-    corps = f'<path d="{d1}" fill="{c_ar}"/><path d="{d2}" fill="{c_lat}"/>'
-    H = b2b[3] + M
-    if c_tag:
-        d3, _, b3 = centre(LAT, 'CUISINE LIBANAISE  ·  PARIS', 40, W / 2, b2b[3] + 90, esp=14)
-        corps += f'<path d="{d3}" fill="{c_tag}"/>'; H = b3[3] + M
-    return svg(W, H, corps, fond)
 
-def horizontal(c_lat, c_ar, fond=None):
-    M, T = 60, 200
-    d2, w2, b2 = LAT.texte(NOM, T * T_LAT / 200, M, 0, ESP)
-    base = M - b2[1]
-    d2, w2, b2 = LAT.texte(NOM, T * T_LAT / 200, M, base, ESP)
-    _, w1, _ = amiri.texte('نجّار', T * .82, 0, 0)
-    x1 = M + w2 + T * (.28 if ESP == 0 else .42)
-    d1, w1, b1 = amiri.texte('نجّار', T * .82, x1, base)
-    top = min(b1[1], b2[1]); bot = max(b1[3], b2[3])
-    corps = f'<g transform="translate(0 {M - top:.1f})"><path d="{d2}" fill="{c_lat}"/><path d="{d1}" fill="{c_ar}"/></g>'
-    return svg(x1 + w1 + M, bot - top + 2 * M, corps, fond)
+def svg(w, h, corps):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} {h:.0f}" '
+            f'width="{w:.0f}" height="{h:.0f}">{corps}</svg>\n')
 
-def monogramme(mode, fond=BORDEAUX, encre=IVOIRE, S=512):
-    corps = f'<circle cx="{S/2}" cy="{S/2}" r="{S/2}" fill="{fond}"/>'
-    if mode == 'N':
-        d, _, b = centre(caslon, 'N', S * .62, S / 2, 0)
-        h = b[3] - b[1]; d, _, _ = centre(caslon, 'N', S * .62, S / 2, S / 2 + h / 2)
-        corps += f'<path d="{d}" fill="{encre}"/>'
-    else:  # N + ن
-        dN, _, bN = caslon.texte('N', S * .44, 0, 0); hN = bN[3] - bN[1]
-        dN, wN, _ = caslon.texte('N', S * .44, S * .16, S / 2 + hN / 2)
-        da, wa, ba = amiri.texte('ن', S * .46, 0, 0)
-        ha = ba[3] - ba[1]
-        da, _, _ = amiri.texte('ن', S * .46, S * .58 - ba[0], S / 2 + ha / 2 - ba[3] + ha * 0 + (ha / 2 - ha / 2))
-        corps += (f'<path d="{dN}" fill="{encre}"/>'
-                  f'<line x1="{S*.52:.1f}" y1="{S*.33:.1f}" x2="{S*.52:.1f}" y2="{S*.67:.1f}" stroke="{encre}" stroke-opacity=".55" stroke-width="{S*.006:.1f}"/>'
-                  f'<path d="{da}" fill="{encre}"/>')
-    return svg(S, S, corps)
+
+def chemin(d, couleur):
+    return f'<path d="{d}" fill="{couleur}"/>'
+
+
+def vertical(c_arabe, c_nom, c_baseline=None):
+    """نجّار centré au-dessus du nom, baseline facultative."""
+    M, T = 80, 150
+    _, largeur, _ = tenor.texte(NOM, T, esp=ESPACEMENT * T)
+    W = largeur + 2 * M
+    _, _, b = amiri.centre(ARABE, 210, W / 2, 0)
+    da, _, ba = amiri.centre(ARABE, 210, W / 2, M - b[1])
+    _, _, b = tenor.centre(NOM, T, W / 2, 0, ESPACEMENT * T)
+    dn, _, bn = tenor.centre(NOM, T, W / 2, ba[3] + 50 - b[1], ESPACEMENT * T)
+    corps, bas = chemin(da, c_arabe) + chemin(dn, c_nom), bn[3]
+    if c_baseline:
+        db, _, bb = tenor.centre(BASELINE, 42, W / 2, bn[3] + 82, 11)
+        corps += chemin(db, c_baseline); bas = bb[3]
+    return svg(W, bas + M, corps)
+
+
+def horizontal(c_nom, c_arabe):
+    """Le nom suivi de نجّار, pour le menu et le pied de page."""
+    M, T = 60, 150
+    _, _, b = tenor.texte(NOM, T, esp=ESPACEMENT * T)
+    base = M - b[1]
+    dn, wn, bn = tenor.texte(NOM, T, M, base, ESPACEMENT * T)
+    da, wa, ba = amiri.texte(ARABE, T * 1.15, M + wn + T * .4, base)
+    haut, bas = min(bn[1], ba[1]), max(bn[3], ba[3])
+    corps = f'<g transform="translate(0 {M - haut:.1f})">{chemin(dn, c_nom)}{chemin(da, c_arabe)}</g>'
+    return svg(M + wn + T * .4 + wa + M, bas - haut + 2 * M, corps)
+
+
+def monogramme(arabe=False, fond=BORDEAUX, encre=IVOIRE, S=512):
+    """N seul (favicon) ou N + ن (réseaux sociaux), sur un disque."""
+    corps = f'<circle cx="{S / 2}" cy="{S / 2}" r="{S / 2}" fill="{fond}"/>'
+    if not arabe:
+        _, _, b = tenor.centre('N', S * .56, S / 2, 0)
+        d, _, _ = tenor.centre('N', S * .56, S / 2, S / 2 - (b[1] + b[3]) / 2)
+        return svg(S, S, corps + chemin(d, encre))
+    _, _, bN = tenor.texte('N', S * .4)
+    dN, _, _ = tenor.texte('N', S * .4, S * .17 - bN[0], S / 2 - (bN[1] + bN[3]) / 2)
+    _, _, ba = amiri.texte('ن', S * .46)
+    da, _, _ = amiri.texte('ن', S * .46, S * .6 - ba[0], S / 2 - (ba[1] + ba[3]) / 2)
+    filet = (f'<line x1="{S * .52:.1f}" y1="{S * .34:.1f}" x2="{S * .52:.1f}" y2="{S * .66:.1f}" '
+             f'stroke="{encre}" stroke-opacity=".55" stroke-width="{S * .006:.1f}"/>')
+    return svg(S, S, corps + chemin(dN, encre) + filet + chemin(da, encre))
+
 
 FICHIERS = {
     'logo-vertical-bordeaux.svg': lambda: vertical(BORDEAUX, BORDEAUX),
-    'logo-vertical-bordeaux-baseline.svg': lambda: vertical(BORDEAUX, BORDEAUX, '#6F625A'),
+    'logo-vertical-bordeaux-baseline.svg': lambda: vertical(BORDEAUX, BORDEAUX, GRIS),
     'logo-vertical-brun.svg': lambda: vertical(BRUN, BRUN),
     'logo-vertical-ivoire.svg': lambda: vertical(IVOIRE, IVOIRE),
     'logo-vertical-ivoire-or.svg': lambda: vertical(OR, IVOIRE),
@@ -103,18 +110,13 @@ FICHIERS = {
     'logo-horizontal-brun.svg': lambda: horizontal(BRUN, BRUN),
     'logo-horizontal-ivoire.svg': lambda: horizontal(IVOIRE, IVOIRE),
     'logo-horizontal-ivoire-or.svg': lambda: horizontal(IVOIRE, OR),
-    'monogramme-N.svg': lambda: monogramme('N'),
-    'monogramme-N-noun.svg': lambda: monogramme('NN'),
+    'monogramme-N.svg': lambda: monogramme(),
+    'monogramme-N-noun.svg': lambda: monogramme(arabe=True),
 }
-def generer(dossier):
-    os.makedirs(dossier, exist_ok=True)
-    for nom, f in FICHIERS.items():
-        open(os.path.join(dossier, nom), 'w').write(f())
 
 if __name__ == '__main__':
-    import sys
-    if len(sys.argv) > 1 and sys.argv[1] == 'capitales':
-        NOM, ESP, T_LAT = 'ATELIER NAJJAR', 30, 150
-    if len(sys.argv) > 1 and sys.argv[1] == 'helvetica':
-        NOM, ESP, T_LAT, LAT = 'ATELIER NAJJAR', 52, 118, sans
-    generer(sys.argv[2] if len(sys.argv) > 2 else OUT)
+    sortie = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ICI, '..', 'marque', 'svg')
+    os.makedirs(sortie, exist_ok=True)
+    for nom, fabrique in FICHIERS.items():
+        open(os.path.join(sortie, nom), 'w').write(fabrique())
+        print(nom)
