@@ -10,6 +10,7 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ICI, '..', 'marque')
 CASLON = os.path.join(ICI, 'polices', 'LibreCaslonDisplay-Regular.ttf')
 AMIRI = os.path.join(ICI, 'polices', 'Amiri-Bold.ttf')
+SANS = os.path.join(ICI, 'polices', 'LiberationSans-Regular.ttf')
 
 BORDEAUX, IVOIRE, BRUN, OR = '#5A1424', '#FBF8F3', '#2A1E1A', '#D9C29C'
 
@@ -34,7 +35,8 @@ class Police:
             cx += pos.x_advance + espacement / k
         return pen.getCommands(), cx * k - espacement, bp.bounds
 
-caslon, amiri = Police(CASLON), Police(AMIRI)
+caslon, amiri, sans = Police(CASLON), Police(AMIRI), Police(SANS)
+LAT = caslon  # police du nom latin
 NOM, ESP, T_LAT = 'Atelier Najjar', 0, 200   # remplacé par la version capitales plus bas
 
 def svg(w, h, corps, fond=None):
@@ -47,26 +49,26 @@ def centre(police, s, taille, cx, base, esp=0):
 
 def vertical(c_ar, c_lat, c_tag=None, fond=None):
     M = 80
-    _, wl, _ = caslon.texte(NOM, T_LAT, 0, 0, ESP)
+    _, wl, _ = LAT.texte(NOM, T_LAT, 0, 0, ESP)
     W = max(wl, 900) + 2 * M
     d1, _, b1 = centre(amiri, 'نجّار', 170, W / 2, 0)
-    d2, _, b2 = centre(caslon, NOM, T_LAT, W / 2, 0, ESP)
+    d2, _, b2 = centre(LAT, NOM, T_LAT, W / 2, 0, ESP)
     h1 = b1[3] - b1[1]; h2 = b2[3] - b2[1]
     y1 = M - b1[1]; y2 = y1 + b1[3] + 40 - b2[1]
     d1, _, _ = centre(amiri, 'نجّار', 170, W / 2, y1)
-    d2, _, b2b = centre(caslon, NOM, T_LAT, W / 2, y2, ESP)
+    d2, _, b2b = centre(LAT, NOM, T_LAT, W / 2, y2, ESP)
     corps = f'<path d="{d1}" fill="{c_ar}"/><path d="{d2}" fill="{c_lat}"/>'
     H = b2b[3] + M
     if c_tag:
-        d3, _, b3 = centre(caslon, 'CUISINE LIBANAISE  ·  PARIS', 44, W / 2, b2b[3] + 90, esp=14)
+        d3, _, b3 = centre(LAT, 'CUISINE LIBANAISE  ·  PARIS', 40, W / 2, b2b[3] + 90, esp=14)
         corps += f'<path d="{d3}" fill="{c_tag}"/>'; H = b3[3] + M
     return svg(W, H, corps, fond)
 
 def horizontal(c_lat, c_ar, fond=None):
     M, T = 60, 200
-    d2, w2, b2 = caslon.texte(NOM, T * T_LAT / 200, M, 0, ESP)
+    d2, w2, b2 = LAT.texte(NOM, T * T_LAT / 200, M, 0, ESP)
     base = M - b2[1]
-    d2, w2, b2 = caslon.texte(NOM, T * T_LAT / 200, M, base, ESP)
+    d2, w2, b2 = LAT.texte(NOM, T * T_LAT / 200, M, base, ESP)
     _, w1, _ = amiri.texte('نجّار', T * .82, 0, 0)
     x1 = M + w2 + T * (.28 if ESP == 0 else .42)
     d1, w1, b1 = amiri.texte('نجّار', T * .82, x1, base)
@@ -113,4 +115,6 @@ if __name__ == '__main__':
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == 'capitales':
         NOM, ESP, T_LAT = 'ATELIER NAJJAR', 30, 150
+    if len(sys.argv) > 1 and sys.argv[1] == 'helvetica':
+        NOM, ESP, T_LAT, LAT = 'ATELIER NAJJAR', 52, 118, sans
     generer(sys.argv[2] if len(sys.argv) > 2 else OUT)
