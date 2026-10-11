@@ -6,7 +6,7 @@
 <title>Atelier Najjar · Traiteur libanais pour les maisons parisiennes</title>
 <meta name="description" content="Plateaux et buffets libanais préparés à la commande et livrés prêts à servir, de 10 à 100 personnes, à Paris et en Île-de-France. Plus de dix ans d'expérience dans la restauration parisienne.">
 <link rel="canonical" href="https://ateliernajjar.fr/">
-<meta name="theme-color" content="#FBF8F3">
+<meta name="theme-color" content="#5A1424">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -74,13 +74,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; }
 
 /* Header */
-header { position: sticky; top: 0; z-index: 10; background: var(--ivoire); border-bottom: 1px solid transparent; transition: border-color .3s; }
-header.scrolled { border-bottom-color: var(--filet); }
+header { position: sticky; top: 0; z-index: 10; background: var(--bordeaux); transition: box-shadow .3s; }
+header.scrolled { box-shadow: 0 1px 0 rgba(0, 0, 0, .08); }
+header :focus-visible { outline-color: var(--ivoire); }
 header .wrap { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-.wordmark { font-size: 13px; letter-spacing: .32em; text-transform: uppercase; text-decoration: none; color: var(--bordeaux); }
+.wordmark { font-size: 13px; letter-spacing: .32em; text-transform: uppercase; text-decoration: none; color: var(--ivoire); }
 nav { display: flex; gap: 36px; }
-nav a { font-size: 13px; text-decoration: none; color: var(--gris); transition: color .2s; }
-nav a:hover { color: var(--bordeaux); }
+nav a { font-size: 13px; text-decoration: none; color: rgba(251, 248, 243, .75); transition: color .2s; }
+nav a:hover { color: var(--ivoire); }
 
 /* Hero */
 .hero { padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px); }
