@@ -172,12 +172,12 @@ footer a:hover { color: var(--bordeaux); }
 .sable + .section { border-top: 0; }
 .bandeau { background: var(--sable); }
 .sable + .bordeaux, 
-footer { background: var(--bordeaux); color: rgba(251, 248, 243, .7); border-top: 0; padding: clamp(48px, 6vw, 80px) 0 32px; }
-.foot-mark { display: inline-block; line-height: 0; margin-bottom: clamp(32px, 4vw, 56px); }
-.foot-mark img { height: clamp(48px, 7vw, 96px); width: auto; }
+footer { background: var(--ivoire); color: var(--gris); border-top: 1px solid var(--filet); padding: clamp(56px, 7vw, 96px) 0 32px; text-align: center; }
+.foot-mark { display: inline-block; line-height: 0; margin-bottom: clamp(40px, 5vw, 64px); }
+.foot-mark img { height: clamp(96px, 12vw, 150px); width: auto; }
 footer .foot-bottom { position: relative; padding-top: 24px; }
-footer .foot-bottom::before { content: ''; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); border-top: 1px solid rgba(217, 194, 156, .3); }
-footer a:hover { color: var(--ivoire); }
+footer .foot-bottom::before { content: ''; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); border-top: 1px solid var(--filet); }
+footer a:hover { color: var(--bordeaux); }
 
 @media (max-width: 900px) {
   nav a:not(:last-child) { display: none; }
@@ -355,7 +355,7 @@ footer a:hover { color: var(--ivoire); }
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="foot-mark"><img src="img/logo-pied.svg" width="1890" height="336" alt="Atelier Najjar نجّار" loading="lazy"></a>
+    <a href="#top" class="foot-mark"><img src="img/logo-pied.svg" width="1651" height="582" alt="Atelier Najjar نجّار" loading="lazy"></a>
   </div>
   <div class="wrap foot-bottom">
     <span>© 2026 Atelier Najjar</span>
