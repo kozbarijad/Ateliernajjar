@@ -9,3 +9,4 @@ salade-levantine 600 571 429
 samboussek-fromage 604 570 433
 samboussek-viande 604 571 433
 taboule 601 571 430
+labne-thym 601 573 443
