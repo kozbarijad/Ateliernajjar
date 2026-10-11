@@ -102,11 +102,16 @@ nav a:hover { color: var(--bordeaux); }
 .maison p.big { font: 400 clamp(26px, 2.8vw, 40px)/1.32 var(--serif); margin-bottom: 1.2em; max-width: 24em; }
 .maison .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 880px; color: var(--gris); font-size: 16px; }
 
-.carte-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-.carte-cols h3 { font: 400 13px/1 var(--sans); color: var(--gris); padding-bottom: 20px; border-bottom: 1px solid var(--filet); margin-bottom: 8px; }
-.carte-cols li { padding: 18px 0; border-bottom: 1px solid var(--filet); }
-.carte-cols h4 { font-size: 23px; line-height: 1.2; margin-bottom: 6px; }
-.carte-cols p { font-size: 14px; color: var(--gris); margin: 0; }
+.bandeau { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.bandeau img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; }
+
+.cat + .cat { margin-top: clamp(64px, 8vw, 112px); }
+.cat > h3 { font: 400 13px/1 var(--sans); color: var(--gris); padding-bottom: 20px; border-bottom: 1px solid var(--filet); margin-bottom: 32px; }
+.plats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+.plat { margin: 0; }
+.plat img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; margin-bottom: 18px; }
+.plat h4 { font-size: 24px; line-height: 1.2; margin-bottom: 6px; }
+.plat p { font-size: 14px; color: var(--gris); margin: 0; }
 .carte-note { margin-top: 40px; font-size: 14px; color: var(--gris); }
 
 .formules-cols { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--filet); }
@@ -165,7 +170,8 @@ footer a:hover { color: var(--bordeaux); }
   .label { grid-column: 1 / -1; margin-bottom: 28px; padding-top: 0; }
   .content { grid-column: 1 / -1; }
   .maison .cols { grid-template-columns: 1fr; gap: 0; }
-  .carte-cols { grid-template-columns: 1fr; gap: 40px; }
+  .plats { grid-template-columns: 1fr 1fr; gap: 36px 16px; }
+  .plat h4 { font-size: 20px; }
   .formules-cols { grid-template-columns: 1fr; }
   .formule, .formule:first-child { border-left: 0; padding: 36px 0; border-bottom: 1px solid var(--filet); }
   .etapes { grid-template-columns: 1fr; }
@@ -210,6 +216,12 @@ footer a:hover { color: var(--bordeaux); }
     </div>
   </section>
 
+  <div class="bandeau" aria-hidden="true">
+    <img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
+    <img src="photos/taboule-700.webp" srcset="photos/taboule-700.webp 700w, photos/taboule-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
+    <img src="photos/kebbe-700.webp" srcset="photos/kebbe-700.webp 700w, photos/kebbe-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
+  </div>
+
   <section class="section maison" id="maison" aria-label="La Maison">
     <div class="wrap grid">
       <p class="label">La Maison</p>
@@ -227,35 +239,33 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap grid">
       <p class="label">La carte</p>
       <div class="content">
-        <div class="carte-cols">
-          <div>
+        <div class="cat">
             <h3>Mezzés</h3>
-            <ul>
-              <li><h4>Hoummous à la grenade</h4><p>Tahiné, citron, grains de grenade</p></li>
-              <li><h4>Labné aux agrumes</h4><p>Zestes d'agrumes, pistache, menthe</p></li>
-              <li><h4>Caviar d'aubergine fumé</h4><p>Aubergine grillée au feu, tahiné</p></li>
-              <li><h4>Crème de feta acidulée</h4><p>Citron, herbes fraîches</p></li>
-            </ul>
+            <div class="plats">
+              <figure class="plat"><img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Hoummous à la grenade et huile d'olive"><h4>Hoummous à la grenade</h4><p>Tahiné, citron, grains de grenade</p></figure>
+              <figure class="plat"><img src="photos/labne-700.webp" srcset="photos/labne-700.webp 700w, photos/labne-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistaches et menthe"><h4>Labné aux agrumes</h4><p>Zestes d'agrumes, pistache, menthe</p></figure>
+              <figure class="plat"><img src="photos/caviar-aubergine-700.webp" srcset="photos/caviar-aubergine-700.webp 700w, photos/caviar-aubergine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé au sumac et huile d'olive"><h4>Caviar d'aubergine fumé</h4><p>Aubergine grillée au feu, sumac</p></figure>
+            </div>
           </div>
-          <div>
+          <div class="cat">
             <h3>Salades</h3>
-            <ul>
-              <li><h4>Taboulé citronné</h4><p>Persil plat, boulgour fin, tomate</p></li>
-              <li><h4>Salade levantine</h4><p>Agrumes, concombre, grenade</p></li>
-            </ul>
+            <div class="plats">
+              <figure class="plat"><img src="photos/taboule-700.webp" srcset="photos/taboule-700.webp 700w, photos/taboule-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Taboulé au persil, tomate et grenade"><h4>Taboulé citronné</h4><p>Persil plat, boulgour fin, tomate, grenade</p></figure>
+              <figure class="plat"><img src="photos/salade-levantine-700.webp" srcset="photos/salade-levantine-700.webp 700w, photos/salade-levantine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Salade levantine aux agrumes, concombre et grenade"><h4>Salade levantine</h4><p>Agrumes, concombre, grenade, menthe</p></figure>
+            </div>
           </div>
-          <div>
+          <div class="cat">
             <h3>Bouchées</h3>
-            <ul>
-              <li><h4>Falafels</h4><p>Pois chiches, herbes, sauce tahiné</p></li>
-              <li><h4>Feuilles de vigne</h4><p>Riz, herbes, citron</p></li>
-              <li><h4>Kebbé</h4><p>Boulgour, viande, pignons de pin</p></li>
-              <li><h4>Fatayer aux épinards</h4><p>Oignon, sumac, citron</p></li>
-              <li><h4>Samboussek</h4><p>Au fromage ou à la viande</p></li>
-            </ul>
+            <div class="plats">
+              <figure class="plat"><img src="photos/falafels-700.webp" srcset="photos/falafels-700.webp 700w, photos/falafels-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Falafels dorés à la menthe"><h4>Falafels</h4><p>Pois chiches, herbes, menthe</p></figure>
+              <figure class="plat"><img src="photos/feuilles-de-vigne-700.webp" srcset="photos/feuilles-de-vigne-700.webp 700w, photos/feuilles-de-vigne-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Feuilles de vigne farcies et citron"><h4>Feuilles de vigne</h4><p>Riz, herbes, citron</p></figure>
+              <figure class="plat"><img src="photos/kebbe-700.webp" srcset="photos/kebbe-700.webp 700w, photos/kebbe-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Kebbé dorés et persil plat"><h4>Kebbé</h4><p>Boulgour, viande, pignons de pin</p></figure>
+              <figure class="plat"><img src="photos/fatayer-epinards-700.webp" srcset="photos/fatayer-epinards-700.webp 700w, photos/fatayer-epinards-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Fatayer aux épinards"><h4>Fatayer aux épinards</h4><p>Oignon, sumac, citron</p></figure>
+              <figure class="plat"><img src="photos/samboussek-fromage-700.webp" srcset="photos/samboussek-fromage-700.webp 700w, photos/samboussek-fromage-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Samboussek au fromage"><h4>Samboussek au fromage</h4><p>Pâte dorée, fromage fondant</p></figure>
+              <figure class="plat"><img src="photos/samboussek-viande-700.webp" srcset="photos/samboussek-viande-700.webp 700w, photos/samboussek-viande-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 24vw" width="700" height="700" loading="lazy" decoding="async" alt="Samboussek à la viande et menthe"><h4>Samboussek à la viande</h4><p>Viande épicée, menthe fraîche</p></figure>
+            </div>
           </div>
-        </div>
-        <p class="carte-note">La carte complète, avec les créations de saison, accompagne chaque devis.</p>
+        <p class="carte-note">Également à la carte : crème de feta acidulée, et des créations de saison. La carte complète accompagne chaque devis.</p>
       </div>
     </div>
   </section>
