@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier Najjar · Traiteur libanais pour les maisons parisiennes</title>
-<meta name="description" content="Plateaux et buffets libanais préparés à la commande et livrés prêts à servir, de 10 à 100 personnes, à Paris et en Île-de-France. Plus de dix ans d'expérience, traiteur officiel d'Hermès.">
+<meta name="description" content="Plateaux et buffets libanais préparés à la commande et livrés prêts à servir, de 10 à 100 personnes, à Paris et en Île-de-France. Plus de dix ans d'expérience dans la restauration parisienne.">
 <link rel="canonical" href="https://ateliernajjar.fr/">
 <meta name="theme-color" content="#FBF8F3">
 
@@ -161,9 +161,27 @@ form button[disabled] { opacity: .6; cursor: default; }
 .status { margin: 18px 0 0; min-height: 1.5em; font-size: 14px; color: var(--bordeaux); }
 
 footer { border-top: 1px solid var(--filet); padding: 40px 0; font-size: 12px; color: var(--gris); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
+footer .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--bordeaux); }
+
+
+/* Rythme de couleur */
+.sable { background: #F1E9DD; border-top: 0; }
+.sable-suite { padding-top: 0; }
+.bordeaux { background: var(--bordeaux); color: var(--ivoire); border-top: 0; }
+.bordeaux .label { color: var(--ivoire); }
+.bordeaux .avis { border-top-color: rgba(217, 194, 156, .35); }
+.bordeaux .avis li { border-left-color: rgba(217, 194, 156, .35); }
+.bordeaux .avis cite { color: #D9C29C; }
+.bordeaux :focus-visible { outline-color: var(--ivoire); }
+.sable + .bordeaux, .bordeaux + .section { border-top: 0; }
+
+footer { background: #3A0D17; color: rgba(251, 248, 243, .7); border-top: 0; padding: clamp(48px, 6vw, 80px) 0 32px; }
+.foot-mark { display: block; font: 400 clamp(44px, 7vw, 104px)/1 var(--serif); color: var(--ivoire); text-decoration: none; letter-spacing: -.01em; margin-bottom: clamp(32px, 4vw, 56px); }
+footer .foot-bottom { position: relative; padding-top: 24px; }
+footer .foot-bottom::before { content: ''; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); border-top: 1px solid rgba(217, 194, 156, .25); }
+footer a:hover { color: var(--ivoire); }
 
 @media (max-width: 900px) {
   nav a:not(:last-child) { display: none; }
@@ -215,7 +233,7 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap">
       <ul class="grid faits">
         <li><strong>Depuis plus de dix ans</strong>dans la restauration à Paris</li>
-        <li><strong>Traiteur officiel d'Hermès</strong>pour ses rendez-vous internes</li>
+        <li><strong>Entièrement fait maison</strong>préparé pour chaque commande</li>
         <li><strong>De 10 à 100 personnes</strong>plateaux et buffets</li>
         <li><strong>Réponse sous 24 heures</strong>avec une proposition sur mesure</li>
       </ul>
@@ -234,7 +252,7 @@ footer a:hover { color: var(--bordeaux); }
       <div class="content">
         <p class="big">L'Atelier prépare les recettes du Liban avec l'exigence qu'on réserve aux grandes tables, et les livre avec la discrétion qu'attendent les maisons.</p>
         <div class="cols">
-          <p>Derrière l'Atelier, plus de dix ans dans la restauration parisienne et la confiance d'Hermès, dont nous sommes le traiteur officiel. Nous savons ce qu'un déjeuner de direction ou une présentation en showroom exige : ponctualité, présentation irréprochable, aucun imprévu.</p>
+          <p>Derrière l'Atelier, plus de dix ans dans la restauration parisienne, au service de maisons exigeantes. Nous savons ce qu'un déjeuner de direction ou une présentation en showroom exige : ponctualité, présentation irréprochable, aucun imprévu.</p>
           <p>Chaque commande est préparée pour vous, à partir de produits choisis. Les plats arrivent dressés, prêts à être posés sur table. Un seul interlocuteur, Jad, suit votre demande du premier échange à la livraison.</p>
         </div>
       </div>
@@ -263,7 +281,7 @@ footer a:hover { color: var(--bordeaux); }
     </div>
   </section>
 
-  <section class="section" id="formules" aria-label="Formules">
+  <section class="section sable" id="formules" aria-label="Formules">
     <div class="wrap grid">
       <h2 class="label">Formules</h2>
       <div class="content">
@@ -289,7 +307,7 @@ footer a:hover { color: var(--bordeaux); }
     </div>
   </section>
 
-  <section class="section" id="commander" aria-label="Commander">
+  <section class="section sable sable-suite" id="commander" aria-label="Commander">
     <div class="wrap grid">
       <h2 class="label">Commander</h2>
       <div class="content">
@@ -314,7 +332,7 @@ footer a:hover { color: var(--bordeaux); }
     </div>
   </section>
 
-  <section class="section" id="avis" aria-label="Témoignages">
+  <section class="section bordeaux" id="avis" aria-label="Témoignages">
     <div class="wrap grid">
       <h2 class="label">Ils nous font confiance</h2>
       <div class="content">
@@ -361,6 +379,9 @@ footer a:hover { color: var(--bordeaux); }
 
 <footer>
   <div class="wrap">
+    <a href="#top" class="foot-mark">Atelier Najjar</a>
+  </div>
+  <div class="wrap foot-bottom">
     <span>© 2026 Atelier Najjar</span>
     <span>Traiteur libanais, Paris et Île-de-France</span>
     <a href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a>
