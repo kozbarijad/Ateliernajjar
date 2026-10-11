@@ -24,9 +24,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="favicon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@1&display=swap" rel="stylesheet">
+<link rel="preload" href="polices/libre-caslon-display.woff2" as="font" type="font/woff2" crossorigin>
 
 <script type="application/ld+json">
 {
@@ -45,6 +43,8 @@
 </script>
 
 <style>
+@font-face { font-family: 'Libre Caslon Display'; src: url('polices/libre-caslon-display.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Libre Caslon Text'; src: url('polices/libre-caslon-text-italique.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
 :root {
   --ivoire: #FBF8F3;
   --encre: #2A1E1A;
@@ -131,6 +131,7 @@ nav a:hover { color: var(--bordeaux); }
 .avis li { padding: 32px 28px 8px; border-left: 1px solid var(--filet); display: flex; flex-direction: column; }
 .avis li:first-child { border-left: 0; padding-left: 0; }
 .avis blockquote { margin: 0 0 20px; font: italic 400 clamp(18px, 1.5vw, 21px)/1.5 'Libre Caslon Text', Georgia, serif; }
+.avis blockquote { font-variant-ligatures: no-common-ligatures no-discretionary-ligatures no-historical-ligatures; }
 .avis cite { margin-top: auto; font-style: normal; font-size: 13px; color: var(--gris); }
 
 .contact .content { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
@@ -159,6 +160,8 @@ form .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 form button { font: 13px var(--sans); letter-spacing: .1em; text-transform: uppercase; background: var(--bordeaux); color: var(--ivoire); border: 0; padding: 18px 36px; cursor: pointer; transition: background .2s; }
 form button:hover { background: var(--bordeaux-2); }
 form button[disabled] { opacity: .6; cursor: default; }
+.rgpd { margin: 6px 0 0; font-size: 12px; line-height: 1.5; color: var(--gris); max-width: 34em; }
+.rgpd a { color: inherit; }
 .status { margin: 18px 0 0; min-height: 1.5em; font-size: 14px; color: var(--bordeaux); }
 
 footer { border-top: 1px solid var(--filet); padding: 40px 0; font-size: 12px; color: var(--gris); }
@@ -219,7 +222,7 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap">
       <div class="grid"><h1 id="titre">Cuisine libanaise pour les maisons parisiennes.</h1></div>
       <div class="grid hero-bottom">
-        <p>Plateaux et buffets préparés à la commande, livrés prêts à servir dans vos bureaux et showrooms. De 10 à 100 personnes, à Paris et en Île-de-France.</p>
+        <p>Plateaux et buffets préparés à la commande, livrés prêts à servir dans vos bureaux et showrooms. De 10 à 100 personnes, à Paris et en Île-de-France.</p>
         <a class="cta" href="#contact">Demander un devis</a>
       </div>
     </div>
@@ -227,8 +230,8 @@ footer a:hover { color: var(--bordeaux); }
       <ul class="grid faits">
         <li><strong>Depuis plus de dix ans</strong>dans la restauration à Paris</li>
         <li><strong>Entièrement fait maison</strong>préparé pour chaque commande</li>
-        <li><strong>De 10 à 100 personnes</strong>plateaux et buffets</li>
-        <li><strong>Réponse sous 24 heures</strong>avec une proposition sur mesure</li>
+        <li><strong>De 10 à 100 personnes</strong>plateaux et buffets</li>
+        <li><strong>Réponse sous 24 heures</strong>avec une proposition sur mesure</li>
       </ul>
     </div>
   </section>
@@ -243,9 +246,9 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap grid">
       <h2 class="label">La Maison</h2>
       <div class="content">
-        <p class="big">L'Atelier prépare les recettes du Liban avec l'exigence qu'on réserve aux grandes tables, et les livre avec la discrétion qu'attendent les maisons.</p>
+        <p class="big">L’Atelier prépare les recettes du Liban avec l’exigence qu’on réserve aux grandes tables, et les livre avec la discrétion qu’attendent les maisons.</p>
         <div class="cols">
-          <p>Derrière l'Atelier, plus de dix ans dans la restauration parisienne, au service de maisons exigeantes. Nous savons ce qu'un déjeuner de direction ou une présentation en showroom exige : ponctualité, présentation irréprochable, aucun imprévu.</p>
+          <p>Derrière l’Atelier, plus de dix ans dans la restauration parisienne, au service de maisons exigeantes. Nous savons ce qu’un déjeuner de direction ou une présentation en showroom exige : ponctualité, présentation irréprochable, aucun imprévu.</p>
           <p>Chaque commande est préparée pour vous, à partir de produits choisis. Les plats arrivent dressés, prêts à être posés sur table. Un seul interlocuteur, Jad, suit votre demande du premier échange à la livraison.</p>
         </div>
       </div>
@@ -258,9 +261,9 @@ footer a:hover { color: var(--bordeaux); }
       <div class="content">
         <div class="plats">
           <figure class="plat"><img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Hoummous à la grenade et huile d'olive"><span class="tag">Mezzé</span><h4>Hoummous à la grenade</h4><p>Tahiné, citron, grains de grenade</p></figure>
-          <figure class="plat"><img src="photos/labne-700.webp" srcset="photos/labne-700.webp 700w, photos/labne-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistaches et menthe"><span class="tag">Mezzé</span><h4>Labné aux agrumes</h4><p>Zestes d'agrumes, pistache, menthe</p></figure>
-          <figure class="plat"><img src="photos/caviar-aubergine-700.webp" srcset="photos/caviar-aubergine-700.webp 700w, photos/caviar-aubergine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé au sumac et huile d'olive"><span class="tag">Mezzé</span><h4>Caviar d'aubergine fumé</h4><p>Aubergine grillée au feu, sumac</p></figure>
-          <figure class="plat"><img src="photos/labne-thym-700.webp" srcset="photos/labne-thym-700.webp 700w, photos/labne-thym-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné au thym et olives noires, huile d'olive"><span class="tag">Mezzé</span><h4>Labné au thym et olives</h4><p>Thym frais, olives noires, huile d'olive</p></figure>
+          <figure class="plat"><img src="photos/labne-700.webp" srcset="photos/labne-700.webp 700w, photos/labne-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistaches et menthe"><span class="tag">Mezzé</span><h4>Labné aux agrumes</h4><p>Zestes d’agrumes, pistache, menthe</p></figure>
+          <figure class="plat"><img src="photos/caviar-aubergine-700.webp" srcset="photos/caviar-aubergine-700.webp 700w, photos/caviar-aubergine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé au sumac et huile d'olive"><span class="tag">Mezzé</span><h4>Caviar d’aubergine fumé</h4><p>Aubergine grillée au feu, sumac</p></figure>
+          <figure class="plat"><img src="photos/labne-thym-700.webp" srcset="photos/labne-thym-700.webp 700w, photos/labne-thym-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné au thym et olives noires, huile d'olive"><span class="tag">Mezzé</span><h4>Labné au thym et olives</h4><p>Thym frais, olives noires, huile d’olive</p></figure>
           <figure class="plat"><img src="photos/taboule-700.webp" srcset="photos/taboule-700.webp 700w, photos/taboule-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Taboulé au persil, tomate et grenade"><span class="tag">Salade</span><h4>Taboulé citronné</h4><p>Persil plat, boulgour fin, tomate, grenade</p></figure>
           <figure class="plat"><img src="photos/salade-levantine-700.webp" srcset="photos/salade-levantine-700.webp 700w, photos/salade-levantine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Salade levantine aux agrumes, concombre et grenade"><span class="tag">Salade</span><h4>Salade levantine</h4><p>Agrumes, concombre, grenade, menthe</p></figure>
           <figure class="plat"><img src="photos/falafels-700.webp" srcset="photos/falafels-700.webp 700w, photos/falafels-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Falafels dorés à la menthe"><span class="tag">Bouchée</span><h4>Falafels</h4><p>Pois chiches, herbes, menthe</p></figure>
@@ -270,8 +273,8 @@ footer a:hover { color: var(--bordeaux); }
           <figure class="plat"><img src="photos/samboussek-fromage-700.webp" srcset="photos/samboussek-fromage-700.webp 700w, photos/samboussek-fromage-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Samboussek au fromage"><span class="tag">Bouchée</span><h4>Samboussek au fromage</h4><p>Pâte dorée, fromage fondant</p></figure>
           <figure class="plat"><img src="photos/samboussek-viande-700.webp" srcset="photos/samboussek-viande-700.webp 700w, photos/samboussek-viande-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Samboussek à la viande et menthe"><span class="tag">Bouchée</span><h4>Samboussek à la viande</h4><p>Viande épicée, menthe fraîche</p></figure>
           <figure class="plat"><img src="photos/sandwich-halloumi-700.webp" srcset="photos/sandwich-halloumi-700.webp 700w, photos/sandwich-halloumi-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Mini-sandwichs au halloumi et aubergines grillées, pickles et sauce tahiné"><span class="tag">Mini-sandwich</span><h4>Halloumi et aubergines grillées</h4><p>Halloumi grillé, aubergine, salade, tahiné</p></figure>
-          <figure class="plat"><img src="photos/sandwich-zaatar-700.webp" srcset="photos/sandwich-zaatar-700.webp 700w, photos/sandwich-zaatar-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Mini-sandwichs au labné, za'atar, tomate et menthe"><span class="tag">Mini-sandwich</span><h4>Za'atar et labné</h4><p>Labné, za'atar, tomate, menthe</p></figure>
-          <div class="plat-note"><p>Également à la carte : crème de feta acidulée, toasts signature et créations de saison.</p><a class="cta" href="#contact">Recevoir la carte complète</a></div>
+          <figure class="plat"><img src="photos/sandwich-zaatar-700.webp" srcset="photos/sandwich-zaatar-700.webp 700w, photos/sandwich-zaatar-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Mini-sandwichs au labné, za'atar, tomate et menthe"><span class="tag">Mini-sandwich</span><h4>Za’atar et labné</h4><p>Labné, za’atar, tomate, menthe</p></figure>
+          <div class="plat-note"><p>Également à la carte : crème de feta acidulée, toasts signature et créations de saison.</p><a class="cta" href="#contact">Recevoir la carte complète</a></div>
         </div>
       </div>
     </div>
@@ -284,21 +287,21 @@ footer a:hover { color: var(--bordeaux); }
         <div class="formules-cols">
           <div class="formule">
             <h3>Essentiel</h3>
-            <p class="pour">Déjeuners d'équipe et réunions</p>
+            <p class="pour">Déjeuners d’équipe et réunions</p>
             <p class="desc">Une sélection de mezzés, une salade et des bouchées de la maison, dressés sur plateaux.</p>
           </div>
           <div class="formule">
             <h3>Signature</h3>
             <p class="pour">Déjeuners de direction et showrooms</p>
-            <p class="desc">La carte élargie : nos mezzés signature, deux salades et un large choix de bouchées.</p>
+            <p class="desc">La carte élargie : nos mezzés signature, deux salades et un large choix de bouchées.</p>
           </div>
           <div class="formule">
             <h3>Prestige</h3>
-            <p class="pour">Lancements et rendez-vous d'exception</p>
+            <p class="pour">Lancements et rendez-vous d’exception</p>
             <p class="desc">Un menu composé sur mesure avec Jad, des créations de saison, une présentation en buffet.</p>
           </div>
         </div>
-        <p class="formules-note">Toutes les formules sont livrées prêtes à servir, de 10 à 100 personnes, à Paris et en Île-de-France. L'Atelier n'assure pas de service sur place. Tarifs sur devis.</p>
+        <p class="formules-note">Toutes les formules sont livrées prêtes à servir, de 10 à 100 personnes, à Paris et en Île-de-France. L’Atelier n’assure pas de service sur place. Tarifs sur devis ; la liste des allergènes accompagne chaque proposition.</p>
       </div>
     </div>
   </section>
@@ -309,9 +312,9 @@ footer a:hover { color: var(--bordeaux); }
       <h2 class="label">Ils nous font confiance</h2>
       <div class="content">
         <ul class="avis">
-          <li><blockquote>« Une table libanaise d'un niveau que je n'avais jamais rencontré à Paris. Nos convives en parlent encore, plusieurs semaines après l'événement. »</blockquote><cite>Coordinatrice événements, maison de mode, Paris</cite></li>
-          <li><blockquote>« Professionnel, ponctuel, d'une précision remarquable dans la présentation. L'Atelier a su répondre à nos contraintes avec une facilité déconcertante. »</blockquote><cite>Responsable affaires générales, groupe luxe parisien</cite></li>
-          <li><blockquote>« Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L'Atelier Najjar offre exactement cela : une signature, une identité, une excellence. »</blockquote><cite>Directrice de cabinet, Paris 8<sup>e</sup></cite></li>
+          <li><blockquote>« Une table libanaise d’un niveau que je n’avais jamais rencontré à Paris. Nos convives en parlent encore, plusieurs semaines après l’événement. »</blockquote><cite>Coordinatrice événements, maison de mode, Paris</cite></li>
+          <li><blockquote>« Professionnel, ponctuel, d’une précision remarquable dans la présentation. L’Atelier a su répondre à nos contraintes avec une facilité déconcertante. »</blockquote><cite>Responsable affaires générales, groupe luxe parisien</cite></li>
+          <li><blockquote>« Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L’Atelier Najjar offre exactement cela : une signature, une identité, une excellence. »</blockquote><cite>Directrice de cabinet, Paris 8<sup>e</sup></cite></li>
         </ul>
       </div>
     </div>
@@ -321,12 +324,12 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap grid">
       <div class="content">
         <div>
-          <h2 id="contact-titre">Écrire à l'Atelier</h2>
+          <h2 id="contact-titre">Écrire à l’Atelier</h2>
           <a class="mail" href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a>
           <ol class="mini-etapes" aria-label="Comment commander">
-            <li><span aria-hidden="true">1</span><div><strong>Votre demande</strong>La date, le nombre de personnes et l'occasion.</div></li>
-            <li><span aria-hidden="true">2</span><div><strong>Notre proposition</strong>Un menu et un devis sous 24 heures, ajustés avec vous.</div></li>
-            <li><span aria-hidden="true">3</span><div><strong>La livraison</strong>À l'heure convenue, les plats arrivent dressés, prêts à servir.</div></li>
+            <li><span aria-hidden="true">1</span><div><strong>Votre demande</strong>La date, le nombre de personnes et l’occasion.</div></li>
+            <li><span aria-hidden="true">2</span><div><strong>Notre proposition</strong>Un menu et un devis sous 24 heures, ajustés avec vous.</div></li>
+            <li><span aria-hidden="true">3</span><div><strong>La livraison</strong>À l’heure convenue, les plats arrivent dressés, prêts à servir.</div></li>
           </ol>
         </div>
         <form id="devis" action="https://formspree.io/f/xgopnnyq" method="POST">
@@ -347,6 +350,7 @@ footer a:hover { color: var(--bordeaux); }
           <div class="f"><label for="f-message">Votre demande</label><textarea id="f-message" name="message"></textarea></div>
           <button type="submit">Envoyer</button>
           <p class="status" id="status" role="status" aria-live="polite"></p>
+          <p class="rgpd">Vos informations servent uniquement à traiter votre demande de devis et ne sont jamais cédées. <a href="mentions-legales.html#donnees">En savoir plus</a></p>
         </form>
       </div>
     </div>
