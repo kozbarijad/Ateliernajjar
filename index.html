@@ -3,40 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atelier Najjar · Traiteur libanais haut de gamme à Paris</title>
-<meta name="description" content="Atelier Najjar prépare et livre des plateaux et buffets libanais haut de gamme, de 10 à 100 personnes, à Paris et en Île-de-France. Plus de dix ans d'expérience, traiteur officiel d'Hermès.">
+<title>Atelier Najjar · Traiteur libanais pour entreprises à Paris</title>
+<meta name="description" content="Plateaux et buffets libanais faits maison, livrés dressés et prêts à servir, de 10 à 100 personnes, à Paris et en Île-de-France. Plus de 10 ans d'expérience, traiteur officiel d'Hermès. Devis sous 24 h.">
 <link rel="canonical" href="https://ateliernajjar.fr/">
 <meta name="theme-color" content="#4A0B17">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Atelier Najjar">
-<meta property="og:title" content="Atelier Najjar · Traiteur libanais haut de gamme à Paris">
-<meta property="og:description" content="Plateaux et buffets libanais préparés à la commande et livrés dressés, de 10 à 100 personnes, à Paris et en Île-de-France.">
+<meta property="og:title" content="Atelier Najjar · Traiteur libanais pour entreprises à Paris">
+<meta property="og:description" content="Mezzés, salades et bouchées faits maison, livrés dressés et prêts à servir, de 10 à 100 personnes. Devis sous 24 h.">
 <meta property="og:url" content="https://ateliernajjar.fr/">
 <meta property="og:image" content="https://ateliernajjar.fr/hero-atelier-najjar.jpeg">
 <meta property="og:image:width" content="1536">
 <meta property="og:image:height" content="1024">
-<meta property="og:image:alt" content="Hoummous à la grenade, mtabal, kebbé et feuilles de vigne dressés sur plats d'étain">
+<meta property="og:image:alt" content="Hoummous à la grenade, mtabal, kebbé et feuilles de vigne dressés sur des plats d'étain">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 
-<link rel="preload" as="image" type="image/webp"
-      imagesrcset="img/hero-atelier-najjar-768.webp 768w, img/hero-atelier-najjar-1280.webp 1280w, img/hero-atelier-najjar-1920.webp 1920w"
-      imagesizes="100vw">
+<link rel="preload" as="image" type="image/webp" href="img/plats/hommos-900.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FoodEstablishment",
   "name": "Atelier Najjar",
-  "description": "Traiteur libanais haut de gamme : plateaux et buffets livrés, de 10 à 100 personnes.",
+  "description": "Traiteur libanais pour entreprises : plateaux et buffets livrés dressés, de 10 à 100 personnes.",
   "url": "https://ateliernajjar.fr/",
+  "logo": "https://ateliernajjar.fr/favicon.png",
   "image": "https://ateliernajjar.fr/hero-atelier-najjar.jpeg",
   "email": "jad@ateliernajjar.fr",
   "servesCuisine": "Libanaise",
@@ -48,377 +47,374 @@
 <style>
 :root {
   --bordeaux: #4A0B17;
-  --bordeaux-deep: #3A0812;
+  --bordeaux-2: #5E1222;
+  --bordeaux-deep: #2E060E;
   --creme: #F4EDE4;
-  --creme-2: #ECE2D5;
+  --sable: #EADFD0;
+  --blanc: #FBF8F3;
   --or: #B8956A;
-  --ink: #2B1B17;
-  --muted: #6C5A51;
-  --rule: rgba(74, 11, 23, .16);
+  --or-clair: #D9BC93;
+  --ink: #24120F;
+  --muted: #6B5850;
+  --rule: rgba(74, 11, 23, .14);
 
-  --serif: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --serif: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
   --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --gutter: clamp(20px, 5vw, 72px);
-  --max: 1320px;
-  --section: clamp(88px, 12vw, 168px);
+  --gutter: clamp(20px, 5vw, 64px);
+  --max: 1280px;
+  --section: clamp(80px, 11vw, 144px);
+  --plate-shadow: drop-shadow(0 28px 24px rgba(46, 6, 14, .28)) drop-shadow(0 6px 6px rgba(46, 6, 14, .18));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
   margin: 0;
   background: var(--creme);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 400;
+  font-family: var(--sans);
+  font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   font-variant-numeric: lining-nums;
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-h1, h2, h3 { font-weight: 300; margin: 0; line-height: 1.08; letter-spacing: -.005em; }
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -.01em;
+  margin: 0;
+  font-variant-numeric: lining-nums;
+}
 p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
-ul { margin: 0; padding: 0; list-style: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--or); outline-offset: 3px; }
 
-:focus-visible { outline: 2px solid var(--bordeaux); outline-offset: 3px; }
-
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .skip {
   position: absolute; left: 12px; top: -60px; z-index: 100;
-  background: var(--bordeaux); color: var(--creme);
-  font: 13px/1 var(--sans); padding: 12px 16px; text-decoration: none;
+  background: var(--bordeaux); color: var(--creme); padding: 12px 16px; font-size: 14px; text-decoration: none;
 }
 .skip:focus { top: 12px; }
 
-.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-
-/* Small labels: Helvetica, sentence case */
-.label {
-  font-family: var(--sans);
-  font-size: 13px;
-  line-height: 1.4;
-  letter-spacing: .04em;
-  color: var(--muted);
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font: 500 15px/1 var(--sans); letter-spacing: .01em;
+  text-decoration: none; cursor: pointer;
+  padding: 18px 28px; border-radius: 999px; border: 1px solid transparent;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
 }
+.btn:active { transform: translateY(1px); }
+.btn-or { background: var(--or); color: var(--bordeaux-deep); }
+.btn-or:hover { background: var(--or-clair); }
+.btn-bordeaux { background: var(--bordeaux); color: var(--creme); }
+.btn-bordeaux:hover { background: var(--bordeaux-2); }
+.btn-ghost { border-color: rgba(244, 237, 228, .45); color: var(--creme); }
+.btn-ghost:hover { border-color: var(--creme); }
+.btn-line { border-color: var(--bordeaux); color: var(--bordeaux); }
+.btn-line:hover { background: var(--bordeaux); color: var(--creme); }
+.btn[disabled] { opacity: .6; cursor: default; }
 
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(244, 237, 228, .96);
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s;
+  background: var(--bordeaux);
+  color: var(--creme);
+  transition: box-shadow .3s;
 }
-.site-header.is-scrolled { border-bottom-color: var(--rule); }
-.site-header .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 24px; min-height: 76px;
-}
-.wordmark {
-  font-family: var(--serif); font-size: 26px; font-weight: 400;
-  letter-spacing: .02em; text-decoration: none; color: var(--bordeaux);
-  white-space: nowrap;
-}
-.nav { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 40px); }
-.nav a {
-  font-family: var(--sans); font-size: 13px; letter-spacing: .04em;
-  text-decoration: none; color: var(--ink);
-  padding: 6px 0; border-bottom: 1px solid transparent;
-  transition: border-color .2s;
-}
-.nav a:hover { border-bottom-color: var(--or); }
-.nav .nav-cta {
-  color: var(--bordeaux);
-  border: 1px solid var(--bordeaux);
-  padding: 10px 18px;
-  transition: background .2s, color .2s;
-}
-.nav .nav-cta:hover { background: var(--bordeaux); color: var(--creme); }
-
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-block;
-  font-family: var(--sans); font-size: 13px; letter-spacing: .06em;
-  text-decoration: none;
-  background: var(--bordeaux); color: var(--creme);
-  border: 1px solid var(--bordeaux);
-  padding: 17px 30px;
-  cursor: pointer;
-  transition: background .2s;
-}
-.btn:hover { background: var(--bordeaux-deep); }
-.btn[disabled] { opacity: .6; cursor: default; }
-.link {
-  font-family: var(--sans); font-size: 13px; letter-spacing: .04em;
-  color: var(--ink); text-decoration: none;
-  border-bottom: 1px solid var(--or); padding-bottom: 3px;
-}
-.link:hover { color: var(--bordeaux); }
+.site-header.is-scrolled { box-shadow: 0 1px 0 rgba(184, 149, 106, .25); }
+.site-header .wrap { display: flex; align-items: center; gap: 32px; min-height: 76px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+.brand img { width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(184, 149, 106, .6); }
+.brand span { font: 600 25px/1 var(--serif); letter-spacing: .01em; }
+.nav { display: flex; gap: 30px; }
+.nav a { font-size: 15px; text-decoration: none; color: rgba(244, 237, 228, .82); transition: color .2s; }
+.nav a:hover { color: var(--creme); }
+.site-header .btn { padding: 13px 22px; font-size: 14px; }
+.menu-toggle { display: none; }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: clamp(48px, 9vw, 120px); }
-.hero-text {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
-  align-items: end;
-  padding-bottom: clamp(40px, 6vw, 80px);
+.hero {
+  position: relative;
+  background: var(--bordeaux);
+  color: var(--creme);
+  overflow: hidden;
+  isolation: isolate;
 }
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(60% 70% at 78% 45%, rgba(184, 149, 106, .16), transparent 70%);
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  min-height: min(calc(100vh - 76px), 820px);
+  padding-top: 56px; padding-bottom: 72px;
+}
+.hero-copy { position: relative; z-index: 2; max-width: 600px; }
 .hero h1 {
-  grid-column: 1 / span 8;
-  font-size: clamp(46px, 6.8vw, 100px);
-  line-height: 1.0;
-  letter-spacing: -.015em;
-  color: var(--bordeaux);
+  font-size: clamp(50px, 6.6vw, 96px);
+  line-height: .98;
+  margin-bottom: 28px;
   text-wrap: balance;
 }
-.hero-aside { grid-column: 9 / span 4; padding-bottom: .6em; }
-.hero-aside p { font-size: 20px; color: var(--ink); margin-bottom: 28px; max-width: 34ch; }
-.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+.hero-lede { font-size: 19px; line-height: 1.55; color: rgba(244, 237, 228, .86); max-width: 33em; margin-bottom: 36px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+.proofs { display: flex; flex-wrap: wrap; gap: 14px 32px; padding-top: 28px; border-top: 1px solid rgba(184, 149, 106, .35); }
+.proofs li { flex: 1 1 0; min-width: 150px; font-size: 14px; color: rgba(244, 237, 228, .8); }
+.proofs strong { display: block; font: 600 22px/1.2 var(--serif); color: var(--or-clair); }
 
-.hero-figure { margin: 0; }
-.hero-figure img {
-  width: 100%;
-  height: clamp(340px, 74vh, 880px);
-  object-fit: cover;
-  object-position: 50% 45%;
-  background: var(--creme-2);
-}
-.hero-caption {
-  display: flex; justify-content: space-between; gap: 16px;
-  padding-top: 14px; padding-bottom: 14px;
-}
+.hero-plates { position: relative; height: 100%; min-height: 560px; }
+.hero-plates img { position: absolute; filter: var(--plate-shadow); }
+.hp-1 { width: 118%; max-width: none !important; left: 2%; top: 22%; transform: rotate(-8deg); }
+.hp-2 { width: 62%; right: -18%; top: -2%; transform: rotate(6deg); }
+.hp-3 { width: 66%; left: -10%; bottom: -6%; transform: rotate(4deg); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero h1, .hero-aside, .hero-figure img { animation: rise 1.2s cubic-bezier(.2, .7, .2, 1) both; }
-  .hero-aside { animation-delay: .25s; }
-  .hero-figure img { animation-name: settle; animation-duration: 1.8s; animation-delay: .1s; }
-  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-  @keyframes settle { from { opacity: 0; } to { opacity: 1; } }
+  .hero-plates img { animation: plate-in 1.4s cubic-bezier(.2, .75, .2, 1) both; }
+  .hp-1 { --r: -8deg; animation-delay: .05s; }
+  .hp-2 { --r: 6deg; animation-delay: .25s; }
+  .hp-3 { --r: 4deg; animation-delay: .4s; }
+  .hero-copy { animation: copy-in 1s cubic-bezier(.2, .75, .2, 1) both; }
+  @keyframes plate-in { from { opacity: 0; transform: translate(60px, 20px) rotate(calc(var(--r) + 10deg)); } to { opacity: 1; transform: rotate(var(--r)); } }
+  @keyframes copy-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 }
 
-/* ---------- Sections ---------- */
+/* ---------- Section scaffolding ---------- */
 .section { padding: var(--section) 0; }
-.section-head {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
-  margin-bottom: clamp(48px, 7vw, 96px);
-}
-.section-head h2 {
-  grid-column: 1 / span 5;
-  font-size: clamp(40px, 5vw, 68px);
-  color: var(--bordeaux);
-}
-.section-head .intro {
-  grid-column: 7 / span 6;
-  font-size: 22px;
-  max-width: 40ch;
-  padding-top: .5em;
-}
+.kicker { font-size: 15px; color: var(--bordeaux); margin-bottom: 18px; font-weight: 500; }
+.section-title { font-size: clamp(40px, 5vw, 64px); color: var(--bordeaux); margin-bottom: 20px; }
+.section-lede { font-size: 19px; color: var(--muted); max-width: 36em; }
+.section-head { margin-bottom: clamp(48px, 6vw, 80px); }
 
-/* ---------- La Maison ---------- */
-.maison-body {
+/* ---------- La carte ---------- */
+.carte { background: var(--creme); }
+.cat {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
-}
-.maison-story { grid-column: 7 / span 6; max-width: 58ch; }
-.maison-story .lead {
-  font-size: clamp(26px, 2.4vw, 32px);
-  line-height: 1.35;
-  color: var(--bordeaux);
-  margin-bottom: 1.2em;
-}
-.maison-facts {
-  grid-column: 1 / span 5;
-  grid-row: 1;
-  align-self: start;
+  grid-template-columns: minmax(200px, 1fr) 3fr;
+  gap: 40px;
+  padding: 56px 0;
   border-top: 1px solid var(--rule);
 }
-.maison-facts div { padding: 22px 0; border-bottom: 1px solid var(--rule); }
-.maison-facts dt { font-size: 24px; color: var(--ink); line-height: 1.3; }
-.maison-facts dd { margin: 4px 0 0; }
+.cat:last-of-type { border-bottom: 1px solid var(--rule); }
+.cat-head h3 { font-size: 40px; color: var(--bordeaux); margin-bottom: 10px; }
+.cat-head p { font-size: 15px; color: var(--muted); max-width: 18em; }
+.cat-head { position: sticky; top: 108px; align-self: start; }
+.dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+.dishes.two { grid-template-columns: repeat(2, 1fr); }
+.dish { margin: 0; }
+.dish-img {
+  aspect-ratio: 16 / 10;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.dish-img img {
+  max-height: 100%; width: auto; object-fit: contain;
+  filter: var(--plate-shadow);
+  transition: transform .5s cubic-bezier(.2, .75, .2, 1);
+}
+.dish:hover .dish-img img { transform: rotate(-4deg) scale(1.04); }
+.dish h4 { font: 600 26px/1.15 var(--serif); margin: 0 0 6px; color: var(--ink); }
+.dish p { font-size: 15px; color: var(--muted); margin: 0 0 10px; line-height: 1.5; }
+.tag { display: inline-block; font-size: 12px; font-weight: 500; color: #3D5A2A; background: #E3E6D2; border-radius: 999px; padding: 4px 10px; }
+.carte-more {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px 40px;
+  margin-top: 48px;
+}
+.carte-more p { font-size: 16px; color: var(--muted); max-width: 40em; }
+.carte-more strong { color: var(--ink); font-weight: 500; }
 
-.savoir {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: clamp(24px, 4vw, 64px);
-  margin-top: clamp(64px, 9vw, 120px);
-  padding-top: 40px;
-  border-top: 1px solid var(--rule);
-}
-.savoir h3 { font-size: 30px; color: var(--bordeaux); margin-bottom: 14px; }
-.savoir p { font-size: 19px; color: var(--muted); max-width: 34ch; }
+/* ---------- Pour les entreprises ---------- */
+.pro { background: var(--blanc); padding: 0; }
+.pro-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+.pro-photo { position: relative; }
+.pro-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pro-body { padding: var(--section) var(--gutter); max-width: 640px; }
+.pro-list { margin-top: 40px; display: grid; gap: 28px; }
+.pro-list li { display: grid; grid-template-columns: 28px 1fr; gap: 16px; }
+.pro-list svg { width: 22px; height: 22px; margin-top: 4px; color: var(--or); }
+.pro-list h3 { font-size: 26px; color: var(--ink); margin-bottom: 4px; }
+.pro-list p { font-size: 16px; color: var(--muted); }
 
-/* ---------- Les créations ---------- */
-.creations { background: var(--creme); }
-.group + .group { margin-top: clamp(56px, 7vw, 96px); }
-.group-title {
-  display: flex; align-items: baseline; gap: 16px;
-  padding-bottom: 14px; margin-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
-}
-.group-title h3 { font-size: 30px; color: var(--bordeaux); }
-.dishes {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: clamp(28px, 3vw, 40px) clamp(16px, 2vw, 28px);
-}
-.dish { grid-column: span 2; margin: 0; }
-.dish.wide { grid-column: span 3; }
-.dish picture { display: block; overflow: hidden; background: var(--creme-2); }
-.dish img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
-.dish.wide img { aspect-ratio: 3 / 2; }
-.dish figcaption { padding-top: 14px; font-size: 22px; line-height: 1.3; }
-.carte-note {
-  margin-top: clamp(56px, 7vw, 88px);
-  max-width: 62ch;
-  font-size: 20px;
-  color: var(--muted);
-}
-.carte-note strong { font-weight: 500; color: var(--ink); }
-
-/* ---------- Les formules ---------- */
-.formules { background: var(--creme-2); }
-.formules-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
+/* ---------- Formules ---------- */
+.formules { background: var(--sable); }
+.formules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
 .formule {
-  padding: clamp(36px, 4vw, 56px) clamp(24px, 3vw, 44px);
+  position: relative;
+  background: var(--blanc);
+  border-radius: 6px;
+  padding: 40px 34px 34px;
   display: flex; flex-direction: column;
 }
-.formule + .formule { border-left: 1px solid var(--rule); }
-.formule:first-child { padding-left: 0; }
-.formule:last-child { padding-right: 0; }
-.formule h3 { font-size: clamp(38px, 3.6vw, 50px); color: var(--bordeaux); margin-bottom: 10px; }
-.formule .pour { margin-bottom: 26px; }
-.formule .desc { font-size: 20px; margin-bottom: 26px; }
-.formule ul { border-top: 1px solid var(--rule); margin-top: auto; }
-.formule li {
-  font-size: 19px; line-height: 1.4;
-  padding: 13px 0; border-bottom: 1px solid var(--rule);
+.formule.featured { background: var(--bordeaux); color: var(--creme); }
+.formule .badge { position: absolute; top: -14px; left: 34px; font-size: 13px; font-weight: 500; color: var(--bordeaux-deep); background: var(--or); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
+.formule h3 { font-size: 48px; color: var(--bordeaux); margin-bottom: 8px; }
+.formule.featured h3 { color: var(--creme); }
+.formule .ideal { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+.formule.featured .ideal { color: rgba(244, 237, 228, .75); }
+.formule ul { display: grid; gap: 12px; margin-bottom: 32px; }
+.formule li { position: relative; padding-left: 26px; font-size: 16px; line-height: 1.45; }
+.formule li::before {
+  content: ''; position: absolute; left: 2px; top: 6px; width: 12px; height: 7px;
+  border-left: 1.5px solid var(--or); border-bottom: 1.5px solid var(--or); transform: rotate(-45deg);
 }
-.formules-foot {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
-  margin-top: clamp(40px, 5vw, 64px);
-  align-items: start;
-}
-.formules-foot .conditions { grid-column: 1 / span 7; max-width: 58ch; font-size: 20px; }
-.formules-foot .cta { grid-column: 9 / span 4; justify-self: end; }
+.formule .btn { margin-top: auto; width: 100%; }
+.formules-note { margin-top: 32px; font-size: 15px; color: var(--muted); max-width: 52em; }
+
+/* ---------- Étapes ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.step { border-top: 2px solid var(--bordeaux); padding-top: 24px; }
+.step-n { font: 600 56px/1 var(--serif); color: var(--or); display: block; margin-bottom: 18px; font-variant-numeric: lining-nums; }
+.step h3 { font-size: 30px; color: var(--bordeaux); margin-bottom: 10px; }
+.step p { font-size: 16px; color: var(--muted); max-width: 26em; }
+
+/* ---------- Mot du fondateur ---------- */
+.jad { background: var(--bordeaux-deep); color: var(--creme); overflow: hidden; }
+.jad-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.jad blockquote { margin: 0; }
+.jad blockquote p { font: italic 500 clamp(28px, 3.2vw, 42px)/1.28 var(--serif); }
+.jad cite { display: block; margin-top: 32px; font-style: normal; font-size: 15px; color: var(--or-clair); }
+.jad-plate img { width: 100%; filter: var(--plate-shadow); transform: rotate(-6deg); }
 
 /* ---------- Témoignages ---------- */
-.temoignages { background: var(--bordeaux); color: var(--creme); }
-.temoignages .section-head h2 { color: var(--creme); }
-.temoignages :focus-visible { outline-color: var(--or); }
-.quotes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: clamp(28px, 4vw, 64px);
-}
-.quote { margin: 0; border-top: 1px solid rgba(184, 149, 106, .5); padding-top: 32px; }
-.quote blockquote {
-  margin: 0 0 28px;
-  font-size: clamp(22px, 1.9vw, 26px);
-  line-height: 1.45;
-  font-style: italic;
-}
-.quote figcaption { font-family: var(--sans); font-size: 13px; letter-spacing: .04em; color: var(--or); line-height: 1.5; }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.quote { margin: 0; background: var(--blanc); border-radius: 6px; padding: 36px 32px; display: flex; flex-direction: column; }
+.quote-mark { font: 600 64px/.6 var(--serif); color: var(--or); height: 28px; }
+.quote blockquote { margin: 0 0 28px; }
+.quote blockquote p { font: 500 23px/1.4 var(--serif); color: var(--ink); }
+.quote figcaption { margin-top: auto; font-size: 14px; color: var(--muted); }
 
-/* ---------- Contact ---------- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
+/* ---------- FAQ ---------- */
+.faq { padding-top: 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+.faq details { border-top: 1px solid var(--rule); }
+.faq details:last-child { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 24px 0;
+  font: 600 24px/1.25 var(--serif); color: var(--ink);
 }
-.contact-info { grid-column: 1 / span 5; }
-.contact-info h2 { font-size: clamp(40px, 5vw, 68px); color: var(--bordeaux); margin-bottom: 28px; }
-.contact-info > p { font-size: 22px; max-width: 34ch; margin-bottom: 44px; }
-.contact-info dl { margin: 0; border-top: 1px solid var(--rule); }
-.contact-info dl div { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.contact-info dd { margin: 4px 0 0; font-size: 22px; }
-.contact-info dd a { text-decoration: none; border-bottom: 1px solid var(--or); color: var(--bordeaux); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ''; flex: none; width: 12px; height: 12px;
+  border-right: 1.5px solid var(--bordeaux); border-bottom: 1.5px solid var(--bordeaux);
+  transform: rotate(45deg) translate(-3px, -3px); transition: transform .25s;
+}
+.faq details[open] summary::after { transform: rotate(-135deg); }
+.faq details p { font-size: 16px; color: var(--muted); padding: 0 40px 24px 0; max-width: 42em; }
 
-.form { grid-column: 7 / span 6; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
-.field { display: flex; flex-direction: column; margin-bottom: 26px; }
-.field label { font-family: var(--sans); font-size: 13px; letter-spacing: .04em; color: var(--muted); margin-bottom: 8px; }
-.field label .opt { color: var(--muted); opacity: .75; }
+/* ---------- Devis ---------- */
+.devis { background: var(--bordeaux); color: var(--creme); }
+.devis-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.devis .section-title { color: var(--creme); }
+.devis .section-lede { color: rgba(244, 237, 228, .8); margin-bottom: 40px; }
+.devis-contact { display: grid; gap: 22px; margin: 0; }
+.devis-contact dt { font-size: 14px; color: rgba(244, 237, 228, .65); }
+.devis-contact dd { margin: 2px 0 0; font: 600 24px/1.3 var(--serif); }
+.devis-contact a { text-decoration: none; border-bottom: 1px solid var(--or); }
+.devis-contact a:hover { color: var(--or-clair); }
+
+.form { background: var(--blanc); color: var(--ink); border-radius: 6px; padding: clamp(28px, 4vw, 48px); }
+.form :focus-visible { outline-color: var(--bordeaux); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+.field { display: flex; flex-direction: column; margin-bottom: 20px; }
+.field label { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+.field .opt { font-weight: 400; color: var(--muted); }
 .field input, .field select, .field textarea {
-  font: 20px/1.4 var(--serif);
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(74, 11, 23, .35);
-  border-radius: 0;
-  padding: 8px 0 10px;
-  width: 100%;
+  font: 16px/1.4 var(--sans); color: var(--ink);
+  background-color: #fff;
+  border: 1px solid rgba(74, 11, 23, .2); border-radius: 4px;
+  padding: 13px 14px; width: 100%; min-height: 50px;
   -webkit-appearance: none; appearance: none;
+  transition: border-color .2s, box-shadow .2s;
 }
 .field select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234A0B17' stroke-width='1.2'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 2px center;
-  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234A0B17' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
 }
-.field textarea { min-height: 120px; resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--bordeaux); box-shadow: 0 1px 0 var(--bordeaux); }
-.field input::placeholder, .field textarea::placeholder { color: rgba(108, 90, 81, .6); }
+.field textarea { min-height: 112px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--bordeaux); box-shadow: 0 0 0 3px rgba(74, 11, 23, .12); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 8px; }
-.form-status { font-family: var(--sans); font-size: 14px; color: var(--bordeaux); margin: 0; }
+.form .btn { width: 100%; margin-top: 8px; }
+.form-status { font-size: 15px; margin: 16px 0 0; min-height: 1.5em; color: var(--bordeaux); }
+.form-fine { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
 /* ---------- Footer ---------- */
-.site-footer { border-top: 1px solid var(--rule); padding: 40px 0 48px; }
-.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px 40px; }
-.site-footer .wordmark { font-size: 22px; }
-.site-footer .label a { text-decoration: none; color: var(--bordeaux); }
+.site-footer { background: var(--bordeaux-deep); color: rgba(244, 237, 228, .75); padding: 56px 0 40px; font-size: 14px; }
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(184, 149, 106, .2); }
+.site-footer .brand { color: var(--creme); margin-right: 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.footer-links a, .footer-bottom a { text-decoration: none; }
+.footer-links a:hover, .footer-bottom a:hover { color: var(--creme); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; padding-top: 24px; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1000px) {
-  .hero h1 { grid-column: 1 / -1; }
-  .hero-aside { grid-column: 1 / span 9; padding-top: 32px; }
-  .section-head h2 { grid-column: 1 / -1; }
-  .section-head .intro { grid-column: 1 / span 10; padding-top: 20px; }
-  .maison-story { grid-column: 1 / -1; }
-  .maison-facts { grid-column: 1 / -1; grid-row: 2; margin-top: 48px; }
-  .formules-grid { grid-template-columns: 1fr; border-bottom: 0; }
-  .formule, .formule:first-child, .formule:last-child { padding: 40px 0; border-bottom: 1px solid var(--rule); }
-  .formule + .formule { border-left: 0; }
-  .formules-foot .conditions { grid-column: 1 / -1; }
-  .formules-foot .cta { grid-column: 1 / -1; justify-self: start; margin-top: 28px; }
-  .quotes { grid-template-columns: 1fr; row-gap: 48px; }
-  .contact-info, .form { grid-column: 1 / -1; }
-  .form { margin-top: 56px; }
+@media (max-width: 1080px) {
+  .nav { display: none; }
+  .menu-toggle {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: none; border: 0; color: var(--creme); font: 15px var(--sans); cursor: pointer; padding: 10px 0;
+  }
+  .menu-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+  .nav.open {
+    display: flex; flex-direction: column; gap: 0;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bordeaux); padding: 8px var(--gutter) 24px;
+    border-top: 1px solid rgba(184, 149, 106, .25);
+  }
+  .nav.open a { font: 600 26px/1 var(--serif); color: var(--creme); padding: 16px 0; }
+  .site-header .wrap { gap: 20px; }
+
+  .hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 48px; padding-bottom: 0; }
+  .hero-copy { display: contents; }
+  .hero h1 { margin-top: 8px; }
+  .hero-plates { order: -1; }
+  .hero-plates { min-height: 0; height: clamp(240px, 58vw, 460px); margin: -24px calc(-1 * var(--gutter)) 16px; }
+  .proofs { margin-bottom: 56px; }
+  .hp-1 { width: 78%; left: 4%; top: 18%; }
+  .hp-2 { width: 46%; right: -6%; top: 0; }
+  .hp-3 { width: 44%; left: auto; right: 2%; bottom: -8%; }
+
+  .cat { grid-template-columns: 1fr; gap: 28px; }
+  .cat-head { position: static; }
+  .pro-grid { grid-template-columns: 1fr; }
+  .pro-photo { height: 56vw; max-height: 480px; }
+  .formules-grid { grid-template-columns: 1fr; max-width: 560px; }
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .jad-grid { grid-template-columns: 1fr; }
+  .jad-plate { max-width: 520px; }
+  .quotes { grid-template-columns: 1fr; max-width: 640px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 8px; }
+  .devis-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 720px) {
-  body { font-size: 19px; }
-  .site-header { position: static; }
-  .site-header .wrap { flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 18px; padding-bottom: 14px; }
-  .nav { flex-wrap: wrap; gap: 6px 20px; }
-  .nav .nav-cta { display: none; }
-  .hero-aside { grid-column: 1 / -1; }
-  .hero-aside p { font-size: 19px; }
-  .hero-figure img { height: 62vh; min-height: 320px; object-position: 30% 50%; }
-  .hero-caption span + span { display: none; }
-  .section-head .intro { grid-column: 1 / -1; font-size: 20px; }
-  .savoir { grid-template-columns: 1fr; row-gap: 36px; }
-  .dishes { grid-template-columns: 1fr 1fr; }
-  .dish { grid-column: span 1; }
-  .dish.wide, .dish.lead { grid-column: span 2; }
-  .dish.lead img { aspect-ratio: 3 / 2; }
-  .dish figcaption { font-size: 20px; padding-top: 10px; }
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  html { scroll-padding-top: 72px; }
+  .site-header .wrap { min-height: 64px; gap: 14px; }
+  .brand span { font-size: 22px; }
+  .brand img { width: 30px; height: 30px; }
+  .site-header .btn { padding: 11px 16px; font-size: 13px; }
+  .site-header .btn .long { display: none; }
+  .hero-lede { font-size: 17px; }
+  .hero-actions .btn { flex: 1 1 auto; }
+  .proofs { gap: 16px 24px; }
+  .proofs li { flex: 1 1 40%; }
+  .dishes, .dishes.two { grid-template-columns: 1fr 1fr; gap: 36px 16px; }
+  .dish h4 { font-size: 22px; }
+  .dish p { font-size: 14px; }
   .form-row { grid-template-columns: 1fr; }
-  .btn { width: 100%; text-align: center; }
-  .hero-actions .btn { width: auto; }
+  .faq summary { font-size: 21px; }
+}
+@media (max-width: 380px) {
+  .dishes, .dishes.two { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -427,257 +423,293 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 <header class="site-header" id="top">
   <div class="wrap">
-    <a href="#top" class="wordmark">Atelier Najjar</a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#maison">Maison</a>
-      <a href="#creations">Créations</a>
+    <a href="#top" class="brand" aria-label="Atelier Najjar, retour en haut de page">
+      <img src="favicon.png" width="128" height="128" alt="">
+      <span>Atelier Najjar</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#carte">La carte</a>
       <a href="#formules">Formules</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta">Demander un devis</a>
+      <a href="#commander">Commander</a>
+      <a href="#maison">La maison</a>
+      <a href="#faq">Questions</a>
     </nav>
+    <a href="#devis" class="btn btn-or">Devis<span class="long">&nbsp;sous 24 h</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav"><span aria-hidden="true"></span>Menu</button>
   </div>
 </header>
 
 <main id="contenu">
 
-  <!-- 1. Hero -->
-  <section class="hero" aria-labelledby="accroche">
-    <div class="wrap hero-text">
-      <h1 id="accroche">La cuisine libanaise, avec l'exigence d'une grande maison.</h1>
-      <div class="hero-aside">
-        <p>Plateaux et buffets préparés à la commande et livrés dressés, de 10 à 100 personnes, à Paris et en Île-de-France.</p>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="titre">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="titre">Le meilleur du Liban, à la table de vos équipes.</h1>
+        <p class="hero-lede">Mezzés, salades et bouchées faits maison, livrés dressés et prêts à servir. Pour vos déjeuners, réunions et showrooms, de 10 à 100 personnes, à Paris et en Île-de-France.</p>
         <div class="hero-actions">
-          <a class="btn" href="#contact">Demander un devis</a>
-          <a class="link" href="#creations">Voir les créations</a>
+          <a href="#devis" class="btn btn-or">Demander un devis</a>
+          <a href="#carte" class="btn btn-ghost">Découvrir la carte</a>
         </div>
+        <ul class="proofs">
+          <li><strong>Traiteur officiel d'Hermès</strong>pour leurs rendez-vous internes</li>
+          <li><strong>Plus de 10 ans</strong>dans la restauration à Paris</li>
+          <li><strong>Devis sous 24 h</strong>avec un interlocuteur unique</li>
+        </ul>
+      </div>
+      <div class="hero-plates" aria-hidden="true">
+        <img class="hp-2" src="img/plats/labne-520.webp" width="520" height="306" alt="" decoding="async">
+        <img class="hp-1" src="img/plats/hommos-900.webp" width="900" height="530" alt="" fetchpriority="high" decoding="async">
+        <img class="hp-3" src="img/plats/taboule-520.webp" width="520" height="311" alt="" decoding="async">
       </div>
     </div>
-    <figure class="hero-figure">
-      <picture>
-        <source type="image/webp"
-                srcset="img/hero-atelier-najjar-768.webp 768w, img/hero-atelier-najjar-1280.webp 1280w, img/hero-atelier-najjar-1920.webp 1920w"
-                sizes="100vw">
-        <img src="hero-atelier-najjar.jpeg" width="1536" height="1024" fetchpriority="high" decoding="async"
-             alt="Hoummous à la grenade, mtabal, kebbé et feuilles de vigne dressés sur des plats d'étain, sur marbre clair">
-      </picture>
-      <figcaption class="wrap hero-caption label">
-        <span>Hoummous à la grenade, mtabal, kebbé et feuilles de vigne</span>
-        <span>Préparés et dressés dans notre cuisine parisienne</span>
-      </figcaption>
-    </figure>
   </section>
 
-  <!-- 2. La Maison -->
-  <section class="section" id="maison" aria-labelledby="maison-titre">
+  <!-- La carte -->
+  <section class="section carte" id="carte" aria-labelledby="carte-titre">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="maison-titre">La Maison</h2>
+        <p class="kicker">Préparé à la commande dans notre cuisine</p>
+        <h2 class="section-title" id="carte-titre">La carte</h2>
+        <p class="section-lede">Des recettes libanaises de tradition, généreuses et colorées, dressées sur plats et prêtes à poser sur table. Voici nos incontournables.</p>
       </div>
 
-      <div class="maison-body">
-        <div class="maison-story">
-          <p class="lead">Atelier Najjar prépare une cuisine libanaise de tradition pour les tables où chaque détail compte.</p>
-          <p>Derrière l'Atelier, plus de dix ans d'expérience dans la restauration à Paris, et la confiance d'Hermès, dont nous sommes le traiteur officiel. Nous connaissons les attentes des maisons : la ponctualité, la discrétion, et une présentation irréprochable, du premier plateau au dernier.</p>
-          <p>Les recettes sont celles du Liban, celles qu'on transmet en famille. Nous les travaillons avec des produits choisis et les préparons pour chaque commande, sans compromis sur les ingrédients ni raccourci dans les préparations.</p>
+      <div class="cat">
+        <div class="cat-head">
+          <h3>Mezzés</h3>
+          <p>Les classiques à partager, servis froids.</p>
         </div>
-
-        <dl class="maison-facts">
-          <div>
-            <dt>Plus de 10 ans</dt>
-            <dd class="label">d'expérience dans la restauration à Paris</dd>
-          </div>
-          <div>
-            <dt>Traiteur officiel d'Hermès</dt>
-            <dd class="label">déjeuners, showrooms et rendez-vous internes</dd>
-          </div>
-          <div>
-            <dt>De 10 à 100 personnes</dt>
-            <dd class="label">livraison à Paris et en Île-de-France</dd>
-          </div>
-        </dl>
+        <div class="dishes">
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/hommos-520.webp" srcset="img/plats/hommos-520.webp 520w, img/plats/hommos-900.webp 900w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="306" loading="lazy" decoding="async" alt="Hoummous à la grenade dressé sur un plat d'étain"></div>
+            <h4>Hoummous à la grenade</h4>
+            <p>Pois chiches, tahiné et citron, grains de grenade, huile d'olive.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/labne-520.webp" srcset="img/plats/labne-520.webp 520w, img/plats/labne-900.webp 900w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="306" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistache et menthe"></div>
+            <h4>Labné aux agrumes</h4>
+            <p>Fromage frais égoutté, zestes d'agrumes, pistache et menthe.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/mtabal-520.webp" srcset="img/plats/mtabal-520.webp 520w, img/plats/mtabal-900.webp 900w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="303" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé décoré de fleurs comestibles"></div>
+            <h4>Caviar d'aubergine fumé</h4>
+            <p>Aubergine grillée au feu, tahiné, fleurs comestibles.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+        </div>
       </div>
 
-      <div class="savoir">
-        <div>
-          <h3>Préparé à la commande</h3>
-          <p>Chaque mezzé et chaque bouchée sont réalisés pour votre commande, entièrement faits maison.</p>
+      <div class="cat">
+        <div class="cat-head">
+          <h3>Salades</h3>
+          <p>Fraîches, croquantes, pleines d'herbes.</p>
         </div>
-        <div>
-          <h3>Dressé avec soin</h3>
-          <p>Les plateaux arrivent garnis et dressés, prêts à être posés sur table, sans autre manipulation.</p>
+        <div class="dishes two">
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/taboule-520.webp" srcset="img/plats/taboule-520.webp 520w, img/plats/taboule-900.webp 900w" sizes="(max-width: 640px) 45vw, 38vw" width="520" height="311" loading="lazy" decoding="async" alt="Taboulé au persil, tomate et grenade"></div>
+            <h4>Taboulé citronné</h4>
+            <p>Persil plat, boulgour fin, tomate, citron et grenade.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/salade-levantine-520.webp" srcset="img/plats/salade-levantine-520.webp 520w, img/plats/salade-levantine-900.webp 900w" sizes="(max-width: 640px) 45vw, 38vw" width="520" height="271" loading="lazy" decoding="async" alt="Salade levantine aux agrumes, grenade et herbes fraîches"></div>
+            <h4>Salade levantine</h4>
+            <p>Herbes fraîches, agrumes, concombre, tomate et grenade.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
         </div>
-        <div>
-          <h3>Livré à l'heure</h3>
-          <p>Nous livrons au créneau convenu, à Paris et en Île-de-France, avec un interlocuteur unique du devis à la livraison.</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head">
+          <h3>Bouchées</h3>
+          <p>Les pièces chaudes et croustillantes, à prendre à la main.</p>
         </div>
+        <div class="dishes">
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/falafel-520.webp" srcset="img/plats/falafel-520.webp 520w, img/plats/falafel-900.webp 900w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="248" loading="lazy" decoding="async" alt="Falafels dorés et leur sauce tahiné"></div>
+            <h4>Falafels</h4>
+            <p>Pois chiches et fèves, herbes et épices, sauce tahiné.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/feuilles-de-vigne-520.webp" srcset="img/plats/feuilles-de-vigne-520.webp 520w, img/plats/feuilles-de-vigne-900.webp 900w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="263" loading="lazy" decoding="async" alt="Feuilles de vigne farcies dressées en rang"></div>
+            <h4>Feuilles de vigne</h4>
+            <p>Roulées à la main, farcies au riz, aux herbes et au citron.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/kebbe-520.webp" srcset="img/plats/kebbe-520.webp 520w, img/plats/kebbe-900.webp 811w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="255" loading="lazy" decoding="async" alt="Kebbé dorés"></div>
+            <h4>Kebbé</h4>
+            <p>Boulgour et viande, farce aux oignons et pignons de pin.</p>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/samboussek-fromage-520.webp" srcset="img/plats/samboussek-fromage-520.webp 520w, img/plats/samboussek-fromage-900.webp 865w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="274" loading="lazy" decoding="async" alt="Samboussek au fromage, chaussons dorés"></div>
+            <h4>Samboussek au fromage</h4>
+            <p>Chaussons dorés, fromage fondant et herbes.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+          <figure class="dish">
+            <div class="dish-img"><img src="img/plats/fatayer-epinards-520.webp" srcset="img/plats/fatayer-epinards-520.webp 520w, img/plats/fatayer-epinards-900.webp 866w" sizes="(max-width: 640px) 45vw, 26vw" width="520" height="322" loading="lazy" decoding="async" alt="Fatayer aux épinards, chaussons triangulaires"></div>
+            <h4>Fatayer aux épinards</h4>
+            <p>Chaussons aux épinards, oignon, sumac et citron.</p>
+            <span class="tag">Végétarien</span>
+          </figure>
+        </div>
+      </div>
+
+      <div class="carte-more">
+        <p><strong>Et aussi :</strong> crème de feta acidulée, samboussek à la viande, toasts signature et des créations de saison. La carte complète accompagne chaque devis.</p>
+        <a href="#devis" class="btn btn-line">Recevoir la carte complète</a>
       </div>
     </div>
   </section>
 
-  <!-- 3. Les créations -->
-  <section class="section creations" id="creations" aria-labelledby="creations-titre">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="creations-titre">Les créations</h2>
-        <p class="intro">Une sélection de la carte, telle qu'elle arrive chez vous : dressée sur plats, prête à servir.</p>
+  <!-- Pour les entreprises -->
+  <section class="pro" aria-labelledby="pro-titre">
+    <div class="pro-grid">
+      <div class="pro-photo">
+        <picture>
+          <source type="image/webp" srcset="img/hero-atelier-najjar-768.webp 768w, img/hero-atelier-najjar-1280.webp 1280w" sizes="(max-width: 1080px) 100vw, 50vw">
+          <img src="hero-atelier-najjar.jpeg" width="1536" height="1024" loading="lazy" decoding="async" alt="Hoummous à la grenade, mtabal, kebbé et feuilles de vigne dressés sur des plats d'étain">
+        </picture>
       </div>
-
-      <div class="group">
-        <div class="group-title"><h3>Mezzés</h3></div>
-        <div class="dishes">
-          <figure class="dish lead">
-            <picture>
-              <source type="image/webp" srcset="img/hommos-atelier-najjar-480.webp 480w, img/hommos-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 33vw">
-              <img src="hommos-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Hoummous à la grenade dressé sur un plat ovale">
-            </picture>
-            <figcaption>Hoummous à la grenade</figcaption>
-          </figure>
-          <figure class="dish">
-            <picture>
-              <source type="image/webp" srcset="img/labne-atelier-najjar-480.webp 480w, img/labne-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 50vw, 33vw">
-              <img src="labne-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistache et menthe">
-            </picture>
-            <figcaption>Labné aux zestes d'agrumes</figcaption>
-          </figure>
-          <figure class="dish">
-            <picture>
-              <source type="image/webp" srcset="img/mtabal-atelier-najjar-480.webp 480w, img/mtabal-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 50vw, 33vw">
-              <img src="mtabal-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé décoré de fleurs comestibles">
-            </picture>
-            <figcaption>Caviar d'aubergine fumé</figcaption>
-          </figure>
-        </div>
+      <div class="pro-body">
+        <p class="kicker">Pensé pour les entreprises</p>
+        <h2 class="section-title" id="pro-titre">Vous recevez, on s'occupe du reste.</h2>
+        <ul class="pro-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            <div><h3>Livré dressé, prêt à servir</h3><p>Les plats arrivent garnis et présentés. Il suffit de les poser sur table.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            <div><h3>À l'heure, à chaque fois</h3><p>Livraison au créneau convenu, à Paris et dans toute l'Île-de-France.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            <div><h3>Un seul interlocuteur</h3><p>Jad suit votre commande du devis à la livraison, et s'adapte à vos contraintes.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+            <div><h3>Tout le monde y trouve son compte</h3><p>Une large part de la carte est végétarienne, et nous adaptons la composition aux allergies.</p></div>
+          </li>
+        </ul>
       </div>
-
-      <div class="group">
-        <div class="group-title"><h3>Salades</h3></div>
-        <div class="dishes">
-          <figure class="dish wide">
-            <picture>
-              <source type="image/webp" srcset="img/taboule-atelier-najjar-480.webp 480w, img/taboule-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 50vw">
-              <img src="taboule-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Taboulé au persil, tomate et grenade">
-            </picture>
-            <figcaption>Taboulé citronné</figcaption>
-          </figure>
-          <figure class="dish wide">
-            <picture>
-              <source type="image/webp" srcset="img/salade-levantine-atelier-najjar-480.webp 480w, img/salade-levantine-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 50vw">
-              <img src="salade-levantine-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Salade levantine aux agrumes, grenade et herbes fraîches">
-            </picture>
-            <figcaption>Salade levantine</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="group">
-        <div class="group-title"><h3>Bouchées</h3></div>
-        <div class="dishes">
-          <figure class="dish lead">
-            <picture>
-              <source type="image/webp" srcset="img/falafel-atelier-najjar-480.webp 480w, img/falafel-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 33vw">
-              <img src="falafel-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Falafels servis avec une sauce tahiné">
-            </picture>
-            <figcaption>Falafels</figcaption>
-          </figure>
-          <figure class="dish">
-            <picture>
-              <source type="image/webp" srcset="img/feuilles-de-vigne-atelier-najjar-480.webp 480w, img/feuilles-de-vigne-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 50vw, 33vw">
-              <img src="feuilles-de-vigne-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Feuilles de vigne farcies, dressées en rang">
-            </picture>
-            <figcaption>Feuilles de vigne</figcaption>
-          </figure>
-          <figure class="dish">
-            <picture>
-              <source type="image/webp" srcset="img/kebbe-atelier-najjar-480.webp 480w, img/kebbe-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 50vw, 33vw">
-              <img src="kebbe-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Kebbé dorés alignés sur un plat d'étain">
-            </picture>
-            <figcaption>Kebbé</figcaption>
-          </figure>
-          <figure class="dish wide">
-            <picture>
-              <source type="image/webp" srcset="img/samboussek-fromage-atelier-najjar-480.webp 480w, img/samboussek-fromage-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 50vw">
-              <img src="samboussek-fromage-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Samboussek au fromage, chaussons dorés">
-            </picture>
-            <figcaption>Samboussek au fromage</figcaption>
-          </figure>
-          <figure class="dish wide">
-            <picture>
-              <source type="image/webp" srcset="img/fatayer-epinards-atelier-najjar-480.webp 480w, img/fatayer-epinards-atelier-najjar-800.webp 800w" sizes="(max-width: 720px) 100vw, 50vw">
-              <img src="fatayer-epinards-atelier-najjar.jpeg" width="1024" height="1024" loading="lazy" decoding="async" alt="Fatayer aux épinards, petits chaussons triangulaires">
-            </picture>
-            <figcaption>Fatayer aux épinards</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <p class="carte-note"><strong>Également à la carte :</strong> crème de feta acidulée, samboussek à la viande, toasts signature et des pièces de saison. La carte complète accompagne chaque devis.</p>
     </div>
   </section>
 
-  <!-- 4. Les formules -->
+  <!-- Formules -->
   <section class="section formules" id="formules" aria-labelledby="formules-titre">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="formules-titre">Les formules</h2>
-        <p class="intro">Trois façons de recevoir l'Atelier, du déjeuner d'équipe au rendez-vous qui compte. Chacune s'ajuste à votre nombre de convives.</p>
+        <p class="kicker">De 10 à 100 personnes</p>
+        <h2 class="section-title" id="formules-titre">Trois formules, selon l'occasion</h2>
+        <p class="section-lede">Chaque formule s'ajuste à votre nombre de convives. Dites-nous laquelle vous tente : nous vous envoyons une proposition détaillée et un devis sous 24 heures.</p>
       </div>
 
       <div class="formules-grid">
         <article class="formule">
           <h3>Essentiel</h3>
-          <p class="pour label">Déjeuners d'équipe et réunions</p>
-          <p class="desc">Les incontournables de la table libanaise, généreux et justes.</p>
+          <p class="ideal">Idéal pour les déjeuners d'équipe et les réunions</p>
           <ul>
             <li>Une sélection de mezzés classiques</li>
-            <li>Salade et bouchées de la maison</li>
-            <li>Plateaux dressés, prêts à servir</li>
+            <li>Une salade de saison</li>
+            <li>Des bouchées de la maison</li>
+            <li>Plats dressés, prêts à servir</li>
           </ul>
+          <a href="#devis" class="btn btn-line" data-formule="Essentiel">Choisir Essentiel</a>
         </article>
-        <article class="formule">
+        <article class="formule featured">
+          <span class="badge">Le meilleur équilibre</span>
           <h3>Signature</h3>
-          <p class="pour label">Déjeuners de direction et showrooms</p>
-          <p class="desc">La carte de l'Atelier, plus large, avec nos créations signature.</p>
+          <p class="ideal">Idéal pour les déjeuners de direction et les showrooms</p>
           <ul>
             <li>Nos mezzés signature, dont le hoummous à la grenade</li>
-            <li>Salades et bouchées variées</li>
+            <li>Deux salades</li>
+            <li>Un large choix de bouchées chaudes</li>
             <li>Dressage soigné sur plats de présentation</li>
           </ul>
+          <a href="#devis" class="btn btn-or" data-formule="Signature">Choisir Signature</a>
         </article>
         <article class="formule">
           <h3>Prestige</h3>
-          <p class="pour label">Lancements et rendez-vous d'exception</p>
-          <p class="desc">Une composition sur mesure, pensée avec vous pour l'occasion.</p>
+          <p class="ideal">Idéal pour les lancements et les rendez-vous importants</p>
           <ul>
-            <li>Menu composé avec Jad selon vos envies</li>
-            <li>Pièces de saison et créations exclusives</li>
-            <li>Buffet complet, livré dressé et prêt à servir</li>
+            <li>Un menu composé sur mesure avec Jad</li>
+            <li>Des créations de saison et exclusives</li>
+            <li>Un buffet complet et généreux</li>
+            <li>Livré dressé, prêt à servir</li>
           </ul>
+          <a href="#devis" class="btn btn-line" data-formule="Prestige">Choisir Prestige</a>
         </article>
       </div>
+      <p class="formules-note">Tarifs sur devis, selon la formule et le nombre de convives. Livraison à Paris et en Île-de-France. Nous livrons des plats prêts à servir et ne proposons pas de service sur place.</p>
+    </div>
+  </section>
 
-      <div class="formules-foot">
-        <p class="conditions">Toutes les formules sont proposées de 10 à 100 personnes et livrées à Paris et en Île-de-France. Les plats arrivent dressés et prêts à être posés sur table ; l'Atelier n'assure pas de service sur place. Tarifs sur devis, selon la formule et le nombre de convives.</p>
-        <a class="btn cta" href="#contact">Demander un devis</a>
+  <!-- Comment commander -->
+  <section class="section" id="commander" aria-labelledby="commander-titre">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Simple et rapide</p>
+        <h2 class="section-title" id="commander-titre">Comment commander</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>Vous nous écrivez</h3>
+          <p>La date, le nombre de personnes et l'occasion : le formulaire prend une minute.</p>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>Nous vous proposons un menu</h3>
+          <p>Vous recevez une proposition et un devis sous 24 heures, ajustables jusqu'à ce qu'ils vous conviennent.</p>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">3</span>
+          <h3>Nous livrons, vous recevez</h3>
+          <p>Le jour J, les plats arrivent à l'heure, dressés et prêts à servir.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Mot du fondateur -->
+  <section class="section jad" id="maison" aria-label="Le mot du fondateur">
+    <div class="wrap jad-grid">
+      <blockquote>
+        <p>« J'ai passé plus de dix ans dans les cuisines parisiennes. Avec l'Atelier, je fais ce que j'aime le plus : une cuisine libanaise généreuse, préparée comme à la maison, et présentée avec le soin qu'exigent les plus belles tables. »</p>
+        <cite>Jad, fondateur d'Atelier Najjar et traiteur officiel d'Hermès</cite>
+      </blockquote>
+      <div class="jad-plate" aria-hidden="true">
+        <img src="img/plats/mtabal-900.webp" width="900" height="524" alt="" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
 
-  <!-- 5. Témoignages -->
-  <section class="section temoignages" id="temoignages" aria-labelledby="temoignages-titre">
+  <!-- Témoignages -->
+  <section class="section" id="avis" aria-labelledby="avis-titre">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="temoignages-titre">Ce qu'en disent nos clients</h2>
+        <p class="kicker">Ils nous font confiance</p>
+        <h2 class="section-title" id="avis-titre">Ce qu'en disent nos clients</h2>
       </div>
       <div class="quotes">
         <figure class="quote">
+          <span class="quote-mark" aria-hidden="true">“</span>
           <blockquote><p>Une table libanaise d'un niveau que je n'avais jamais rencontré à Paris. Nos convives en parlent encore, plusieurs semaines après l'événement.</p></blockquote>
           <figcaption>Coordinatrice événements, maison de mode, Paris</figcaption>
         </figure>
         <figure class="quote">
+          <span class="quote-mark" aria-hidden="true">“</span>
           <blockquote><p>Professionnel, ponctuel, d'une précision remarquable dans la présentation. L'Atelier a su répondre à nos contraintes avec une facilité déconcertante.</p></blockquote>
           <figcaption>Responsable affaires générales, groupe luxe parisien</figcaption>
         </figure>
         <figure class="quote">
+          <span class="quote-mark" aria-hidden="true">“</span>
           <blockquote><p>Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L'Atelier Najjar offre exactement cela : une signature, une identité, une excellence.</p></blockquote>
           <figcaption>Directrice de cabinet, Paris 8<sup>e</sup></figcaption>
         </figure>
@@ -685,57 +717,64 @@ ul { margin: 0; padding: 0; list-style: none; }
     </div>
   </section>
 
-  <!-- 6. Contact -->
-  <section class="section" id="contact" aria-labelledby="contact-titre">
-    <div class="wrap contact-grid">
-      <div class="contact-info">
-        <h2 id="contact-titre">Contact</h2>
-        <p>Indiquez-nous la date, le nombre de personnes et l'occasion : nous revenons vers vous sous 24 heures avec une proposition et un devis.</p>
-        <dl>
-          <div>
-            <dt class="label">Écrire directement à Jad</dt>
-            <dd><a href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a></dd>
-          </div>
-          <div>
-            <dt class="label">Livraison</dt>
-            <dd>Paris et Île-de-France</dd>
-          </div>
-          <div>
-            <dt class="label">Format</dt>
-            <dd>Plateaux et buffets, de 10 à 100 personnes</dd>
-          </div>
+  <!-- FAQ -->
+  <section class="section faq" id="faq" aria-labelledby="faq-titre">
+    <div class="wrap faq-grid">
+      <div>
+        <h2 class="section-title" id="faq-titre">Questions fréquentes</h2>
+      </div>
+      <div>
+        <details>
+          <summary>Combien de temps à l'avance faut-il commander ?</summary>
+          <p>Idéalement une semaine avant la date. Pour une demande plus urgente, écrivez-nous quand même : nous faisons tout notre possible.</p>
+        </details>
+        <details>
+          <summary>Pour combien de personnes livrez-vous ?</summary>
+          <p>De 10 à 100 personnes. Au-delà, contactez-nous pour en parler.</p>
+        </details>
+        <details>
+          <summary>Où livrez-vous ?</summary>
+          <p>À Paris et dans toute l'Île-de-France, au créneau convenu ensemble. Les frais de livraison sont indiqués dans le devis.</p>
+        </details>
+        <details>
+          <summary>Proposez-vous un service sur place ?</summary>
+          <p>Non. Nous livrons des plats dressés, prêts à être posés sur table et servis par vos équipes. C'est ce qui nous permet de rester simples, souples et ponctuels.</p>
+        </details>
+        <details>
+          <summary>Pouvez-vous adapter le menu aux régimes et aux allergies ?</summary>
+          <p>Oui. Une grande partie de la carte est végétarienne. Indiquez-nous les allergies et régimes particuliers dans votre demande, nous adaptons la composition.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Devis -->
+  <section class="section devis" id="devis" aria-labelledby="devis-titre">
+    <div class="wrap devis-grid">
+      <div>
+        <h2 class="section-title" id="devis-titre">Demandez votre devis</h2>
+        <p class="section-lede">Quelques informations suffisent. Nous revenons vers vous sous 24 heures avec une proposition de menu et un devis détaillé.</p>
+        <dl class="devis-contact">
+          <div><dt>Écrire directement à Jad</dt><dd><a href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a></dd></div>
+          <div><dt>Livraison</dt><dd>Paris et Île-de-France</dd></div>
+          <div><dt>Format</dt><dd>De 10 à 100 personnes</dd></div>
         </dl>
       </div>
 
-      <form class="form" id="devis" action="https://formspree.io/f/xgopnnyq" method="POST">
+      <form class="form" id="devis-form" action="https://formspree.io/f/xgopnnyq" method="POST">
         <input type="hidden" name="_subject" value="Demande de devis · ateliernajjar.fr">
         <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
         <div class="form-row">
-          <div class="field">
-            <label for="f-nom">Nom</label>
-            <input id="f-nom" type="text" name="nom" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="f-societe">Société <span class="opt">(facultatif)</span></label>
-            <input id="f-societe" type="text" name="societe" autocomplete="organization">
-          </div>
+          <div class="field"><label for="f-nom">Nom et prénom</label><input id="f-nom" type="text" name="nom" autocomplete="name" required></div>
+          <div class="field"><label for="f-societe">Société</label><input id="f-societe" type="text" name="societe" autocomplete="organization"></div>
         </div>
         <div class="form-row">
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" type="email" name="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label>
-            <input id="f-tel" type="tel" name="telephone" autocomplete="tel">
-          </div>
+          <div class="field"><label for="f-email">Email professionnel</label><input id="f-email" type="email" name="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label><input id="f-tel" type="tel" name="telephone" autocomplete="tel"></div>
         </div>
         <div class="form-row">
-          <div class="field">
-            <label for="f-date">Date souhaitée</label>
-            <input id="f-date" type="date" name="date">
-          </div>
+          <div class="field"><label for="f-date">Date de livraison</label><input id="f-date" type="date" name="date"></div>
           <div class="field">
             <label for="f-pers">Nombre de personnes</label>
             <select id="f-pers" name="personnes">
@@ -748,13 +787,21 @@ ul { margin: 0; padding: 0; list-style: none; }
           </div>
         </div>
         <div class="field">
-          <label for="f-message">Votre demande</label>
-          <textarea id="f-message" name="message" placeholder="Occasion, horaire de livraison, formule envisagée, régimes particuliers…"></textarea>
+          <label for="f-formule">Formule</label>
+          <select id="f-formule" name="formule">
+            <option value="">Je ne sais pas encore</option>
+            <option>Essentiel</option>
+            <option>Signature</option>
+            <option>Prestige</option>
+          </select>
         </div>
-        <div class="form-foot">
-          <button type="submit" class="btn">Envoyer la demande</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <div class="field">
+          <label for="f-message">Votre demande <span class="opt">(facultatif)</span></label>
+          <textarea id="f-message" name="message" placeholder="Occasion, horaire de livraison, allergies…"></textarea>
         </div>
+        <button type="submit" class="btn btn-bordeaux">Envoyer ma demande</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p class="form-fine">Vos informations servent uniquement à répondre à votre demande.</p>
       </form>
     </div>
   </section>
@@ -763,10 +810,22 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 <footer class="site-footer">
   <div class="wrap">
-    <a href="#top" class="wordmark">Atelier Najjar</a>
-    <span class="label">Traiteur libanais, Paris et Île-de-France</span>
-    <span class="label"><a href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a></span>
-    <span class="label">© 2026 Atelier Najjar</span>
+    <div class="footer-top">
+      <a href="#top" class="brand"><img src="favicon.png" width="128" height="128" alt=""><span>Atelier Najjar</span></a>
+      <nav class="footer-links" aria-label="Pied de page">
+        <a href="#carte">La carte</a>
+        <a href="#formules">Formules</a>
+        <a href="#commander">Commander</a>
+        <a href="#faq">Questions</a>
+        <a href="#devis">Devis</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>Traiteur libanais pour entreprises, Paris et Île-de-France</span>
+      <a href="mailto:jad@ateliernajjar.fr">jad@ateliernajjar.fr</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <span>© 2026 Atelier Najjar</span>
+    </div>
   </div>
 </footer>
 
@@ -777,9 +836,27 @@ ul { margin: 0; padding: 0; list-style: none; }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  var form = document.getElementById('devis');
+  // Mobile menu
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Formule buttons pre-fill the quote form
+  var select = document.getElementById('f-formule');
+  document.querySelectorAll('[data-formule]').forEach(function (a) {
+    a.addEventListener('click', function () { select.value = a.getAttribute('data-formule'); });
+  });
+
+  // Quote form
+  var form = document.getElementById('devis-form');
   var status = document.getElementById('form-status');
-  if (!form || !window.fetch) return;
+  if (!window.fetch) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = form.querySelector('button[type="submit"]');
