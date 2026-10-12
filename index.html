@@ -283,6 +283,14 @@ footer .foot-bottom::before { content: ''; position: absolute; top: 0; left: var
 footer a:hover { color: var(--bordeaux); }
 
 @media (max-width: 900px) {
+  /* Mobile : les photos remontent juste sous l'accroche, avant les trois engagements */
+  main { display: flex; flex-direction: column; }
+  main > * { order: 3; }
+  .hero { display: contents; }
+  .hero-tete { order: 0; padding-top: 40px; padding-bottom: 32px; }
+  main > .bandeau { order: 1; }
+  .hero-faits { order: 2; padding-bottom: 8px; }
+  .hero-faits .faits { margin-top: 8px; border-top: 0; }
   nav a:not(:last-child) { display: none; }
   .hero-bottom p, .hero-bottom .cta { grid-column: 1 / -1; justify-self: start; }
   .hero-bottom .cta { margin-top: 24px; }
@@ -324,14 +332,14 @@ footer a:hover { color: var(--bordeaux); }
 
 <main id="contenu">
   <section class="hero" aria-labelledby="titre">
-    <div class="wrap">
+    <div class="wrap hero-tete">
       <div class="grid"><h1 id="titre">L’art de recevoir à la libanaise.</h1></div>
       <div class="grid hero-bottom">
         <p>Mezzés, salades et bouchées préparés pour chaque commande et livrés dressés, prêts à servir. Au bureau comme à la maison, pour vos réunions, réceptions et fêtes de famille, dès 8 convives, à Paris et en <span class="nw">Île-de-France</span>.</p>
         <a class="cta" href="#contact">Demander une proposition</a>
       </div>
     </div>
-    <div class="wrap">
+    <div class="wrap hero-faits">
       <ul class="grid faits">
         <li><strong>Une cuisine de famille</strong>des recettes libanaises transmises de génération en génération</li>
         <li><strong>Une présentation soignée</strong>des plats dressés dans notre vaisselle en inox, prêts à servir</li>
@@ -341,9 +349,9 @@ footer a:hover { color: var(--bordeaux); }
   </section>
 
   <div class="bandeau" aria-hidden="true">
-    <img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
-    <img src="photos/taboule-700.webp" srcset="photos/taboule-700.webp 700w, photos/taboule-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
-    <img src="photos/kebbe-700.webp" srcset="photos/kebbe-700.webp 700w, photos/kebbe-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" loading="lazy" decoding="async" alt="">
+    <img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" decoding="async" alt="">
+    <img src="photos/taboule-700.webp" srcset="photos/taboule-700.webp 700w, photos/taboule-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" decoding="async" alt="">
+    <img src="photos/kebbe-700.webp" srcset="photos/kebbe-700.webp 700w, photos/kebbe-1200.webp 1200w" sizes="(max-width: 900px) 34vw, 34vw" width="700" height="700" decoding="async" alt="">
   </div>
 
   <section class="section maison" id="maison" aria-label="La Maison">
