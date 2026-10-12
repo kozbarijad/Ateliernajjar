@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier Najjar · Traiteur libanais à Paris</title>
-<meta name="description" content="Traiteur libanais à Paris : mezzés, salades et bouchées préparés pour chaque commande et livrés dressés, prêts à servir, pour les entreprises comme pour les particuliers. De 10 à 100 convives, Paris et Île-de-France.">
+<meta name="description" content="Traiteur libanais à Paris : mezzés, salades et bouchées préparés pour chaque commande et livrés dressés, prêts à servir, pour les entreprises comme pour les particuliers. De 8 à 100 convives, Paris et Île-de-France.">
 <link rel="canonical" href="https://ateliernajjar.fr/">
 <meta name="theme-color" content="#FBF8F3">
 
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Atelier Najjar">
 <meta property="og:title" content="Atelier Najjar · L’art de recevoir à la libanaise">
-<meta property="og:description" content="Plateaux et buffets libanais livrés prêts à servir, au bureau comme à la maison. De 10 à 100 convives, à Paris et en Île-de-France.">
+<meta property="og:description" content="Plateaux et buffets libanais livrés prêts à servir, au bureau comme à la maison. De 8 à 100 convives, à Paris et en Île-de-France.">
 <meta property="og:url" content="https://ateliernajjar.fr/">
 <meta property="og:image" content="https://ateliernajjar.fr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "FoodEstablishment",
   "name": "Atelier Najjar",
-  "description": "Traiteur libanais : plateaux et buffets livrés prêts à servir, de 10 à 100 personnes, à Paris et en Île-de-France.",
+  "description": "Traiteur libanais : plateaux et buffets livrés prêts à servir, de 8 à 100 personnes, à Paris et en Île-de-France.",
   "url": "https://ateliernajjar.fr/",
   "logo": "https://ateliernajjar.fr/favicon.png",
   "image": "https://ateliernajjar.fr/og-image.png",
@@ -39,6 +39,78 @@
   "servesCuisine": "Libanaise",
   "areaServed": ["Paris", "Île-de-France"],
   "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quel délai pour commander ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Au moins 72 heures avant la date de livraison. Pour une grande réception, écrivez-nous une à deux semaines à l’avance : nous aurons plus de latitude pour composer le menu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pour combien de convives ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De 8 à 100 convives. Au-delà, contactez-nous : nous étudierons la demande."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où livrez-vous ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "À Paris et dans toute l’Île-de-France, au bureau comme à domicile. Les frais de livraison sont précisés dans le devis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment les plats sont-ils présentés ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dressés dans nos assiettes et sur nos plateaux en inox, prêts à être posés sur table. La vaisselle est récupérée par nos soins après la réception, à l’heure convenue ensemble."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Assurez-vous le service sur place ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. L’Atelier livre des plats prêts à servir : il suffit de les poser sur table, sans personnel à prévoir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Proposez-vous des plats végétariens ou sans gluten ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Toute la carte est végétarienne, à l’exception du kebbé et du samboussek à la viande. Plusieurs plats sont sans gluten, comme le hommos, les labnés, le caviar d’aubergine, la salade levantine ou les feuilles de vigne : signalez-le dans votre demande et nous adaptons le menu. Notre cuisine travaille aussi des produits contenant du gluten ; nous ne pouvons donc pas exclure la présence de traces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Et pour les allergies ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La liste des allergènes accompagne chaque proposition. Indiquez-nous toute allergie dès votre demande."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment se passent le paiement et l’annulation ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un acompte est demandé à la validation du devis, le solde est réglé par virement. Toute annulation doit nous parvenir au moins 48 heures avant la livraison ; passé ce délai, aucun remboursement n’est possible."
+      }
+    }
+  ]
 }
 </script>
 
@@ -127,6 +199,24 @@ nav a:hover { color: var(--bordeaux); }
 .formules-note { margin-top: 32px; font-size: 14px; color: var(--gris); max-width: 44em; }
 
 
+.plat-note .veg { font-size: 13px; color: var(--gris); margin-top: -8px; }
+
+.etapes { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--filet); counter-reset: none; }
+.etapes li { padding: 32px 28px 8px; border-left: 1px solid var(--filet); }
+.etapes li:first-child { border-left: 0; padding-left: 0; }
+.etapes .num { display: block; font: 400 15px var(--serif); letter-spacing: .1em; color: var(--bordeaux); margin-bottom: 18px; }
+.etapes h3 { font-size: clamp(26px, 2.4vw, 34px); margin-bottom: 14px; }
+.etapes p { font-size: 16px; color: var(--gris); max-width: 22em; }
+
+.faq { max-width: 860px; border-top: 1px solid var(--filet); }
+.faq details { border-bottom: 1px solid var(--filet); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 22px 0; font: 400 clamp(19px, 1.7vw, 23px)/1.3 var(--serif); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font: 300 22px/1 var(--sans); color: var(--bordeaux); transition: transform .25s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--bordeaux); }
+.faq details p { font-size: 16px; color: var(--gris); max-width: 40em; margin: -6px 0 0; padding-bottom: 24px; }
+
 .avis { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--filet); }
 .avis li { padding: 32px 28px 8px; border-left: 1px solid var(--filet); display: flex; flex-direction: column; }
 .avis li:first-child { border-left: 0; padding-left: 0; }
@@ -206,7 +296,8 @@ footer a:hover { color: var(--bordeaux); }
   .plat h4 { font-size: 20px; }
   .formules-cols { grid-template-columns: 1fr; }
   .formule, .formule:first-child { border-left: 0; padding: 28px 0; border-bottom: 1px solid var(--filet); }
-  .avis { grid-template-columns: 1fr; }
+  .avis, .etapes { grid-template-columns: 1fr; }
+  .etapes li, .etapes li:first-child { border-left: 0; padding: 28px 0; border-bottom: 1px solid var(--filet); }
   .avis li, .avis li:first-child { border-left: 0; padding: 28px 0; border-bottom: 1px solid var(--filet); }
     form .duo { grid-template-columns: 1fr; gap: 0; }
   .contact .direct { font-size: 15px; }
@@ -224,6 +315,7 @@ footer a:hover { color: var(--bordeaux); }
       <a href="#maison">La Maison</a>
       <a href="#carte">La carte</a>
       <a href="#formules">Formules</a>
+      <a href="#questions">Questions</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -234,14 +326,14 @@ footer a:hover { color: var(--bordeaux); }
     <div class="wrap">
       <div class="grid"><h1 id="titre">L’art de recevoir à la libanaise.</h1></div>
       <div class="grid hero-bottom">
-        <p>Mezzés, salades et bouchées préparés pour chaque commande et livrés dressés, prêts à servir. Au bureau comme à la maison, pour vos réunions, réceptions et fêtes de famille, de 10 à 100 convives, à Paris et en Île-de-France.</p>
+        <p>Mezzés, salades et bouchées préparés pour chaque commande et livrés dressés, prêts à servir. Au bureau comme à la maison, pour vos réunions, réceptions et fêtes de famille, de 8 à 100 convives, à Paris et en Île-de-France.</p>
         <a class="cta" href="#contact">Demander une proposition</a>
       </div>
     </div>
     <div class="wrap">
       <ul class="grid faits">
-        <li><strong>Une cuisine de famille</strong>des recettes libanaises transmises, préparées dans notre cuisine parisienne</li>
-        <li><strong>Une présentation soignée</strong>des plats dressés, prêts à poser sur table, sans service à prévoir</li>
+        <li><strong>Une cuisine de famille</strong>des recettes libanaises transmises, retravaillées dans notre cuisine parisienne</li>
+        <li><strong>Une présentation soignée</strong>dressée dans notre vaisselle en inox, prête à poser sur table</li>
         <li><strong>Une livraison ponctuelle</strong>au bureau ou à domicile, à Paris et en Île-de-France</li>
       </ul>
     </div>
@@ -259,8 +351,8 @@ footer a:hover { color: var(--bordeaux); }
       <div class="content">
         <p class="big">L’Atelier prépare les recettes du Liban avec l’exigence qu’on réserve aux grandes tables, et les livre avec le soin qu’on attend d’une maison.</p>
         <div class="cols">
-          <p>Derrière l’Atelier, plus de dix ans dans la restauration parisienne. Entreprises, maisons de mode ou particuliers, nous savons ce que réussir une réception exige : ponctualité, présentation irréprochable, aucun imprévu.</p>
-          <p>Chaque commande est préparée pour vous, à partir de produits choisis. Les plats arrivent dressés, prêts à être posés sur table. Un seul interlocuteur, Jad, suit votre demande du premier échange à la livraison.</p>
+          <p>L’Atelier est né d’une famille libanaise de restaurateurs parisiens. Les recettes sont celles de la maison, transmises puis retravaillées avec un regard de restaurateur : des saveurs franches, une présentation nette, rien de superflu.</p>
+          <p>Chaque commande est préparée pour vous, à partir de produits choisis, puis livrée dressée dans notre vaisselle en inox, prête à être posée sur table. Entreprises comme particuliers, nous vous accompagnons du premier échange à la livraison, pour une réception sans fausse note.</p>
         </div>
       </div>
     </div>
@@ -271,7 +363,7 @@ footer a:hover { color: var(--bordeaux); }
       <h2 class="label">La carte</h2>
       <div class="content">
         <div class="plats">
-          <figure class="plat"><img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Hoummous à la grenade et huile d'olive"><span class="tag">Mezzé</span><h4>Hoummous à la grenade</h4><p>Tahiné, citron, grains de grenade</p></figure>
+          <figure class="plat"><img src="photos/hoummous-700.webp" srcset="photos/hoummous-700.webp 700w, photos/hoummous-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Hommos à la grenade et huile d'olive"><span class="tag">Mezzé</span><h4>Hommos à la grenade</h4><p>Tahiné, citron, grains de grenade</p></figure>
           <figure class="plat"><img src="photos/labne-700.webp" srcset="photos/labne-700.webp 700w, photos/labne-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné aux zestes d'agrumes, pistaches et menthe"><span class="tag">Mezzé</span><h4>Labné aux agrumes</h4><p>Zestes d’agrumes, pistache, menthe</p></figure>
           <figure class="plat"><img src="photos/caviar-aubergine-700.webp" srcset="photos/caviar-aubergine-700.webp 700w, photos/caviar-aubergine-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Caviar d'aubergine fumé au sumac et huile d'olive"><span class="tag">Mezzé</span><h4>Caviar d’aubergine fumé</h4><p>Aubergine grillée au feu, sumac</p></figure>
           <figure class="plat"><img src="photos/labne-thym-700.webp" srcset="photos/labne-thym-700.webp 700w, photos/labne-thym-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Labné au thym et olives noires, huile d'olive"><span class="tag">Mezzé</span><h4>Labné au thym et olives</h4><p>Thym frais, olives noires, huile d’olive</p></figure>
@@ -285,7 +377,7 @@ footer a:hover { color: var(--bordeaux); }
           <figure class="plat"><img src="photos/samboussek-viande-700.webp" srcset="photos/samboussek-viande-700.webp 700w, photos/samboussek-viande-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Samboussek à la viande et menthe"><span class="tag">Bouchée</span><h4>Samboussek à la viande</h4><p>Viande épicée, menthe fraîche</p></figure>
           <figure class="plat"><img src="photos/sandwich-halloumi-700.webp" srcset="photos/sandwich-halloumi-700.webp 700w, photos/sandwich-halloumi-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Mini-sandwichs au halloumi et aubergines grillées, pickles et sauce tahiné"><span class="tag">Mini-sandwich</span><h4>Halloumi et aubergines grillées</h4><p>Halloumi grillé, aubergine, salade, tahiné</p></figure>
           <figure class="plat"><img src="photos/sandwich-zaatar-700.webp" srcset="photos/sandwich-zaatar-700.webp 700w, photos/sandwich-zaatar-1200.webp 1200w" sizes="(max-width: 900px) 46vw, 22vw" width="700" height="700" loading="lazy" decoding="async" alt="Mini-sandwichs au labné, za'atar, tomate et menthe"><span class="tag">Mini-sandwich</span><h4>Za’atar et labné</h4><p>Labné, za’atar, tomate, menthe</p></figure>
-          <div class="plat-note"><p>Également à la carte : crème de feta acidulée, toasts signature et créations de saison.</p><a class="cta" href="#contact">Recevoir la carte complète</a></div>
+          <div class="plat-note"><p>Également à la carte : crème de feta acidulée, toasts signature et créations de saison.</p><span class="veg">Toute la carte est végétarienne, sauf le kebbé et le samboussek à la viande.</span><a class="cta" href="#contact">Recevoir la carte complète</a></div>
         </div>
       </div>
     </div>
@@ -299,34 +391,62 @@ footer a:hover { color: var(--bordeaux); }
           <div class="formule">
             <h3>Essentiel</h3>
             <p class="pour">Réunions, déjeuners d’équipe, repas en famille</p>
-            <p class="desc">Une sélection de mezzés, une salade et des bouchées de la maison, dressés sur plateaux.</p>
+            <p class="desc">Trois mezzés, une salade et une sélection de bouchées, dressés sur plateaux en inox.</p>
           </div>
           <div class="formule">
             <h3>Signature</h3>
             <p class="pour">Réceptions, anniversaires, déjeuners de direction</p>
-            <p class="desc">La carte élargie : nos mezzés signature, deux salades et un large choix de bouchées.</p>
+            <p class="desc">Cinq mezzés, deux salades, bouchées et mini-sandwichs : la carte dans toute sa générosité.</p>
           </div>
           <div class="formule">
             <h3>Prestige</h3>
             <p class="pour">Grandes occasions, lancements, fêtes privées</p>
-            <p class="desc">Un menu composé sur mesure avec Jad, des créations de saison, une présentation en buffet.</p>
+            <p class="desc">Un menu composé sur mesure, des créations de saison et un buffet dressé, pensé pour votre lieu.</p>
           </div>
         </div>
-        <p class="formules-note">Toutes les formules sont livrées prêtes à servir, de 10 à 100 personnes, à Paris et en Île-de-France. L’Atelier n’assure pas de service sur place. Tarifs sur devis ; la liste des allergènes accompagne chaque proposition.</p>
+        <p class="formules-note">Toutes les formules sont dressées dans notre vaisselle en inox et livrées prêtes à servir, de 8 à 100 convives, à Paris et en Île-de-France. Commande au plus tard 72 h à l’avance. L’Atelier n’assure pas de service sur place. Tarifs sur devis ; la liste des allergènes accompagne chaque proposition.</p>
       </div>
     </div>
   </section>
 
+  <section class="section sable" id="deroule" aria-label="Comment commander">
+    <div class="wrap grid">
+      <h2 class="label">Votre réception, en trois temps</h2>
+      <div class="content">
+        <ol class="etapes">
+          <li><span class="num">01</span><h3>La demande</h3><p>Une date, une adresse, un nombre de convives et l’occasion, par le formulaire ou par email, au moins 72 h à l’avance.</p></li>
+          <li><span class="num">02</span><h3>La proposition</h3><p>Sous 24 h, un menu composé pour vous et un devis détaillé, avec la liste des allergènes. Un acompte confirme la commande.</p></li>
+          <li><span class="num">03</span><h3>La livraison</h3><p>Les plats arrivent dressés dans notre vaisselle en inox, prêts à servir. Nous la récupérons après la réception.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
   <section class="section" id="avis" aria-label="Témoignages">
     <div class="wrap grid">
-      <h2 class="label">Ils nous font confiance</h2>
+      <h2 class="label">Ce qu’en disent nos clients</h2>
       <div class="content">
         <ul class="avis">
           <li><blockquote>« Pour les soixante ans de ma mère, quarante invités à la maison. Tout est arrivé à l’heure, dressé avec soin, et nous avons pu profiter de la soirée. Les saveurs de chez nous. »</blockquote><cite>Réception familiale, Neuilly-sur-Seine</cite></li>
           <li><blockquote>« Professionnel, ponctuel, d’une précision remarquable dans la présentation. L’Atelier a su répondre à nos contraintes avec une facilité déconcertante. »</blockquote><cite>Responsable affaires générales, groupe luxe parisien</cite></li>
           <li><blockquote>« Nous cherchions quelque chose de distinct, loin des traiteurs habituels. L’Atelier Najjar offre exactement cela : une signature, une identité, une excellence. »</blockquote><cite>Directrice de cabinet, Paris 8<sup>e</sup></cite></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="questions" aria-label="Questions fréquentes">
+    <div class="wrap grid">
+      <h2 class="label">Questions fréquentes</h2>
+      <div class="content faq">
+          <details><summary>Quel délai pour commander ?</summary><p>Au moins 72 heures avant la date de livraison. Pour une grande réception, écrivez-nous une à deux semaines à l’avance : nous aurons plus de latitude pour composer le menu.</p></details>
+          <details><summary>Pour combien de convives ?</summary><p>De 8 à 100 convives. Au-delà, contactez-nous : nous étudierons la demande.</p></details>
+          <details><summary>Où livrez-vous ?</summary><p>À Paris et dans toute l’Île-de-France, au bureau comme à domicile. Les frais de livraison sont précisés dans le devis.</p></details>
+          <details><summary>Comment les plats sont-ils présentés ?</summary><p>Dressés dans nos assiettes et sur nos plateaux en inox, prêts à être posés sur table. La vaisselle est récupérée par nos soins après la réception, à l’heure convenue ensemble.</p></details>
+          <details><summary>Assurez-vous le service sur place ?</summary><p>Non. L’Atelier livre des plats prêts à servir : il suffit de les poser sur table, sans personnel à prévoir.</p></details>
+          <details><summary>Proposez-vous des plats végétariens ou sans gluten ?</summary><p>Toute la carte est végétarienne, à l’exception du kebbé et du samboussek à la viande. Plusieurs plats sont sans gluten, comme le hommos, les labnés, le caviar d’aubergine, la salade levantine ou les feuilles de vigne : signalez-le dans votre demande et nous adaptons le menu. Notre cuisine travaille aussi des produits contenant du gluten ; nous ne pouvons donc pas exclure la présence de traces.</p></details>
+          <details><summary>Et pour les allergies ?</summary><p>La liste des allergènes accompagne chaque proposition. Indiquez-nous toute allergie dès votre demande.</p></details>
+          <details><summary>Comment se passent le paiement et l’annulation ?</summary><p>Un acompte est demandé à la validation du devis, le solde est réglé par virement. Toute annulation doit nous parvenir au moins 48 heures avant la livraison ; passé ce délai, aucun remboursement n’est possible.</p></details>
       </div>
     </div>
   </section>
@@ -343,14 +463,18 @@ footer a:hover { color: var(--bordeaux); }
           <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="duo">
             <div class="f"><label for="f-nom">Nom</label><input id="f-nom" name="nom" autocomplete="name" required></div>
+            <div class="f"><label for="f-email">Email</label><input id="f-email" type="email" name="email" autocomplete="email" required></div>
+          </div>
+          <div class="duo">
+            <div class="f"><label for="f-type">Vous êtes</label><select id="f-type" name="type"><option value=""></option><option>Un particulier</option><option>Une entreprise</option></select></div>
             <div class="f"><label for="f-societe">Société <span class="opt">(facultatif)</span></label><input id="f-societe" name="societe" autocomplete="organization"></div>
           </div>
           <div class="duo">
-            <div class="f"><label for="f-email">Email</label><input id="f-email" type="email" name="email" autocomplete="email" required></div>
             <div class="f"><label for="f-date">Date souhaitée</label><input id="f-date" type="date" name="date"></div>
+            <div class="f"><label for="f-cp">Code postal de livraison</label><input id="f-cp" name="code_postal" autocomplete="postal-code" inputmode="numeric" maxlength="5"></div>
           </div>
           <div class="duo">
-            <div class="f"><label for="f-pers">Nombre de personnes</label><select id="f-pers" name="personnes"><option value=""></option><option>10 à 20</option><option>20 à 40</option><option>40 à 60</option><option>60 à 100</option></select></div>
+            <div class="f"><label for="f-pers">Nombre de convives</label><select id="f-pers" name="convives"><option value=""></option><option>8 à 20</option><option>20 à 40</option><option>40 à 60</option><option>60 à 100</option><option>Plus de 100</option></select></div>
             <div class="f"><label for="f-formule">Formule</label><select id="f-formule" name="formule"><option value=""></option><option>Essentiel</option><option>Signature</option><option>Prestige</option><option>Je ne sais pas encore</option></select></div>
           </div>
           <div class="f"><label for="f-message">Votre demande</label><textarea id="f-message" name="message"></textarea></div>
@@ -379,6 +503,9 @@ footer a:hover { color: var(--bordeaux); }
 (function () {
   var h = document.querySelector('header');
   addEventListener('scroll', function () { h.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
+
+  var d = new Date(); d.setDate(d.getDate() + 3);
+  document.getElementById('f-date').min = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
 
   var form = document.getElementById('devis');
   var status = document.getElementById('status');
