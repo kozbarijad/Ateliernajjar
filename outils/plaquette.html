@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>Atelier Najjar · Présentation</title>
+<!-- Source de la plaquette PDF (mail/plaquette-atelier-najjar.pdf), rendue en A4 avec Chromium. -->
+<style>
+@font-face { font-family:'Caslon D'; src:url('../polices/libre-caslon-display.woff2') format('woff2'); }
+@font-face { font-family:'Caslon I'; src:url('../polices/libre-caslon-text-italique.woff2') format('woff2'); font-style:italic; }
+@page { size:A4; margin:0; }
+:root { --ivoire:#FBF8F3; --sable:#ECE3D6; --encre:#2A1E1A; --gris:#6F625A; --bordeaux:#5A1424; --or:#A88A5C; --filet:rgba(168,138,92,.45); }
+* { box-sizing:border-box; }
+html,body { margin:0; }
+body { width:210mm; height:297mm; overflow:hidden; background:var(--ivoire); color:var(--encre); font:9.5pt/1.55 'Helvetica Neue',Helvetica,Arial,sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; position:relative; }
+.p { padding:16mm 18mm 0; }
+header { display:flex; justify-content:space-between; align-items:center; }
+header img { height:12mm; margin-left:-3mm; }
+header span { font-size:7pt; letter-spacing:.24em; text-transform:uppercase; color:var(--bordeaux); }
+h1 { font:400 30pt/1.05 'Caslon D',Georgia,serif; margin:12mm 0 5mm; letter-spacing:-.01em; max-width:13em; text-wrap:balance; }
+.intro { font-size:10.5pt; line-height:1.6; max-width:34em; margin:0; text-wrap:pretty; }
+.photos { display:grid; grid-template-columns:repeat(3,1fr); margin:9mm -18mm 0; background:var(--sable); }
+.photos img { width:100%; aspect-ratio:1.12; object-fit:cover; display:block; }
+.lab { font-size:6.8pt; letter-spacing:.22em; text-transform:uppercase; color:var(--gris); margin:0 0 2mm; }
+.occ { display:grid; grid-template-columns:repeat(4,1fr); gap:5mm; margin-top:9mm; padding-bottom:7mm; border-bottom:1px solid var(--filet); }
+.occ h3 { font:400 12.5pt/1.2 'Caslon D',Georgia,serif; margin:0 0 1.2mm; }
+.occ p { margin:0; font-size:8.3pt; color:var(--gris); line-height:1.45; }
+.form { display:grid; grid-template-columns:repeat(3,1fr); margin-top:6mm; }
+.form div { padding:0 5mm; border-left:1px solid var(--filet); }
+.form div:first-child { padding-left:0; border-left:0; }
+.form h3 { font:400 16pt/1.1 'Caslon D',Georgia,serif; color:var(--bordeaux); margin:0 0 1.5mm; }
+.form p { margin:0; font-size:8.3pt; color:var(--gris); line-height:1.45; }
+.prat { margin-top:7mm; background:var(--sable); padding:5mm 6mm; display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; }
+.prat b { display:block; font:400 11.5pt/1.2 'Caslon D',Georgia,serif; font-weight:400; color:var(--encre); margin-bottom:.8mm; }
+.prat span { font-size:8pt; color:var(--gris); line-height:1.4; display:block; }
+.citation { font:italic 400 11.5pt/1.45 'Caslon I',Georgia,serif; color:var(--bordeaux); margin:7mm 0 0; }
+footer { position:absolute; left:18mm; right:18mm; bottom:11mm; border-top:1px solid var(--filet); padding-top:4mm; display:flex; justify-content:space-between; align-items:baseline; }
+footer .nom { font:400 12pt 'Caslon D',Georgia,serif; }
+footer .nom small { display:block; font:400 6.8pt 'Helvetica Neue',Helvetica,Arial,sans-serif; letter-spacing:.22em; text-transform:uppercase; color:var(--bordeaux); margin-top:1mm; }
+footer .c { text-align:right; font-size:8.5pt; color:var(--gris); line-height:1.6; }
+</style></head>
+<body><div class="p">
+<header><img src="../img/logo.svg" alt="Atelier Najjar"><span>Traiteur libanais · Paris</span></header>
+
+<h1>Une table libanaise à la hauteur de vos maisons.</h1>
+<p class="intro">Mezzés, salades et bouchées préparés pour chaque commande, à partir de recettes de famille retravaillées avec un regard de restaurateur. Livrés dressés dans notre vaisselle en inox, prêts à servir&nbsp;: aucun personnel à prévoir, aucune contrainte pour vos équipes.</p>
+
+<div class="photos">
+  <img src="../photos/hoummous-700.webp" alt=""><img src="../photos/taboule-700.webp" alt=""><img src="../photos/kebbe-700.webp" alt="">
+</div>
+
+<div class="occ">
+  <div><p class="lab">Occasion</p><h3>Showrooms</h3><p>Déjeuners des acheteurs pendant les semaines de défilés, sur plusieurs jours.</p></div>
+  <div><p class="lab">Occasion</p><h3>Journées presse</h3><p>Une table soignée pour recevoir journalistes et influence.</p></div>
+  <div><p class="lab">Occasion</p><h3>Lancements</h3><p>Cocktails dînatoires et buffets pour vos présentations.</p></div>
+  <div><p class="lab">Occasion</p><h3>Vos équipes</h3><p>Déjeuners de studio, réunions, fêtes de fin d’année.</p></div>
+</div>
+
+<div class="form">
+  <div><h3>Essentiel</h3><p>Trois mezzés, une salade et une sélection de bouchées, sur plateaux en inox.</p></div>
+  <div><h3>Signature</h3><p>Cinq mezzés, deux salades, des bouchées et des mini-sandwichs.</p></div>
+  <div><h3>Prestige</h3><p>Un buffet composé sur mesure, avec des créations de saison, pensé pour votre lieu.</p></div>
+</div>
+
+<div class="prat">
+  <div><b>Dès 8&nbsp;convives</b><span>jusqu’aux grandes réceptions</span></div>
+  <div><b>Paris et Île-de-France</b><span>livraison à l’heure convenue</span></div>
+  <div><b>72&nbsp;h à l’avance</b><span>proposition sur mesure sous&nbsp;24&nbsp;h</span></div>
+  <div><b>Végétarien</b><span>presque toute la carte&nbsp;; allergènes détaillés</span></div>
+</div>
+
+</div>
+<footer>
+  <div class="nom">Jad Najjar<small>Fondateur</small></div>
+  <div class="c">+33&nbsp;6&nbsp;11&nbsp;68&nbsp;52&nbsp;35 &nbsp;·&nbsp; jad@ateliernajjar.fr<br>ateliernajjar.fr</div>
+</footer>
+</body></html>
