@@ -12,7 +12,7 @@ from fontTools.pens.boundsPen import BoundsPen
 ICI = os.path.dirname(os.path.abspath(__file__))
 POLICES = os.path.join(ICI, 'polices')
 
-BORDEAUX, IVOIRE, BRUN, OR, GRIS = '#5A1424', '#FBF8F3', '#2A1E1A', '#D9C29C', '#6F625A'
+BORDEAUX, IVOIRE, BRUN, OR, GRIS, SABLE = '#5A1424', '#FBF8F3', '#2A1E1A', '#D9C29C', '#6F625A', '#ECE3D6'
 NOM, BASELINE, ARABE = 'ATELIER NAJJAR', 'CUISINE LIBANAISE  ·  PARIS', 'نجّار'
 ESPACEMENT = .1  # espacement des lettres du nom, en fraction de la taille
 
@@ -100,6 +100,14 @@ def monogramme(arabe=False, fond=BORDEAUX, encre=IVOIRE, S=512):
     return svg(S, S, corps + chemin(dN, encre) + filet + chemin(da, encre))
 
 
+def favicon(fond=SABLE, encre=BORDEAUX, S=512):
+    """Favicon du site : N bordeaux sur carré sable aux coins arrondis."""
+    corps = f'<rect width="{S}" height="{S}" rx="{S * .1875:.0f}" fill="{fond}"/>'
+    _, _, b = tenor.centre('N', S * .6, S / 2, 0)
+    d, _, _ = tenor.centre('N', S * .6, S / 2, S / 2 - (b[1] + b[3]) / 2)
+    return svg(S, S, corps + chemin(d, encre))
+
+
 FICHIERS = {
     'logo-vertical-bordeaux.svg': lambda: vertical(BORDEAUX, BORDEAUX),
     'logo-vertical-bordeaux-baseline.svg': lambda: vertical(BORDEAUX, BORDEAUX, GRIS),
@@ -110,6 +118,7 @@ FICHIERS = {
     'logo-horizontal-brun.svg': lambda: horizontal(BRUN, BRUN),
     'logo-horizontal-ivoire.svg': lambda: horizontal(IVOIRE, IVOIRE),
     'logo-horizontal-ivoire-or.svg': lambda: horizontal(IVOIRE, OR),
+    'favicon-N-sable.svg': lambda: favicon(),
     'monogramme-N.svg': lambda: monogramme(),
     'monogramme-N-noun.svg': lambda: monogramme(arabe=True),
 }

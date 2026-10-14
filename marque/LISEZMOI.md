@@ -8,7 +8,7 @@
 |---|---|---|
 | `svg/` | Logos vectoriels (texte converti en tracés) | Imprimeur, graphiste, signalétique, gravure : qualité infinie, s'ouvrent sans les polices |
 | `png/` | Les mêmes logos en PNG à fond transparent, 2400 px | Word, PowerPoint, Canva, signature d'email, devis |
-| `favicon/` | Monogramme N en 16 à 512 px, `.ico` et `.svg` | Icône du site, onglet du navigateur |
+| `favicon/` | N bordeaux sur carré sable, en 16 à 512 px, `.ico` et `.svg` (le N est légèrement épaissi aux petites tailles) | Icône du site, onglet du navigateur, écran d’accueil du téléphone |
 | `reseaux/` | Photos de profil 1080 × 1080 px | Instagram, LinkedIn, WhatsApp Business |
 
 ### Quelle version utiliser
@@ -16,7 +16,8 @@
 - **logo-vertical** : version principale (نجّار au-dessus du nom). Emballages, cartes de visite, devis, première page d'un document.
 - **logo-vertical-bordeaux-baseline** : avec « Cuisine libanaise · Paris ». Supports de présentation, flyers.
 - **logo-horizontal** : version en ligne. Menu du site, en-tête de document, signature d'email.
-- **monogramme-N** : quand la place manque (favicon, tampon, autocollant rond).
+- **favicon-N-sable** : icône du site (onglet, écran d’accueil).
+- **monogramme-N** : quand la place manque (tampon, autocollant rond).
 - **monogramme-N-noun** (N + ن) : photo de profil sur les réseaux.
 
 ### Couleurs du logo
