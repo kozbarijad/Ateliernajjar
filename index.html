@@ -267,7 +267,9 @@ nav a:hover { color: var(--bordeaux); }
 .formule h3 { font-size: clamp(36px, 3.4vw, 52px); margin-bottom: 12px; color: var(--bordeaux); }
 .formule .pour { font-size: 13px; color: var(--gris); margin-bottom: 28px; }
 .formule p.desc { font-size: 16px; max-width: 22em; }
-.formules-note { margin-top: 32px; font-size: 14px; color: var(--gris); max-width: 44em; }
+.formules-note { margin-top: 32px; font-size: 14px; color: var(--gris); }
+.formules-note li { position: relative; padding-left: 18px; margin-bottom: 4px; }
+.formules-note li::before { content: ''; position: absolute; left: 0; top: .75em; width: 8px; border-top: 1px solid var(--or); }
 
 
 
@@ -484,7 +486,7 @@ footer a:hover { color: var(--bordeaux); }
             <p class="desc">Un menu composé sur mesure, des créations de saison et un buffet dressé, pensé pour votre lieu.</p>
           </div>
         </div>
-        <p class="formules-note">Toutes les formules sont dressées dans notre vaisselle en inox et livrées prêtes à servir, dès 8 convives, à Paris et en <span class="nw">Île-de-France</span>. Commande à passer au moins 72 h à l’avance. L’Atelier n’assure pas de service sur place. Formules à partir de 25 € par convive ; chaque proposition est composée sur mesure, avec la liste des allergènes.</p>
+        <ul class="formules-note"><li>Livrées dressées dans notre vaisselle en inox, prêtes à servir.</li><li>Dès 8 convives, à Paris et en <span class="nw">Île-de-France</span>.</li><li>Commande au moins 72 h à l’avance, sans service sur place.</li><li>À partir de 25 € par convive, composé sur mesure, avec la liste des allergènes.</li></ul>
       </div>
     </div>
   </section>
