@@ -17,15 +17,15 @@ body { color:var(--encre); font-family:'Helvetica Neue',Helvetica,Arial,sans-ser
 .chevalet { position:relative; display:grid; grid-template-rows:45mm 45mm; outline:.15mm solid #ddd5ca; outline-offset:-.075mm; }
 .chevalet::after { content:''; position:absolute; left:0; right:0; top:45mm; border-top:.2mm dashed #c9bfb2; }
 /* Fond laissé au papier : imprimer sur un carton ivoire ou vergé crème. */
-.face { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9mm 3mm; }
+.face { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9mm; }
 .face::before { content:''; position:absolute; inset:3.2mm 3.2mm 3.2mm; border:.2mm solid var(--filet); pointer-events:none; }
 .face.haut { transform:rotate(180deg); }
-.tag { font-size:5.4pt; letter-spacing:.28em; text-transform:uppercase; color:var(--bordeaux); margin:0 0 2.2mm; }
+.logo { position:absolute; top:6.2mm; left:50%; height:3.9mm; transform:translateX(-50%); display:block; }
+.tag { position:absolute; bottom:6.6mm; left:0; right:0; font-size:5.4pt; line-height:1; letter-spacing:.28em; text-transform:uppercase; color:var(--bordeaux); margin:0; }
 .tag i { font-style:normal; color:var(--or); }
 h2 { font:400 20pt/1.02 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.01em; text-wrap:balance; }
 h2.long { font-size:16.5pt; }
 .ingr { font:italic 400 8.4pt/1.3 'Caslon I',Georgia,serif; color:var(--gris); margin:2.2mm 0 0; text-wrap:balance; }
-.sceau { position:absolute; bottom:5.6mm; left:50%; width:4.6mm; transform:translateX(-50%); display:block; }
 .vierge img { height:5.2mm; }
 </style></head>
 <body>
@@ -50,14 +50,13 @@ const PLATS = [
   ['Mini-sandwich', 'Falafel et hommos', 'Falafel, hommos, feta, salade, tomate', true],
 ];
 const LOGO = '../img/logo.svg';
-const SCEAU = '../img/najjar-ar.svg';
 
 const face = ([tag, nom, ingr, vg], cls) => `
   <div class="face ${cls}">
-    <p class="tag">${tag}${vg ? ' <i>· Végétarien</i>' : ''}</p>
+    <img class="logo" src="${LOGO}" alt="Atelier Najjar">
     <h2${nom.length > 24 ? ' class="long"' : ''}>${nom}</h2>
     <p class="ingr">${ingr}</p>
-    <img class="sceau" src="${SCEAU}" alt="">
+    <p class="tag">${tag}${vg ? ' <i>· Végétarien</i>' : ''}</p>
   </div>`;
 const vierge = `<div class="chevalet vierge">${['haut', 'bas'].map(c => `<div class="face ${c}"><img src="${LOGO}" alt="Atelier Najjar"></div>`).join('')}</div>`;
 
