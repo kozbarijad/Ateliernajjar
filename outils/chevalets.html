@@ -20,10 +20,9 @@ body { color:var(--encre); font-family:'Helvetica Neue',Helvetica,Arial,sans-ser
 .face { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9mm; }
 .face.haut { transform:rotate(180deg); }
 .logo { position:absolute; top:4.8mm; left:50%; height:6mm; transform:translateX(-50%); display:block; }
-.tag { position:absolute; bottom:6.6mm; left:0; right:0; font-size:5.4pt; line-height:1; letter-spacing:.28em; text-transform:uppercase; color:var(--bordeaux); margin:0; }
-.tag i { font-style:normal; color:var(--or); }
-h2 { font:400 20pt/1.02 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.01em; text-wrap:balance; }
-h2.long { font-size:16.5pt; }
+.tag { position:absolute; bottom:6.6mm; left:0; right:0; font-size:6pt; line-height:1; letter-spacing:.26em; text-transform:uppercase; color:var(--bordeaux); margin:0; }
+.tag i { font-style:normal; color:#86693F; }
+h2 { font:400 18pt/1.02 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.01em; text-wrap:balance; }
 .ingr { font:italic 400 8.4pt/1.3 'Caslon I',Georgia,serif; color:var(--gris); margin:2.2mm 0 0; text-wrap:balance; }
 .vierge img { height:8mm; }
 </style></head>
@@ -53,7 +52,7 @@ const LOGO = '../img/logo.svg';
 const face = ([tag, nom, ingr, vg], cls) => `
   <div class="face ${cls}">
     <img class="logo" src="${LOGO}" alt="Atelier Najjar">
-    <h2${nom.length > 24 ? ' class="long"' : ''}>${nom}</h2>
+    <h2>${nom}</h2>
     <p class="ingr">${ingr}</p>
     <p class="tag">${tag}${vg ? ' <i>· Végétarien</i>' : ''}</p>
   </div>`;
