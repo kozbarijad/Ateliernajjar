@@ -14,20 +14,19 @@ html,body { margin:0; }
 body { color:var(--encre); font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 .page { width:210mm; height:297mm; padding:13.5mm 10mm; display:grid; grid-template-columns:repeat(2,95mm); grid-template-rows:repeat(3,90mm); break-after:page; overflow:hidden; }
 .page:last-child { break-after:auto; }
-.chevalet { position:relative; display:grid; grid-template-rows:45mm 45mm; outline:.2mm solid #cfc6ba; outline-offset:-.1mm; }
-.chevalet::after { content:''; position:absolute; left:0; right:0; top:45mm; border-top:.25mm dashed #b9ad9d; }
-.face { background:var(--ivoire); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:4mm 7mm 3.5mm; }
+.chevalet { position:relative; display:grid; grid-template-rows:45mm 45mm; outline:.15mm solid #ddd5ca; outline-offset:-.075mm; }
+.chevalet::after { content:''; position:absolute; left:0; right:0; top:45mm; border-top:.2mm dashed #c9bfb2; }
+/* Fond laissé au papier : imprimer sur un carton ivoire ou vergé crème. */
+.face { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9mm 3mm; }
+.face::before { content:''; position:absolute; inset:3.2mm 3.2mm 3.2mm; border:.2mm solid var(--filet); pointer-events:none; }
 .face.haut { transform:rotate(180deg); }
-.tag { font-size:5.6pt; letter-spacing:.26em; text-transform:uppercase; color:var(--bordeaux); margin:0 0 2mm; }
-h2 { font:400 17pt/1.05 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.005em; text-wrap:balance; }
-h2.long { font-size:14.5pt; }
-.trait { width:9mm; height:0; border-top:.25mm solid var(--or); margin:2.6mm 0 2.2mm; }
-.ingr { font:italic 400 8.6pt/1.3 'Caslon I',Georgia,serif; color:var(--gris); margin:0; text-wrap:balance; }
-.pied { margin-top:auto; padding-top:2mm; display:flex; align-items:center; gap:2.4mm; }
-.pied img { height:2.6mm; display:block; }
-.vg { font-size:5.2pt; letter-spacing:.2em; text-transform:uppercase; color:var(--or); border-left:.2mm solid var(--filet); padding-left:2.4mm; }
-.vierge .face { justify-content:center; }
-.vierge img { height:5mm; }
+.tag { font-size:5.4pt; letter-spacing:.28em; text-transform:uppercase; color:var(--bordeaux); margin:0 0 2.2mm; }
+.tag i { font-style:normal; color:var(--or); }
+h2 { font:400 20pt/1.02 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.01em; text-wrap:balance; }
+h2.long { font-size:16.5pt; }
+.ingr { font:italic 400 8.4pt/1.3 'Caslon I',Georgia,serif; color:var(--gris); margin:2.2mm 0 0; text-wrap:balance; }
+.sceau { position:absolute; bottom:5.6mm; left:50%; width:4.6mm; transform:translateX(-50%); display:block; }
+.vierge img { height:5.2mm; }
 </style></head>
 <body>
 <script>
@@ -51,14 +50,14 @@ const PLATS = [
   ['Mini-sandwich', 'Falafel et hommos', 'Falafel, hommos, feta, salade, tomate', true],
 ];
 const LOGO = '../img/logo.svg';
+const SCEAU = '../img/najjar-ar.svg';
 
 const face = ([tag, nom, ingr, vg], cls) => `
   <div class="face ${cls}">
-    <p class="tag">${tag}</p>
+    <p class="tag">${tag}${vg ? ' <i>· Végétarien</i>' : ''}</p>
     <h2${nom.length > 24 ? ' class="long"' : ''}>${nom}</h2>
-    <span class="trait"></span>
     <p class="ingr">${ingr}</p>
-    <div class="pied"><img src="${LOGO}" alt="Atelier Najjar">${vg ? '<span class="vg">Végétarien</span>' : ''}</div>
+    <img class="sceau" src="${SCEAU}" alt="">
   </div>`;
 const vierge = `<div class="chevalet vierge">${['haut', 'bas'].map(c => `<div class="face ${c}"><img src="${LOGO}" alt="Atelier Najjar"></div>`).join('')}</div>`;
 
