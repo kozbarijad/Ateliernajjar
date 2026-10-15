@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>Atelier Najjar · Chevalets</title>
+<!-- Source des chevalets de buffet (mail/chevalets-atelier-najjar.pdf), rendue en A4 avec Chromium.
+     6 chevalets par page : découper le long des traits fins, plier sur le pointillé.
+     Chaque chevalet fait 95 × 45 mm une fois plié, lisible des deux côtés.
+     Pour changer les plats, modifier la liste PLATS ci-dessous. -->
+<style>
+@font-face { font-family:'Caslon D'; src:url('../polices/libre-caslon-display.woff2') format('woff2'); }
+@font-face { font-family:'Caslon I'; src:url('../polices/libre-caslon-text-italique.woff2') format('woff2'); font-style:italic; }
+@page { size:A4; margin:0; }
+:root { --ivoire:#FBF8F3; --sable:#ECE3D6; --encre:#2A1E1A; --gris:#6F625A; --bordeaux:#5A1424; --or:#A88A5C; --filet:rgba(168,138,92,.45); }
+* { box-sizing:border-box; }
+html,body { margin:0; }
+body { color:var(--encre); font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { width:210mm; height:297mm; padding:13.5mm 10mm; display:grid; grid-template-columns:repeat(2,95mm); grid-template-rows:repeat(3,90mm); break-after:page; overflow:hidden; }
+.page:last-child { break-after:auto; }
+.chevalet { position:relative; display:grid; grid-template-rows:45mm 45mm; outline:.2mm solid #cfc6ba; outline-offset:-.1mm; }
+.chevalet::after { content:''; position:absolute; left:0; right:0; top:45mm; border-top:.25mm dashed #b9ad9d; }
+.face { background:var(--ivoire); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:4mm 7mm 3.5mm; }
+.face.haut { transform:rotate(180deg); }
+.tag { font-size:5.6pt; letter-spacing:.26em; text-transform:uppercase; color:var(--bordeaux); margin:0 0 2mm; }
+h2 { font:400 17pt/1.05 'Caslon D',Georgia,serif; margin:0; letter-spacing:-.005em; text-wrap:balance; }
+h2.long { font-size:14.5pt; }
+.trait { width:9mm; height:0; border-top:.25mm solid var(--or); margin:2.6mm 0 2.2mm; }
+.ingr { font:italic 400 8.6pt/1.3 'Caslon I',Georgia,serif; color:var(--gris); margin:0; text-wrap:balance; }
+.pied { margin-top:auto; padding-top:2mm; display:flex; align-items:center; gap:2.4mm; }
+.pied img { height:2.6mm; display:block; }
+.vg { font-size:5.2pt; letter-spacing:.2em; text-transform:uppercase; color:var(--or); border-left:.2mm solid var(--filet); padding-left:2.4mm; }
+.vierge .face { justify-content:center; }
+.vierge img { height:5mm; }
+</style></head>
+<body>
+<script>
+// [catégorie, nom, ingrédients, végétarien]
+const PLATS = [
+  ['Mezzé', 'Hommos à la grenade', 'Tahiné, citron, grains de grenade', true],
+  ['Mezzé', 'Labné aux agrumes', 'Zestes d’agrumes, pistache, menthe', true],
+  ['Mezzé', 'Caviar d’aubergine fumé', 'Aubergine grillée au feu, sumac', true],
+  ['Mezzé', 'Labné au thym et olives', 'Thym frais, olives noires, huile d’olive', true],
+  ['Salade', 'Taboulé citronné', 'Persil plat, boulgour fin, tomate, grenade', true],
+  ['Salade', 'Salade levantine', 'Agrumes, concombre, grenade, menthe', true],
+  ['Bouchée', 'Falafels', 'Pois chiches, herbes, menthe', true],
+  ['Bouchée', 'Feuilles de vigne', 'Riz, herbes, citron', true],
+  ['Bouchée', 'Kebbé', 'Boulgour, viande, pignons de pin', false],
+  ['Bouchée', 'Fatayer aux épinards', 'Oignon, sumac, citron', true],
+  ['Bouchée', 'Samboussek au fromage', 'Pâte dorée, fromage fondant', true],
+  ['Bouchée', 'Samboussek à la viande', 'Viande épicée, menthe fraîche', false],
+  ['Mini-sandwich', 'Halloumi et aubergines grillées', 'Halloumi grillé, aubergine, salade, tahiné', true],
+  ['Mini-sandwich', 'Za’atar et labné', 'Labné, za’atar, tomate, menthe', true],
+  ['Mini-sandwich', 'Labné, tomate et concombre', 'Labné, tomate, concombre, menthe, huile d’olive', true],
+  ['Mini-sandwich', 'Falafel et hommos', 'Falafel, hommos, feta, salade, tomate', true],
+];
+const LOGO = '../img/logo.svg';
+
+const face = ([tag, nom, ingr, vg], cls) => `
+  <div class="face ${cls}">
+    <p class="tag">${tag}</p>
+    <h2${nom.length > 24 ? ' class="long"' : ''}>${nom}</h2>
+    <span class="trait"></span>
+    <p class="ingr">${ingr}</p>
+    <div class="pied"><img src="${LOGO}" alt="Atelier Najjar">${vg ? '<span class="vg">Végétarien</span>' : ''}</div>
+  </div>`;
+const vierge = `<div class="chevalet vierge">${['haut', 'bas'].map(c => `<div class="face ${c}"><img src="${LOGO}" alt="Atelier Najjar"></div>`).join('')}</div>`;
+
+const cartes = PLATS.map(p => `<div class="chevalet">${face(p, 'haut')}${face(p, 'bas')}</div>`);
+while (cartes.length % 6) cartes.push(vierge);  // les places restantes : chevalets au logo seul
+let html = '';
+for (let i = 0; i < cartes.length; i += 6) html += `<div class="page">${cartes.slice(i, i + 6).join('')}</div>`;
+document.body.insertAdjacentHTML('beforeend', html);
+</script>
+</body></html>
