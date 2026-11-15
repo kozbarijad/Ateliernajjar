@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KRYSP · Classic Smash Burgers</title>
+<meta name="description" content="KRYSP, smash burgers à la croûte croustillante. Bœuf français smashé à la commande, cheddar fondu, bun brioché et sauce maison. Du S au XXL.">
+<meta name="theme-color" content="#FFC72C">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="KRYSP">
+<meta property="og:title" content="KRYSP · Classic Smash">
+<meta property="og:description" content="Smashé. Croustillant. Point. Du S au XXL, bœuf français smashé à la commande.">
+<meta property="og:image" content="img/classic-smash.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414;
+  --paper:#FFFFFF;
+  --tile:#F5F3EF;
+  --line:#E6E2DB;
+  --cheese:#FFC72C;
+  --cheese-deep:#F5A800;
+  --crust:#5A2E17;
+  --bun:#EDA23C;
+  --muted:#5E5A55;
+  --r:18px;
+  --gutter:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  font-family:"Barlow",system-ui,sans-serif;
+  color:var(--ink);background:var(--paper);
+  font-weight:500;line-height:1.5;font-size:17px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+.tiles{
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--line) 2px,transparent 2px),
+    linear-gradient(90deg,var(--line) 2px,transparent 2px);
+  background-size:96px 96px;
+  background-position:-1px -1px;
+}
+.p{font-style:italic}
+
+/* ---------- boutons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;
+  font:800 16px/1 "Barlow",sans-serif;text-transform:uppercase;letter-spacing:.04em;
+  text-decoration:none;padding:16px 26px;border-radius:999px;
+  border:3px solid var(--ink);background:var(--cheese);color:var(--ink);
+  box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn--ghost{background:var(--paper)}
+.btn--dark{background:var(--ink);color:var(--paper);box-shadow:4px 4px 0 var(--cheese)}
+.btn--dark:hover{box-shadow:6px 6px 0 var(--cheese)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:3px solid var(--ink);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{font-weight:900;font-size:34px;letter-spacing:-.02em;text-decoration:none;line-height:1}
+.nav ul{display:flex;gap:32px;list-style:none}
+.nav ul a{font-weight:800;text-transform:uppercase;font-size:15px;letter-spacing:.06em;text-decoration:none;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--cheese);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav ul a:hover::after{transform:scaleX(1)}
+.nav .btn{padding:12px 20px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}
+.burger-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.burger-btn span{display:block;height:3px;background:var(--ink);margin:6px 8px;border-radius:2px;transition:.2s}
+@media (max-width:820px){
+  .nav ul{
+    position:fixed;inset:72px 0 auto 0;flex-direction:column;gap:0;background:var(--paper);
+    border-bottom:3px solid var(--ink);transform:translateY(-120%);transition:transform .25s;z-index:-1;
+  }
+  .nav ul.open{transform:none}
+  .nav ul li a{display:block;padding:20px var(--gutter);font-size:22px;border-top:2px solid var(--line)}
+  .nav ul a::after{display:none}
+  .burger-btn{display:block}
+  .nav .btn{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:3px solid var(--ink)}
+.hero__inner{padding-top:clamp(32px,6vw,72px);padding-bottom:0;text-align:center;position:relative}
+.kicker{
+  display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:14px;
+  background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:999px;
+}
+.hero h1{
+  font-weight:900;font-size:clamp(88px,23vw,300px);line-height:.82;letter-spacing:-.045em;
+  margin:18px 0 6px;
+}
+.hero h1 .p{display:inline-block;transform:translateX(-.02em)}
+.hero__sub{font-weight:800;text-transform:uppercase;font-size:clamp(20px,3.4vw,40px);letter-spacing:.02em}
+.hero__tag{max-width:520px;margin:14px auto 0;color:var(--muted);font-size:18px}
+.hero__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.hero__photo{position:relative;margin:clamp(28px,5vw,56px) auto 0;max-width:1000px}
+.hero__photo img{width:100%;height:auto;border-radius:var(--r) var(--r) 0 0;border:3px solid var(--ink);border-bottom:0}
+.sticker{
+  position:absolute;right:clamp(-10px,2vw,30px);top:clamp(-40px,-3vw,-20px);
+  width:clamp(110px,15vw,170px);aspect-ratio:1;
+}
+.sticker svg{width:100%;height:100%;animation:spin 18s linear infinite}
+.sticker b{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-weight:900;font-size:clamp(26px,3.6vw,42px);line-height:.9;text-align:center;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.sticker svg,.marquee__track{animation:none!important}}
+
+/* ---------- bandeau ---------- */
+.marquee{background:var(--ink);color:var(--cheese);overflow:hidden;border-bottom:3px solid var(--ink);white-space:nowrap}
+.marquee__track{display:inline-flex;animation:slide 26s linear infinite;padding:18px 0}
+.marquee span{font-weight:900;font-size:clamp(26px,4vw,44px);text-transform:uppercase;padding:0 22px;letter-spacing:-.01em}
+.marquee i{font-style:normal;color:var(--paper)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(64px,10vw,120px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head h2{font-weight:900;font-size:clamp(52px,9vw,120px);line-height:.85;letter-spacing:-.04em;text-transform:uppercase}
+.sec-head p{max-width:420px;color:var(--muted);font-size:18px}
+.hl{background:linear-gradient(transparent 58%,var(--cheese) 58%)}
+
+/* ---------- constructeur ---------- */
+.builder{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;
+  border:3px solid var(--ink);border-radius:28px;padding:clamp(20px,4vw,48px);
+  background:var(--cheese);box-shadow:8px 8px 0 var(--ink);margin-bottom:clamp(56px,8vw,96px);
+}
+.builder__art{background:var(--paper);border:3px solid var(--ink);border-radius:20px;display:grid;place-items:center;min-height:360px;padding:24px}
+.builder__art svg{width:min(100%,360px);height:auto;overflow:visible}
+.builder h3{font-weight:900;font-size:clamp(30px,4vw,46px);line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+.builder .q{font-weight:700;margin:10px 0 18px}
+.counter{display:flex;gap:10px;flex-wrap:wrap}
+.counter button{
+  width:58px;height:58px;border-radius:50%;border:3px solid var(--ink);background:var(--paper);
+  font:900 24px "Barlow",sans-serif;cursor:pointer;transition:transform .12s,background .12s;
+}
+.counter button:hover{transform:translateY(-3px)}
+.counter button[aria-pressed="true"]{background:var(--ink);color:var(--cheese)}
+.builder__out{margin-top:26px;border-top:3px solid var(--ink);padding-top:20px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.builder__size{font-weight:900;font-size:clamp(64px,9vw,104px);line-height:.8;letter-spacing:-.04em}
+.builder__price{font-weight:900;font-size:34px}
+.builder__desc{margin-top:12px;font-weight:600;min-height:3em}
+@media (max-width:860px){.builder{grid-template-columns:1fr}.builder__art{min-height:280px}.counter{gap:8px}.counter button{width:50px;height:50px;font-size:21px}}
+
+/* ---------- carte ---------- */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.chips a{
+  text-decoration:none;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.06em;
+  border:3px solid var(--ink);border-radius:999px;padding:10px 18px;background:var(--paper);
+}
+.chips a:hover{background:var(--cheese)}
+.cat{margin-top:clamp(48px,7vw,80px)}
+.cat:first-of-type{margin-top:0}
+.cat h3{
+  font-weight:900;font-size:clamp(34px,5vw,56px);text-transform:uppercase;letter-spacing:-.02em;
+  display:flex;align-items:center;gap:16px;margin-bottom:24px;
+}
+.cat h3::after{content:"";flex:1;height:3px;background:var(--ink)}
+.cat .note{margin:-12px 0 24px;color:var(--muted);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{
+  background:var(--paper);border:3px solid var(--ink);border-radius:var(--r);
+  padding:20px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;
+}
+.card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.card__art{background:var(--tile);border-radius:12px;height:200px;display:grid;place-items:center;margin-bottom:18px;overflow:hidden}
+.card__art svg{height:170px;max-width:90%;width:auto;overflow:visible}
+.card__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card h4{font-weight:900;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+.price{font-weight:900;font-size:22px;white-space:nowrap}
+.tag{
+  align-self:flex-start;margin:10px 0 8px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--cheese);border:2px solid var(--ink);border-radius:999px;padding:4px 10px;
+}
+.tag--veg{background:#BFE3A8}
+.tag--new{background:var(--ink);color:var(--cheese)}
+.card p{color:var(--muted);font-size:16px}
+.list{border:3px solid var(--ink);border-radius:var(--r);background:var(--paper);overflow:hidden}
+.list li{list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 22px;border-top:2px solid var(--line);align-items:baseline}
+.list li:first-child{border-top:0}
+.list strong{font-weight:900;font-size:21px;text-transform:uppercase;display:block;line-height:1.1}
+.list small{color:var(--muted);font-size:15px}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.menu-deal{
+  margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  background:var(--ink);color:var(--paper);border-radius:var(--r);padding:22px 26px;
+}
+.menu-deal b{font-weight:900;font-size:clamp(24px,3vw,32px);text-transform:uppercase;color:var(--cheese)}
+
+/* ---------- le smash ---------- */
+.how{background:var(--ink);color:var(--paper)}
+.how .sec-head p{color:#BDB8B0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{border:3px solid var(--paper);border-radius:var(--r);padding:28px}
+.step:nth-child(2){background:var(--cheese);color:var(--ink);border-color:var(--cheese)}
+.step .n{font-weight:900;font-size:88px;line-height:.8;letter-spacing:-.04em}
+.step h3{font-weight:900;font-size:34px;text-transform:uppercase;margin:18px 0 8px}
+.step p{opacity:.85}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:clamp(56px,8vw,96px)}
+.split img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px;border:3px solid var(--paper)}
+.split h3{font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.9;text-transform:uppercase;letter-spacing:-.03em}
+.split p{margin-top:18px;color:#D2CEC7;font-size:18px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.facts div{border-top:3px solid var(--cheese);padding-top:10px}
+.facts b{display:block;font-weight:900;font-size:36px;color:var(--cheese);line-height:1}
+.facts span{font-size:15px;color:#D2CEC7}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+
+/* ---------- infos ---------- */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.info{border:3px solid var(--ink);border-radius:var(--r);padding:28px;background:var(--paper)}
+.info h3{font-weight:900;font-size:26px;text-transform:uppercase;margin-bottom:14px}
+.info table{width:100%;border-collapse:collapse}
+.info td{padding:6px 0;border-bottom:2px dashed var(--line)}
+.info td:last-child{text-align:right;font-weight:700}
+.info .big{font-weight:800;font-size:22px;line-height:1.25}
+.info .btn{margin-top:20px}
+.order{display:flex;flex-direction:column;gap:12px}
+.order .btn{margin:0;justify-content:center}
+@media (max-width:960px){.info-grid{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{background:var(--cheese);border-top:3px solid var(--ink);overflow:hidden}
+.foot-word{font-weight:900;font-size:clamp(90px,27vw,380px);line-height:.78;letter-spacing:-.05em;text-align:center;margin-top:24px;transform:translateY(.12em)}
+.foot-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:32px 0 8px;font-weight:700}
+.foot-row nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot-row a{text-decoration:none;text-transform:uppercase;font-weight:800;letter-spacing:.05em;font-size:14px}
+.foot-row a:hover{text-decoration:underline;text-decoration-thickness:3px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="KRYSP, retour en haut">KRYS<span class="p">P</span></a>
+    <nav aria-label="Navigation principale">
+      <ul id="menu-nav">
+        <li><a href="#carte">La carte</a></li>
+        <li><a href="#smash">Le smash</a></li>
+        <li><a href="#infos">Nous trouver</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#commander">Commander</a>
+    <button class="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero tiles">
+    <div class="wrap hero__inner">
+      <span class="kicker">Smash burgers · Bœuf français</span>
+      <h1>KRYS<span class="p">P</span></h1>
+      <div class="hero__sub">Classic Smash</div>
+      <p class="hero__tag">Une boule de bœuf, une plancha brûlante, un gros coup de presse. La croûte croustille, le cheddar coule. C’est tout. C’est KRYSP.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#carte">Voir la carte</a>
+        <a class="btn btn--ghost" href="#commander">Commander</a>
+      </div>
+      <div class="hero__photo">
+        <img src="img/classic-smash.webp" width="900" height="500" alt="Le Classic Smash KRYSP : bun brioché, double steak smashé et cheddar fondu">
+        <div class="sticker" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+            <circle cx="100" cy="100" r="98" fill="#FFC72C" stroke="#141414" stroke-width="4"/>
+            <text font-family="Barlow" font-weight="900" font-size="20" letter-spacing="2.4" fill="#141414">
+              <textPath href="#circ">SMASHÉ MINUTE · BŒUF FRANÇAIS · </textPath>
+            </text>
+          </svg>
+          <b>100%<br>KRYSP</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Smash <i>●</i></span><span>Crispy <i>●</i></span><span>Cheesy <i>●</i></span><span>Juicy <i>●</i></span><span>KRYSP <i>●</i></span>
+      <span>Smash <i>●</i></span><span>Crispy <i>●</i></span><span>Cheesy <i>●</i></span><span>Juicy <i>●</i></span><span>KRYSP <i>●</i></span>
+    </div>
+  </div>
+
+  <!-- CARTE -->
+  <section id="carte">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>La<br><span class="hl">carte</span></h2>
+        <p>Un seul burger, cinq tailles. Tu choisis combien de steaks, on s’occupe de la croûte.</p>
+      </div>
+
+      <!-- constructeur -->
+      <div class="builder reveal" id="builder">
+        <div class="builder__art" aria-hidden="true"><svg id="builder-svg"></svg></div>
+        <div>
+          <h3>Combien de steaks&nbsp;?</h3>
+          <p class="q">Choisis ton niveau de faim.</p>
+          <div class="counter" role="group" aria-label="Nombre de steaks">
+            <button type="button" data-n="1" aria-pressed="false">1</button>
+            <button type="button" data-n="2" aria-pressed="true">2</button>
+            <button type="button" data-n="3" aria-pressed="false">3</button>
+            <button type="button" data-n="4" aria-pressed="false">4</button>
+            <button type="button" data-n="5" aria-pressed="false">5</button>
+          </div>
+          <div class="builder__out" aria-live="polite">
+            <div class="builder__size" id="b-size">M</div>
+            <div class="builder__price" id="b-price">9,50 €</div>
+          </div>
+          <p class="builder__desc" id="b-desc"></p>
+        </div>
+      </div>
+
+      <nav class="chips" aria-label="Catégories de la carte">
+        <a href="#burgers">Burgers</a><a href="#sides">Sides</a><a href="#boissons">Boissons</a><a href="#desserts">Desserts</a>
+      </nav>
+
+      <div class="cat" id="burgers">
+        <h3>Burgers</h3>
+        <p class="note">Bun brioché toasté, steak de bœuf français smashé, cheddar fondu, sauce KRYSP.</p>
+        <div class="grid" id="burger-grid"></div>
+        <div class="menu-deal">
+          <b>Passe en menu&nbsp;+3,50&nbsp;€</b>
+          <span>Frites maison + boisson au choix</span>
+        </div>
+      </div>
+
+      <div class="cat" id="sides">
+        <h3>Sides</h3>
+        <div class="lists">
+          <ul class="list">
+            <li><div><strong>Frites maison</strong><small>Coupées chaque matin, double cuisson</small></div><span class="price">3,50 €</span></li>
+            <li><div><strong>Krysp fries</strong><small>Frites, cheddar fondu, oignons frits, sauce KRYSP</small></div><span class="price">5,50 €</span></li>
+            <li><div><strong>Tenders crispy ×4</strong><small>Poulet pané minute, sauce au choix</small></div><span class="price">6,50 €</span></li>
+          </ul>
+          <ul class="list">
+            <li><div><strong>Sauce KRYSP</strong><small>La signature : crémeuse, fumée, un peu piquante</small></div><span class="price">0,80 €</span></li>
+            <li><div><strong>Truffe</strong><small>Mayo maison à la truffe</small></div><span class="price">0,80 €</span></li>
+            <li><div><strong>Ketchup / Mayo / BBQ</strong><small>Les classiques</small></div><span class="price">0,50 €</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cat" id="boissons">
+        <h3>Boissons</h3>
+        <div class="lists">
+          <ul class="list">
+            <li><div><strong>Sodas</strong><small>Cola, cola zéro, orange, thé glacé — 33 cl</small></div><span class="price">2,50 €</span></li>
+            <li><div><strong>Limonade maison</strong><small>Citron pressé, menthe fraîche</small></div><span class="price">3,50 €</span></li>
+            <li><div><strong>Eau</strong><small>Plate ou pétillante — 50 cl</small></div><span class="price">2,00 €</span></li>
+          </ul>
+          <ul class="list">
+            <li><div><strong>Milkshake vanille</strong><small>Glace vanille, lait entier</small></div><span class="price">5,50 €</span></li>
+            <li><div><strong>Milkshake cookie</strong><small>Vanille, éclats de cookie</small></div><span class="price">5,90 €</span></li>
+            <li><div><strong>Milkshake caramel</strong><small>Caramel au beurre salé</small></div><span class="price">5,90 €</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cat" id="desserts">
+        <h3>Desserts</h3>
+        <div class="lists">
+          <ul class="list">
+            <li><div><strong>Cookie XL</strong><small>Chocolat au lait, cœur fondant, tiède</small></div><span class="price">3,50 €</span></li>
+            <li><div><strong>Sundae</strong><small>Glace vanille, caramel ou chocolat, crumble</small></div><span class="price">4,50 €</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LE SMASH -->
+  <section class="how" id="smash">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Le<br><span style="color:var(--cheese)">smash</span></h2>
+        <p>Pas de recette secrète. Juste trois gestes, répétés à chaque commande, jusqu’à la croûte parfaite.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n">01</div><h3>La boule</h3><p>Du bœuf français haché frais chaque jour, roulé en boule. Sel, poivre. Rien d’autre.</p></div>
+        <div class="step reveal"><div class="n">02</div><h3>Le smash</h3><p>Sur une plancha à plus de 230&nbsp;°C, on écrase fort, une seule fois. Les bords se dentellent.</p></div>
+        <div class="step reveal"><div class="n">03</div><h3>Le krysp</h3><p>La croûte caramélise, on retourne, cheddar dessus. Bun toasté, sauce KRYSP. Servi direct.</p></div>
+      </div>
+
+      <div class="split reveal">
+        <img src="img/classic-smash-carre.webp" width="500" height="500" loading="lazy" alt="Gros plan sur le Classic Smash KRYSP">
+        <div>
+          <h3>Croustillant dehors.<br><span style="color:var(--cheese)">Juteux dedans.</span></h3>
+          <p>Le smash, c’est l’inverse du burger épais : un steak fin, écrasé contre le métal pour maximiser la surface qui grille. Plus de croûte, plus de goût. Et quand on en empile cinq, ça devient un XXL.</p>
+          <div class="facts">
+            <div><b>100%</b><span>bœuf français</span></div>
+            <div><b>230°C</b><span>plancha minimum</span></div>
+            <div><b>90 s</b><span>de cuisson par steak</span></div>
+            <div><b>0</b><span>steak précuit</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS -->
+  <section class="tiles" id="infos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Nous<br><span class="hl">trouver</span></h2>
+        <p>Sur place, à emporter ou livré chez toi.</p>
+      </div>
+      <div class="info-grid">
+        <div class="info reveal">
+          <h3>Adresse</h3>
+          <p class="big">12 rue de l’Exemple<br>75000 Paris</p>
+          <p style="margin-top:8px;color:var(--muted)">Métro : Station à préciser</p>
+          <a class="btn btn--ghost" href="https://maps.google.com/?q=KRYSP" target="_blank" rel="noopener">Itinéraire</a>
+        </div>
+        <div class="info reveal">
+          <h3>Horaires</h3>
+          <table>
+            <tr><td>Lundi – Jeudi</td><td>11h30 – 23h</td></tr>
+            <tr><td>Vendredi – Samedi</td><td>11h30 – 00h</td></tr>
+            <tr><td>Dimanche</td><td>12h – 23h</td></tr>
+          </table>
+        </div>
+        <div class="info reveal" id="commander">
+          <h3>Commander</h3>
+          <div class="order">
+            <a class="btn" href="#" data-todo="click-and-collect">Click &amp; collect</a>
+            <a class="btn btn--ghost" href="#" data-todo="uber-eats">Uber Eats</a>
+            <a class="btn btn--ghost" href="#" data-todo="deliveroo">Deliveroo</a>
+            <a class="btn btn--dark" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>© <span id="year">2026</span> KRYSP · Classic Smash</span>
+      <nav aria-label="Pied de page">
+        <a href="#carte">Carte</a><a href="#smash">Le smash</a><a href="#infos">Infos</a><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <div class="foot-word" aria-hidden="true">KRYS<span class="p">P</span></div>
+  </div>
+</footer>
+
+<script>
+/* ---------- illustration de burger (SVG) ---------- */
+const INK = "#141414";
+function burgerSVG(n, opts = {}) {
+  const { veggie = false, truffle = false } = opts;
+  const W = 220, ph = 22, ch = 9;
+  let y = 8, parts = [], cheeses = [];
+  // bun haut
+  parts.push(`<path d="M18 ${y+70} C14 ${y+18} 62 ${y} 110 ${y} C158 ${y} 206 ${y+18} 202 ${y+70} Z" fill="#EDA23C" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`);
+  parts.push(`<path d="M52 ${y+28} C66 ${y+16} 86 ${y+12} 104 ${y+12}" fill="none" stroke="#F8D08A" stroke-width="7" stroke-linecap="round"/>`);
+  y += 70;
+  // sauce
+  parts.push(`<path d="M20 ${y-2} H200 Q196 ${y+8} 186 ${y+6} Q170 ${y+12} 150 ${y+6} Q120 ${y+12} 96 ${y+6} Q66 ${y+12} 40 ${y+6} Q26 ${y+10} 20 ${y-2}Z" fill="#F4E3C8" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`);
+  y += 6;
+  if (truffle) {
+    for (let i = 0; i < 6; i++) parts.push(`<ellipse cx="${44+i*27}" cy="${y+2}" rx="11" ry="5" fill="#F6EDD9" stroke="${INK}" stroke-width="3"/>`);
+    y += 5;
+  }
+  for (let i = 0; i < n; i++) {
+    // fromage avec coulures
+    const dx = (i % 2 ? 8 : -6);
+    cheeses.push(`<path d="M14 ${y} H206 L206 ${y+ch} L${150+dx} ${y+ch} L${142+dx} ${y+ch+12} L${134+dx} ${y+ch} L${80-dx} ${y+ch} L${72-dx} ${y+ch+16} L${64-dx} ${y+ch} L14 ${y+ch} Z" fill="#FFC72C" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`);
+    y += ch - 1;
+    // steak
+    const col = veggie ? "#D9902F" : "#5A2E17";
+    const hi = veggie ? "#F0B860" : "#8A4A26";
+    parts.push(`<path d="M16 ${y+ph/2} Q12 ${y} 30 ${y+1} Q60 ${y-3} 110 ${y} Q160 ${y-3} 192 ${y+1} Q210 ${y} 204 ${y+ph/2} Q210 ${y+ph} 190 ${y+ph} Q150 ${y+ph+3} 110 ${y+ph} Q60 ${y+ph+3} 30 ${y+ph} Q10 ${y+ph} 16 ${y+ph/2}Z" fill="${col}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`);
+    parts.push(`<path d="M40 ${y+7} q8 -3 16 0 M96 ${y+6} q10 -3 18 1 M150 ${y+8} q8 -3 16 0" fill="none" stroke="${hi}" stroke-width="3" stroke-linecap="round"/>`);
+    y += ph;
+  }
+  parts.push(...cheeses.reverse());
+  // bun bas
+  // dessous en premier pour que les coulures de cheddar passent par-dessus
+  parts.unshift(`<rect x="22" y="${y}" width="176" height="30" rx="12" fill="#F2BA63" stroke="${INK}" stroke-width="5"/>`);
+  y += 30;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${y+8}" role="img">${parts.join("")}</svg>`;
+}
+
+/* ---------- données de la carte ---------- */
+const SIZES = [
+  { n:1, name:"S",   price:"7,50 €",  desc:"Un steak smashé, une tranche de cheddar. Pour les petites faims et les puristes." },
+  { n:2, name:"M",   price:"9,50 €",  desc:"Deux steaks, deux cheddars. Le Classic Smash, notre best-seller." },
+  { n:3, name:"L",   price:"11,50 €", desc:"Trois steaks, trois cheddars. L’équilibre parfait entre croûte et fondant." },
+  { n:4, name:"XL",  price:"13,50 €", desc:"Quatre steaks smashés. Pour ceux qui ne rigolent pas avec la faim." },
+  { n:5, name:"XXL", price:"15,50 €", desc:"Cinq steaks, cinq cheddars. Le défi KRYSP. Tu le finis ? Respect." },
+];
+const SPECIALS = [
+  { name:"Veggie Krysp", price:"10,50 €", tag:"Végétarien", cls:"tag--veg", desc:"Galette de légumes panée maison, croustillante, cheddar fondu et sauce KRYSP.", art:() => burgerSVG(1,{veggie:true}) },
+  { name:"Truffle Smash", price:"13,90 €", tag:"Signature", cls:"tag--new", desc:"Double steak smashé, cheddar, oignons frits maison et mayo à la truffe.", art:() => burgerSVG(2,{truffle:true}) },
+];
+
+const grid = document.getElementById("burger-grid");
+const card = (art, name, price, tag, cls, desc) => `
+  <article class="card reveal">
+    <div class="card__art" aria-hidden="true">${art}</div>
+    <div class="card__top"><h4>${name}</h4><span class="price">${price}</span></div>
+    <span class="tag ${cls||""}">${tag}</span>
+    <p>${desc}</p>
+  </article>`;
+grid.innerHTML =
+  SIZES.map(s => card(burgerSVG(s.n), s.name, s.price, s.n + (s.n>1?" steaks":" steak"), "", s.desc)).join("") +
+  SPECIALS.map(s => card(s.art(), s.name, s.price, s.tag, s.cls, s.desc)).join("");
+
+/* ---------- constructeur ---------- */
+const bArt = document.querySelector(".builder__art");
+const btns = document.querySelectorAll(".counter button");
+function setSize(n){
+  const s = SIZES[n-1];
+  bArt.innerHTML = burgerSVG(n);
+  document.getElementById("b-size").textContent = s.name;
+  document.getElementById("b-price").textContent = s.price;
+  document.getElementById("b-desc").textContent = s.desc;
+  btns.forEach(b => b.setAttribute("aria-pressed", b.dataset.n == n));
+}
+btns.forEach(b => b.addEventListener("click", () => setSize(+b.dataset.n)));
+setSize(2);
+
+/* ---------- nav mobile ---------- */
+const toggle = document.querySelector(".burger-btn"), navList = document.getElementById("menu-nav");
+toggle.addEventListener("click", () => {
+  const open = navList.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", open);
+});
+navList.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  navList.classList.remove("open"); toggle.setAttribute("aria-expanded", false);
+}));
+
+/* ---------- apparition au scroll ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold:.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
